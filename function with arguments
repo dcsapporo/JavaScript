@@ -1,0 +1,95 @@
+//These are some examples of JavaScript functions and how to construct them
+function functionWithArgsA(param1, param2){
+  console.log(param1, param2);
+};
+functionWithArgsA("Hello","World");
+
+function functionWithArgsB(param1, param2){
+  console.log(param1 + param2);
+};
+functionWithArgsB(1, 2);
+functionWithArgsB(7, 9);
+
+function timesFive(num) {
+  return num * 5;
+};
+timesFive(9);
+
+
+//Below is an example of declaring a Global variable without using 'let' or 'const'
+// Declare the myGlobal variable below this line
+let myGlobal = 10;
+
+function fun1() {
+  // Assign 5 to oopsGlobal Here
+  oopsGlobal = 5;
+};
+
+// Only change code above this line
+// This function outputs a value for each declared and undeclared variable as long as they are defined 
+
+function fun2() {
+  var output = "";
+  if (typeof myGlobal != "undefined") {
+    output += "myGlobal: " + myGlobal;
+  }
+  if (typeof oopsGlobal != "undefined") {
+    output += " oopsGlobal: " + oopsGlobal;
+  }
+  console.log(output);
+  
+  //Example of local variable within a function and the error of calling it outside the function
+  
+  function myLocalScope() {
+  // Only change code below this line
+  const myVar = 6;
+  console.log('inside myLocalScope', myVar);
+}
+myLocalScope();
+
+// Run and check the console
+// myVar is not defined outside of myLocalScope
+console.log('outside myLocalScope', myVar);
+
+//The overriding power of the local variable
+// Setup
+const outerWear = "T-Shirt";
+
+function myOutfit() {
+  // Only change code below this line
+  const outerWear = "sweater";
+  // Only change code above this line
+  return outerWear;
+};
+
+myOutfit(); //'sweater' will be returned to the function
+
+//The following is an example of functions without 'return's
+// Setup
+let sum = 0;
+
+function addThree() {
+  sum = sum + 3;
+};
+
+// Only change code below this line
+function addFive() {
+  sum = sum + 5;
+};
+
+// Only change code above this line
+
+addThree();
+addFive(); //Without a return the oporation is undefined
+
+//Example of changing global variables using a function
+// Setup
+let processed = 0;
+
+function processArg(num) {
+  return (num + 3) / 5;
+}
+
+// Only change code below this line
+processed = processArg(7);
+}
