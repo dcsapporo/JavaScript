@@ -201,3 +201,21 @@ console.log(countdown(10));
 //Your function must use recursion by calling itself and not use loops of any kind. 
 //It should also work for cases where both 'startNum' and 'endNum' are the same.
 //Final Code for basic javascript:
+
+function rangeOfNumbers(startNum, endNum) {
+    console.log(startNum);
+    console.log(endNum);
+
+    if (endNum - startNum === 0) {
+      console.log(startNum);
+      return [startNum];
+    } else {
+      const range = rangeOfNumbers(startNum, endNum - 1);
+      console.log(range);
+      range.push(endNum);
+      return range;
+    }
+
+};
+
+console.log(rangeOfNumbers(6, 9))
