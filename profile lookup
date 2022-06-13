@@ -53,6 +53,15 @@ const contacts = [
 function lookUpProfile(name, prop) {
   // Only change code below this line
 
+    var contact = contacts.find(x => x.firstName == name);
+    if(contact == null)
+      return "No such contact";
+    var prop = Object.keys(contact).find(x => x == prop);
+    if(prop == null)
+      return "No such property";
+    return contact[prop];
+
+
   // Only change code above this line
 }
 
