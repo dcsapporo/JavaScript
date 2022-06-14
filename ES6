@@ -132,6 +132,8 @@ return s;
 editInPlace();
 console.log(editInPlace());
 
+//OUTPUT: [ 2, 5, 7 ]
+
 //Prevent Object Mutation
 //As seen in the previous challenge, 'const' declaration alone doesn't really protect your data from mutation. 
 //To ensure your data doesn't change, JavaScript provides a function 'Object.freeze' to prevent data mutation.
@@ -171,6 +173,13 @@ const PI = freezeObj();
 
 console.log(freezeObj());
 
+//OUTPUT: 
+[TypeError: Cannot assign to read only property 'PI' of object '#<Object>']
+[TypeError: Cannot assign to read only property 'PI' of object '#<Object>']
+3.14
+
+
+
 //Use Arrow Functions to Write Concise Anonymous Functions
 //In JavaScript, we often don't need to name our functions, especially when passing a function as an argument to another function. 
 //Instead, we create inline functions. We don't need to name these functions because we do not reuse them anywhere else.
@@ -200,6 +209,7 @@ console.log(freezeObj());
 //    var magic = function() {
 //      return new Date();
 //    };
+//CHANGED CODE:
 const magic = () => new Date();
 console.log(magic());
 //OUTPUT:
@@ -234,6 +244,7 @@ const myConcat = (arr1, arr2) => arr1.concat(arr2);
 
 
 console.log(myConcat([1, 2], [3, 4, 5]));
+//OUTPUT: [ 1, 2, 3, 4, 5 ]
 
 //Set Default Parameters for Your Functions
 //In order to help us create more flexible functions, ES6 introduces "default parameters" for functions.
@@ -434,6 +445,8 @@ const {today: highToday, tomorrow: highTomorrow} = HIGH_TEMPERATURES;
 // Only change code above this line
 console.log(("Today's High: " + highToday) +(" Tomorrow's High: " + highTomorrow));
 
+//OUTPUT: Today's High: 77 Tomorrow's High: 80
+
 //Use Destructuring Assignment to Assign Variables from Nested Objects
 //You can use the same principles from the previous two lessons to destructure values from nested objects.
 
@@ -505,4 +518,13 @@ console.log(("Today's Low: " + lowToday) + (" Today's High: " + highToday));
 //    let a = 8, b = 6;
 //    // Only change code below this line
 //Changed Code:
+let a = 8, b = 6;
+// Only change code below this line
+console.log(a,b);
+[a,b] = [6,8];
+console.log(a,b);
+//OUTPUT: 
+8 6
+6 8
 
+//
