@@ -709,9 +709,49 @@ function makeList(arr) {
 }
 
 const failuresList = makeList(result.failure);
+//2nd version:
+const result = {
+  success: ["max-length", "no-amd", "prefer-arrow-functions"],
+  failure: ["no-var", "var-on-top", "linebreak"],
+  skipped: ["no-extra-semi", "no-dup-keys"]
+};
+function makeList(arr) {
+  // Only change code below this line
+  const myArr = result.failure;
+  const myResult = [];
+  for (let i = 0; i < result.failure.length; i += 1) {
+    let myRes = [`<li class="text-warning">${myArr}</li>`];
+    
+    myResult.push(myRes)
+    
+  }
+  console.log(myResult);
+  console.log(myArr);
+
+  //const failureItems = [];
+  const failureItems = `'<li class="text-warning">${myArr[0]}</li>'`;
+
+  console.log(failureItems);
+
+  console.log(failuresList);
+
+  // Only change code above this line
+
+  return failureItems;
+}
+
+const failuresList = makeList(result.failure);
 
 //OUTPUT:
 //1st version
 [ 'linebreak' ]
 '<li class="text-warning">linebreak</li>'
+undefined
+
+//2nd version
+[ [ '<li class="text-warning">no-var,var-on-top,linebreak</li>' ],
+  [ '<li class="text-warning">no-var,var-on-top,linebreak</li>' ],
+  [ '<li class="text-warning">no-var,var-on-top,linebreak</li>' ] ]
+[ 'no-var', 'var-on-top', 'linebreak' ]
+'<li class="text-warning">no-var</li>'
 undefined
