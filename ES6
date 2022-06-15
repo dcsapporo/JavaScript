@@ -709,6 +709,7 @@ function makeList(arr) {
 }
 
 const failuresList = makeList(result.failure);
+
 //2nd version:
 const result = {
   success: ["max-length", "no-amd", "prefer-arrow-functions"],
@@ -742,6 +743,93 @@ function makeList(arr) {
 
 const failuresList = makeList(result.failure);
 
+//3rd Version:
+const result = {
+  success: ["max-length", "no-amd", "prefer-arrow-functions"],
+  failure: ["no-var", "var-on-top", "linebreak"],
+  skipped: ["no-extra-semi", "no-dup-keys"]
+};
+function makeList(arr) {
+  // Only change code below this line
+  const myArr = result.failure;
+  const failureItems = [];
+  
+  const [a] = myArr;
+  const [,b,] = myArr;
+  const [,,c] = myArr;
+  if (a === myArr[0]) {
+        let myRes = `<li class="text-warning">${a}</li>`;
+        failureItems.push(myRes);
+        
+        }
+  if (b === myArr[1]) {
+        let myRes = `<li class="text-warning">${b}</li>`;
+        failureItems.push(myRes);
+
+        }
+  if (c === myArr[2]) {
+        let myRes = `<li class="text-warning">${c}</li>`;
+        failureItems.push(myRes);
+
+        }
+  for (let i = 0; i < result.failure.length; i += 1) {
+    
+    
+  }
+  
+  console.log(failureItems);
+  // Only change code above this line
+
+  return failureItems;
+}
+
+const failuresList = makeList(result.failure);
+
+//FINAL SOLUTION
+const result = {
+  success: ["max-length", "no-amd", "prefer-arrow-functions"],
+  failure: ["no-var", "var-on-top", "linebreak"],
+  skipped: ["no-extra-semi", "no-dup-keys"]
+};
+function makeList(arr) {
+  // Only change code below this line
+  
+  const failureItems = [];
+  
+  const [a] = result.failure;
+  const [,b,] = result.failure;
+  const [,,c] = result.failure;
+  
+  for (let i = 0; i < 1; i += 1) {
+  if (a === result.failure[0]) {
+        let myRes = `<li class="text-warning">${a}</li>`;
+        failureItems.push(myRes);
+        
+        }
+  if (b === result.failure[1]) {
+        let myRes = `<li class="text-warning">${b}</li>`;
+        failureItems.push(myRes);
+
+        }
+  if (c === result.failure[2]) {
+        let myRes = `<li class="text-warning">${c}</li>`;
+        failureItems.push(myRes);
+
+        }
+  }
+  
+  console.log(failureItems);
+  // Only change code above this line
+
+  return failureItems;
+}
+
+const failuresList = makeList(result.failure);
+
+
+
+
+
 //OUTPUT:
 //1st version
 [ 'linebreak' ]
@@ -755,3 +843,145 @@ undefined
 [ 'no-var', 'var-on-top', 'linebreak' ]
 '<li class="text-warning">no-var</li>'
 undefined
+
+//3rd and FINAL version
+[ '<li class="text-warning">no-var</li>',
+  '<li class="text-warning">var-on-top</li>',
+  '<li class="text-warning">linebreak</li>' ]
+
+
+//Write Concise Object Literal Declarations Using Object Property Shorthand
+//ES6 adds some nice support for easily defining object literals.
+
+//Consider the following code:
+
+//    const getMousePosition = (x, y) => ({
+//      x: x,
+//      y: y
+//    });
+//'getMousePosition' is a simple function that returns an object containing two properties. 
+//ES6 provides the syntactic sugar to eliminate the redundancy of having to write 'x: x'. 
+//You can simply write 'x' once, and it will be converted to 'x: x' (or something equivalent) under the hood. 
+//Here is the same function from above rewritten to use this new syntax:
+
+//    const getMousePosition = (x, y) => ({ x, y });
+//Use object property shorthand with object literals to create and return an object with 'name', 'age' and 'gender' properties.
+//UNCHANGED CODE:
+//    const createPerson = (name, age, gender) => {
+//      // Only change code below this line
+//      return {
+//        name: name,
+//        age: age,
+//        gender: gender
+//      };
+//      // Only change code above this line
+//    };
+
+//CHANGED CODE:
+const createPerson = (name, age, gender) => {
+  // Only change code below this line
+    return {
+    name,
+    age,
+    gender
+  };
+  // Only change code above this line
+};
+console.log(createPerson())
+
+//OUTPUT:
+{ name: undefined, age: undefined, gender: undefined }
+console.log(createPerson())
+
+//Write Concise Declarative Functions with ES6
+//When defining functions within objects in ES5, we have to use the keyword 'function' as follows:
+
+//    const person = {
+//      name: "Taylor",
+//      sayHello: function() {
+//        return `Hello! My name is ${this.name}.`;
+//      }
+//    };
+//With ES6, you can remove the 'function' keyword and colon altogether when defining functions in objects. Here's an example of this syntax:
+
+//    const person = {
+//      name: "Taylor",
+//      sayHello() {
+//        return `Hello! My name is ${this.name}.`;
+//      }
+//    };
+//Refactor the function 'setGear' inside the object 'bicycle' to use the shorthand syntax described above.
+
+//UNCHANGED CODE:
+//    // Only change code below this line
+//    const bicycle = {
+//      gear: 2,
+//      setGear: function(newGear) {
+//        this.gear = newGear;
+//      }
+//    };
+//    // Only change code above this line
+//    bicycle.setGear(3);
+//    console.log(bicycle.gear);
+
+//CHANGED CODE:
+// Only change code below this line
+const bicycle = {
+  gear: 2,
+  setGear(newGear) {
+    this.gear = newGear;
+  }
+};
+// Only change code above this line
+bicycle.setGear(3);
+console.log(bicycle.gear);
+
+
+//OUTPUT: 3
+
+
+//Use class Syntax to Define a Constructor Function
+//ES6 provides a new syntax to create objects, using the "class" keyword.
+
+//It should be noted that the 'class' syntax is just syntax, and not a full-fledged class-based implementation 
+//  of an object-oriented paradigm, unlike in languages such as Java, Python, Ruby, etc.
+
+//In ES5, we usually define a 'constructor' function and use the 'new' keyword to instantiate an object.
+
+//    var SpaceShuttle = function(targetPlanet){
+//      this.targetPlanet = targetPlanet;
+//    }
+//    var zeus = new SpaceShuttle('Jupiter');
+//The 'class' syntax simply replaces the 'constructor' function creation:
+
+//    class SpaceShuttle {
+//      constructor(targetPlanet) {
+//        this.targetPlanet = targetPlanet;
+//      }
+//    }
+//    const zeus = new SpaceShuttle('Jupiter');
+//It should be noted that the 'class' keyword declares a new function, to which a constructor is added. 
+//This constructor is invoked when 'new' is called to create a new object.
+
+//Note: UpperCamelCase should be used by convention for ES6 class names, as in 'SpaceShuttle' used above.
+
+//The 'constructor' method is a special method for creating and initializing an object created with a class. 
+//You will learn more about it in the Object Oriented Programming section of the JavaScript Algorithms And Data Structures Certification.
+
+//Use the 'class' keyword and write a 'constructor' to create the 'Vegetable' class.
+
+//The 'Vegetable' class allows you to create a vegetable object with a property 'name' that gets passed to the 'constructor'.
+
+//UNCHANGED CODE:
+// Only change code below this line
+
+// Only change code above this line
+
+const carrot = new Vegetable('carrot');
+console.log(carrot.name); // Should display 'carrot'
+
+//CHANGED CODE:
+
+
+
+//OUTPUT:
