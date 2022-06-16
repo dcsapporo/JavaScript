@@ -1062,15 +1062,20 @@ console.log(carrot.name); // Should display 'carrot'
 // Only change code below this line
 class Thermostat {
   constructor(tempF) {
+      this._tempF = tempF
+      
+      console.log(tempF)
+  }
+  get temperature() {
+      
+      return this._tempF;
 
   }
-  get tempC() {
-      return this._tempF;
-  }
-  set tempC() {
-    
+  set temperature(convertFtoC) {
+    this._tempF = 5/9 * (convertFtoC - 32);
   }
 }
+ 
 // Only change code above this line
 
 const thermos = new Thermostat(76); // Setting in Fahrenheit scale
@@ -1079,3 +1084,6 @@ thermos.temperature = 26;
 temp = thermos.temperature; // 26 in Celsius
 
 //OUTPUT:
+76
+76
+-3.3333333333333335
