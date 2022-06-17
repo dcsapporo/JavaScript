@@ -744,7 +744,125 @@ console.log(result);
 
 //CHANGED CODE:
 
+let quoteSample = "The five boxing wizards jump quickly.";
+let nonAlphabetRegex = /\W/g; // Change this line
+let result = quoteSample.match(nonAlphabetRegex).length;
+console.log(result);
+
+//OUTPUT:   6
+
+
+
+//Match All Numbers
+//You've learned shortcuts for common string patterns like alphanumerics. 
+//Another common pattern is looking for just digits or numbers.
+
+//The shortcut to look for digit characters is '\d', with a lowercase 'd'. 
+//This is equal to the character class '[0-9]', which looks for a single character of any number between zero and nine.
+
+//Use the shorthand character class '\d' to count how many digits are in movie titles. 
+//Written out numbers ("six" instead of 6) do not count.
+
+//UNCHANGED CODE:
+
+//    let movieName = "2001: A Space Odyssey";
+//    let numRegex = /change/; // Change this line
+//    let result = movieName.match(numRegex).length;
+
+//CHANGED CODE:
+
+let movieName = "2001: A Space Odyssey";
+let numRegex = /\d/g; // Change this line
+let result = movieName.match(numRegex).length;
+console.log(result);
+
+//OUTPUT:   4
+
+
+
+//Match All Non-Numbers
+//The last challenge showed how to search for digits using the shortcut '\d' with a lowercase 'd'. 
+You can also search for non-digits using a similar shortcut that uses an uppercase 'D' instead.
+
+//The shortcut to look for non-digit characters is '\D'. 
+//This is equal to the character class '[^0-9]', which looks for a single character that is not a number between zero and nine.
+
+//Use the shorthand character class for non-digits '\D' to count how many non-digits are in movie titles.
+
+//UNCHANGED CODE:
+
+//    let movieName = "2001: A Space Odyssey";
+//    let noNumRegex = /change/; // Change this line
+//    let result = movieName.match(noNumRegex).length;
+
+//CHANGED CODE:
+
+let movieName = "2001: A Space Odyssey";
+let noNumRegex = /\D/g; // Change this line
+let result = movieName.match(noNumRegex).length;
+console.log(result);
+
+//OUTPUT:   17
+
+
+//Restrict Possible Usernames
+//Usernames are used everywhere on the internet. 
+//They are what give users a unique identity on their favorite sites.
+
+//You need to check all the usernames in a database. 
+//Here are some simple rules that users have to follow when creating their username.
+
+//    1. Usernames can only use alpha-numeric characters.
+
+//    2. The only numbers in the username have to be at the end. 
+//      There can be zero or more of them at the end. Username cannot start with the number.
+
+//    3. Username letters can be lowercase and uppercase.
+
+//    4. Usernames have to be at least two characters long. 
+//      A two-character username can only use alphabet letters as characters.
+
+//Change the regex 'userCheck' to fit the constraints listed above.
+
+//UNCHANGED CODE:
+
+//    let username = "JackOfAllTrades";
+//    let userCheck = /change/; // Change this line
+//    let result = userCheck.test(username);
+
+//CHANGED CODE:
+//version 1:
+
+let username = "JackOfAllTrades";
+let userCheck = /^[^0.*z+][a-z.*0-9]+$/i; // Change this line
+let result = userCheck.test(username);
+console.log(result);
+
+//version 2:
+let username = "JackOfAllTrades";
+let userCheck = /^[^0-9+][a-z.*0-9]+$/i; // Change this line
+let result = userCheck.test(username);
+console.log(result);
+
+//version 3
+let username = "JackOfAllTrades";
+let userCheck = /^[^0-9][a-z0-9]+/i; // Change this line
+let result = userCheck.test(username);
+console.log(result);
 
 
 //OUTPUT:
+//version 1:
+// running tests
+Your regex should not match the string A1
+Your regex should not match the string BadUs3rnam3
+Your regex should match the string Z97
+Your regex should not match the string c57bT3
+true
 
+//version 2 & 3:
+// running tests
+Your regex should not match the string A1
+Your regex should not match the string BadUs3rnam3
+Your regex should not match the string c57bT3
+true
