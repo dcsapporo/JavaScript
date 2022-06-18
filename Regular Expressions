@@ -850,6 +850,35 @@ let userCheck = /^[^0-9][a-z0-9]+/i; // Change this line
 let result = userCheck.test(username);
 console.log(result);
 
+//version 4
+let username = "JackOfAllTrades";
+let userCheck = /^[^0-9]\w[a-z0-9]+$/i; // Change this line
+let result = userCheck.test(username);
+console.log(result);
+
+//version 5
+let username = "JackOfAllTrades";
+let userCheck = /^[^0-9][A-Z|a-z]+.?[a-z|0-9]+$/igu; // Change this line
+let result = userCheck.test(username);
+console.log(result);
+
+//version 6
+let username = "JackOfAllTrades";
+let userCheck = /^[^0-9][A-z{2,}|^0-9][A-z{2,}|0-9]/igu; // Change this line
+let result = userCheck.test(username);
+console.log(result);
+
+//version 7
+let username = "JackOfAllTrades";
+let userCheck = /^[^0-9][A-z{2,}][A-z{2,}|0-9]/igu; // Change this line
+let result = userCheck.test(username);
+console.log(result);
+
+//version 8
+let username = "JackOfAllTrades";
+let userCheck = /^[^0-9][A-z{2,}]+/igu; // Change this line
+let result = userCheck.test(username);
+console.log(result);
 
 //OUTPUT:
 //version 1:
@@ -865,4 +894,24 @@ true
 Your regex should not match the string A1
 Your regex should not match the string BadUs3rnam3
 Your regex should not match the string c57bT3
+true
+
+//version 4 & 6
+// running tests
+Your regex should match the string Jo
+Your regex should not match the string BadUs3rnam3
+Your regex should not match the string c57bT3
+true
+
+//version 5 & 7
+// running tests
+Your regex should match the string Jo
+Your regex should not match the string BadUs3rnam3
+Your regex should match the string Z97
+true
+
+//version 8
+// running tests
+Your regex should not match the string BadUs3rnam3
+Your regex should match the string Z97
 true
