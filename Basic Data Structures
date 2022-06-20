@@ -622,16 +622,188 @@ function filteredArray(arr, elem) {
 
 console.log(filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3));
 
+//VERSION 3:
 
-//OUTPUT:
+function filteredArray(arr, elem) {
+  let newArr = [];
+  // Only change code below this line
+     
+    for (let i = 0; i < arr.length; i++) {
+          const [a] = arr[i];
+          
+          const [,b] = arr[i];
+          
+          const [,,c] = arr[i];
+          const [,,,d] = arr[i];
+          if (d !== undefined && d !== elem && c !== undefined && c !== elem && b !== undefined && b !== elem && a !== undefined && a !== elem) {
+                  for (let j = 0; j < 1; j++) {
+                    if (a !== elem && b !== elem && c !== elem) {
+                      console.log(d);
+                      newArr.push(arr[i]);
+                    }
+                  }
+          } else if (c !== undefined && c !== elem && b !== undefined && b !== elem && a !== undefined && a !== elem) {
+                  for (let j = 0; j < 1; j++) {
+                    if (a !== elem && b !== elem && c !== elem) {
+                      console.log(c);
+                      newArr.push(arr[i]);
+                    }
+                  }
+          } else if (b !== undefined && b !== elem && a !== undefined && a !== elem){
+                  for (let j = 0; j < 1; j++) {
+                    if (a !== elem && b !== elem && c !== elem) {
+                      console.log(b);
+                      newArr.push(arr[i]);
+                    }
+                  }
+          } else if (a !== undefined && a !== elem){
+                  for (let j = 0; j < 1; j++) {
+                    if (a !== elem && b !== elem && c !== elem) {
+                      console.log(a);
+                      newArr.push(arr[i]);
+                    }
+                  }
+            }
+      
+    }
+  // Only change code above this line
+  return newArr;
+}
+
+console.log(filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3));
 
 
-//
+//OUTPUT: VERSION 3 is the SOLUTION
+
+
+//Create complex multi-dimensional arrays
+//Awesome! You have just learned a ton about arrays! 
+//This has been a fairly high level overview, and there is plenty more to learn about working with arrays, 
+//    much of which you will see in later sections. 
+//But before moving on to looking at "Objects", let's take one more look, 
+//    and see how arrays can become a bit more complex than what we have seen in previous challenges.
+
+//One of the most powerful features when thinking of arrays as data structures, is that arrays can contain, 
+//    or even be completely made up of other arrays. 
+//We have seen arrays that contain arrays in previous challenges, but fairly simple ones. 
+//However, arrays can contain an infinite depth of arrays that can contain other arrays, each with their own arbitrary levels of depth, and so on. 
+//In this way, an array can very quickly become a very complex data structure, known as a "multi-dimensional", or nested array. 
+//Consider the following example:
+
+//    let nestedArray = [
+//      ['deep'],
+//      [
+//        ['deeper'], ['deeper'] 
+//      ],
+//      [
+//        [
+//          ['deepest'], ['deepest']
+//        ],
+//        [
+//          [
+//            ['deepest-est?']
+//          ]
+//        ]
+//      ]
+//    ];
+//The 'deep' array is nested 2 levels deep. The 'deeper' arrays are 3 levels deep. The 'deepest' arrays are 4 levels, and the 'deepest-est?' is 5.
+
+//While this example may seem convoluted, this level of complexity is not unheard of, or even unusual, when dealing with large amounts of data. 
+//However, we can still very easily access the deepest levels of an array this complex with bracket notation:
+
+//console.log(nestedArray[2][1][0][0][0]);
+//This logs the string 'deepest-est?'. And now that we know where that piece of data is, we can reset it if we need to:
+
+//nestedArray[2][1][0][0][0] = 'deeper still';
+
+//console.log(nestedArray[2][1][0][0][0]);
+//Now it logs 'deeper still'.
+
+//We have defined a variable, 'myNestedArray', set equal to an array. 
+//Modify 'myNestedArray', using any combination of "strings", "numbers", and "booleans" for data elements, 
+//    so that it has exactly five levels of depth (remember, the outer-most array is level 1). 
+//Somewhere on the third level, include the string 'deep', on the fourth level, include the string 'deeper', 
+//    and on the fifth level, include the string 'deepest'.
 
 
 //UNCHANGED CODE:
 
+//    let myNestedArray = [
+//      // Only change code below this line
+//      ['unshift', false, 1, 2, 3, 'complex', 'nested'],
+//      ['loop', 'shift', 6, 7, 1000, 'method'],
+//      ['concat', false, true, 'spread', 'array'],
+//      ['mutate', 1327.98, 'splice', 'slice', 'push'],
+//      ['iterate', 1.3849, 7, '8.4876', 'arbitrary', 'depth']
+//      // Only change code above this line
+//    ];
 
+//CHANGED CODE:
+
+let myNestedArray = [
+  // Only change code below this line
+  ['unshift', false, 1, 2, 3, 'complex', 'nested'],
+  [
+    ['loop', 'shift', 6, 7, 1000, 'method'],
+    [
+      ['concat', false, true, 'spread', 'array'],
+      [
+        ['mutate', 1327.98, 'splice', 'slice', 'push'], ['iterate', 1.3849, 7, '8.4876', 'arbitrary', 'depth'],     
+  ['deepest'], 
+  'deeper'], 
+  'deep']
+  ]
+  // Only change code above this line
+];
+
+//OUTPUT:
+
+
+//Add Key-Value Pairs to JavaScript Objects
+At their most basic, objects are just collections of key-value pairs. In other words, they are pieces of data (values) mapped to unique identifiers called properties (keys). Take a look at an example:
+
+const tekkenCharacter = {
+  player: 'Hwoarang',
+  fightingStyle: 'Tae Kwon Doe',
+  human: true
+};
+The above code defines a Tekken video game character object called tekkenCharacter. It has three properties, each of which map to a specific value. If you want to add an additional property, such as "origin", it can be done by assigning origin to the object:
+
+tekkenCharacter.origin = 'South Korea';
+This uses dot notation. If you were to observe the tekkenCharacter object, it will now include the origin property. Hwoarang also had distinct orange hair. You can add this property with bracket notation by doing:
+
+tekkenCharacter['hair color'] = 'dyed orange';
+Bracket notation is required if your property has a space in it or if you want to use a variable to name the property. In the above case, the property is enclosed in quotes to denote it as a string and will be added exactly as shown. Without quotes, it will be evaluated as a variable and the name of the property will be whatever value the variable is. Here's an example with a variable:
+
+const eyes = 'eye color';
+
+tekkenCharacter[eyes] = 'brown';
+After adding all the examples, the object will look like this:
+
+{
+  player: 'Hwoarang',
+  fightingStyle: 'Tae Kwon Doe',
+  human: true,
+  origin: 'South Korea',
+  'hair color': 'dyed orange',
+  'eye color': 'brown'
+};
+A foods object has been created with three entries. Using the syntax of your choice, add three more entries to it: bananas with a value of 13, grapes with a value of 35, and strawberries with a value of 27.
+
+
+//UNCHANGED CODE:
+
+let foods = {
+  apples: 25,
+  oranges: 32,
+  plums: 28
+};
+
+// Only change code below this line
+
+// Only change code above this line
+
+console.log(foods);
 
 //CHANGED CODE:
 
