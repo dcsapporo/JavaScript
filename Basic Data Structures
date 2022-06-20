@@ -607,7 +607,7 @@ function filteredArray(arr, elem) {
         
         if (arr[i][j] === elem) {
             
-            let noUpdate = [];
+            //let noUpdate = [];
             console.log(arr[i][j]);
 
         } else
