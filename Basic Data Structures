@@ -1310,6 +1310,110 @@ for (let online in usersObj) {
 
 console.log(countOnline(users));
 
+//version 5:
+const users = {
+  Alan: {
+    online: false
+  },
+  Jeff: {
+    online: true
+  },
+  Sarah: {
+    online: false
+  }
+}
+
+function countOnline(usersObj) {
+  // Only change code below this line
+  let userState = 0;
+  let userArr = [];
+  let onlineArr = [];
+  //console.log(usersObj); For checking the content of the passed Object
+for (let online in usersObj) {
+  //console.log(online); To check that the (for...in) parses the Object
+  userArr.push(online);
+  let status = usersObj[online];
+  //console.log(status); To check that the required section is extracted
+  if (status.online === true)
+  //This is to check if the extracted value is true and to add it to an array
+  { 
+    onlineArr.push(status.online);//Pushes the true value on to onlineArr array
+    
+    //console.log(status); To confirm if statement works
+    
+    userState = userState + 1; 
+    //console.log(userState) First attempt at meeting challenge requirements
+    //return userState; Didn't work and prevented the (for...in) from scanning the complete Object
+  }
+ } //console.log(userArr); Used to confirm that the Object could be parsed in to an array
+  //console.log(onlineArr); To check if the required value is being collected on its associated array
+  for (let i = 1; i <= onlineArr.length; i++ ) {
+    if (i > 0) {
+      //console.log(i); This used to increment the occurance of the online true status and return that value if it exists
+      return i; 
+      }
+      
+  }return 0;
+  
+
+  // Only change code above this line
+}
+
+console.log(countOnline(users));
+
+//VERSION 6:
+const users = {
+  Alan: {
+    online: false
+  },
+  Jeff: {
+    online: true
+  },
+  Sarah: {
+    online: true
+  }
+}
+
+function countOnline(usersObj) {
+  // Only change code below this line
+  let userState = 0;
+  let userArr = [];
+  let onlineArr = [];
+  //console.log(usersObj); For checking the content of the passed Object
+for (let online in usersObj) {
+  //console.log(online); To check that the (for...in) parses the Object
+  userArr.push(online);
+  let status = usersObj[online];
+  //console.log(status); To check that the required section is extracted
+  if (status.online === true)
+  //This is to check if the extracted value is true and to add it to an array
+  { 
+    onlineArr.push(status.online);//Pushes the true value on to onlineArr array
+    
+    //console.log(status); To confirm if statement works
+    
+    userState = userState + 1; 
+    //console.log(userState) First attempt at meeting challenge requirements
+    //return userState; Didn't work and prevented the (for...in) from scanning the complete Object
+  }
+ } //console.log(userArr); Used to confirm that the Object could be parsed in to an array
+  //console.log(onlineArr); To check if the required value is being collected on its associated array
+  //console.log(onlineArr.length);
+  let i = onlineArr.length;
+  //for (let i = 0; i <= onlineArr.length; i++ ) {}This used to increment the occurance of the online true status and return that value if it exists
+    if (i > 0) {
+      //console.log(i); 
+      return i; 
+      }
+     return 0; 
+  
+  
+
+  // Only change code above this line
+}
+
+console.log(countOnline(users));
+
 //OUTPUT:   
 //version 1:    1 true
 //version 2:
@@ -1335,14 +1439,86 @@ Sarah
 [ true ]
 0
 
-//
+//version 5: 1
+
+//VERSION 6:    2 
+
+//Generate an Array of All Object Keys with Object.keys()
+//We can also generate an array which contains all the keys stored in an object with the 'Object.keys()' method. 
+//This method takes an object as the argument and returns an array of strings representing each property in the object. 
+//Again, there will be no specific order to the entries in the array.
+
+//Finish writing the 'getArrayOfUsers' function so that it returns an array containing all the properties in the object it receives as an argument.
+
 
 //UNCHANGED CODE:
 
+//    let users = {
+//      Alan: {
+//        age: 27,
+//        online: false
+//      },
+//      Jeff: {
+//        age: 32,
+//        online: true
+//      },
+//      Sarah: {
+//        age: 48,
+//        online: false
+//      },
+//      Ryan: {
+//        age: 19,
+//        online: true
+//      }
+//    };
 
+//    function getArrayOfUsers(obj) {
+//      // Only change code below this line
+
+//      // Only change code above this line
+//    }
+
+//    console.log(getArrayOfUsers(users));
 
 //CHANGED CODE:
+//Version 1:
+let users = {
+  Alan: {
+    age: 27,
+    online: false
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: false
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
 
+function getArrayOfUsers(obj) {
+  // Only change code below this line
+let  userArr = [];
+let userDetailArr = [];
+ userArr = Object.keys(obj);
+console.log(userArr);
+userDetailArr = Object.keys(obj);
+for (let onlineUser in obj){
+  console.log(onlineUser);
+  let userInfo = obj[onlineUser];
+  console.log(userInfo);
+  console.log(Object.keys(obj[onlineUser]));
+  userArr.push(Object.keys(obj[onlineUser]));
+} console.log(userArr);
+  // Only change code above this line
+}
+
+console.log(getArrayOfUsers(users));
 
 
 //OUTPUT:
