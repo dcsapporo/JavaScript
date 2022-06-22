@@ -82,6 +82,32 @@ function reverseString(str) {
 
 reverseString("hello");
 
+//Version 3:
+function reverseString(str) {
+  let reverseRegex = /[\w\s]/g;
+  let result = str.match(reverseRegex);
+  console.log(result);
+  let reverseStr = [];
+  reverseStr.push(str);
+  //console.log(reverseStr);
+  for (let i =0; i < result.length; i++) {
+    //while (i < result.length)
+    {
+      let resultA = result;
+      let resultB = result.pop();
+      let j = 0;
+      //console.log(resultB)
+      resultA.splice(j, i, resultB);
+      console.log(resultA);
+    }
+  }
+  
+  //console.log(str)
+  return str;
+}
+
+reverseString("hello");
+
 //OUTPUT:
 //Version 1:
 [ 'h', 'e', 'l', 'l', 'o' ]
@@ -91,6 +117,12 @@ hello
 //Version 2:
 [ 'h', 'e', 'l', 'l', 'o' ]
 [ 'h', 'e', 'l', 'l', 'o' ]
+
+//Version 3:
+[ 'h', 'e', 'l', 'l', 'o' ]
+[ 'o', 'h', 'e', 'l', 'l' ]
+[ 'l', 'h', 'e', 'l' ]
+[ 'l', 'e' ]
 
 //
 
