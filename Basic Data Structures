@@ -1621,20 +1621,39 @@ console.log(getArrayOfUsers(users));
 
 //CHANGED CODE:
 
+let user = {
+  name: 'Kenneth',
+  age: 28,
+  data: {
+    username: 'kennethCodesAllDay',
+    joinDate: 'March 26, 2016',
+    organization: 'freeCodeCamp',
+    friends: [
+      'Sam',
+      'Kira',
+      'Tomo'
+    ],
+    location: {
+      city: 'San Francisco',
+      state: 'CA',
+      country: 'USA'
+    }
+  }
+};
 
+function addFriend(userObj, friend) {
+  // Only change code below this line
+console.log(userObj.data.friends);
+userObj.data.friends.push(friend);
+console.log(userObj.data.friends);
+return userObj.data.friends;
+  // Only change code above this line
+}
+
+console.log(addFriend(user, 'Pete'));
 
 //OUTPUT:
-
-//
-
-//UNCHANGED CODE:
-
-
-
-//CHANGED CODE:
-
-
-
-//OUTPUT:
-
+[ 'Sam', 'Kira', 'Tomo' ]
+[ 'Sam', 'Kira', 'Tomo', 'Pete' ]
+[ 'Sam', 'Kira', 'Tomo', 'Pete' ]
 
