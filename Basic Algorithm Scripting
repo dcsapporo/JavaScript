@@ -67,12 +67,30 @@ function reverseString(str) {
 
 reverseString("hello");
 
+//Version 2:
+function reverseString(str) {
+
+  let reverseRegex = /[\w\s]/g;
+  let result = str.match(reverseRegex);
+  console.log(result);
+  //let revStrArr = [];
+  let revStrArr = result;
+  console.log(revStrArr);
+
+  return str;
+}
+
+reverseString("hello");
 
 //OUTPUT:
 //Version 1:
 [ 'h', 'e', 'l', 'l', 'o' ]
 [ 'hello' ]
 hello
+
+//Version 2:
+[ 'h', 'e', 'l', 'l', 'o' ]
+[ 'h', 'e', 'l', 'l', 'o' ]
 
 //
 
