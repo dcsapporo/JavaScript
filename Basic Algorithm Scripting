@@ -51,11 +51,28 @@ convertToF(30);
 //    reverseString("hello");
 
 //CHANGED CODE:
+//Version 1:
+function reverseString(str) {
+  let reverseRegex = /[A-Za-z]/g;
+  let result = str.match(reverseRegex);
+  console.log(result);
+  let reverseStr = [];
+  reverseStr.push(str);
+  console.log(reverseStr);
+  
+  
+  console.log(str)
+  return str;
+}
 
+reverseString("hello");
 
 
 //OUTPUT:
-
+//Version 1:
+[ 'h', 'e', 'l', 'l', 'o' ]
+[ 'hello' ]
+hello
 
 //
 
