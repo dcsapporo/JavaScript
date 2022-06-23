@@ -213,18 +213,74 @@ function factorialize(num) {
 
 factorialize(5);
 
+//Final Version and Solution:
+function factorialize(num) {
+  let numRegex = /\d+\n!/g;
+  let testNum = num.toString();
+  let result = testNum.match(numRegex);
+  //console.log(testNum.match(numRegex));
+  //console.log(result);
+  let newNum = [];
+  if (num >= 0 ) {
+    if (num === 0){
+    for (let i = 0; i <= num; i++){
+      newNum.push(i);   
+      } 
+    }
+      for (let i = 1; i <= num; i++){
+      newNum.push(i); 
+    }
+    console.log(newNum);
+    let facPro = newNum.toString(); 
+    console.log(facPro);
+    let proResult = 1;
+    for (let j = 1; j <= newNum.length; j++) {
+      proResult = j * proResult;
+      console.log(proResult);
+      
+    }
+  return proResult;
+  }
+  return num;
+}
+
+factorialize(5);
+
 //OUTPUT:
+//Solution
+[ 1, 2, 3, 4, 5 ]
+1,2,3,4,5
+1
+2
+6
+24
+120
 
+//Find the Longest Word in a String
+//Return the length of the longest word in the provided sentence.
 
-//
+//Your response should be a number.
 
 //UNCHANGED CODE:
 
+//    function findLongestWordLength(str) {
+//      return str.length;
+//    }
 
+//    findLongestWordLength("The quick brown fox jumped over the lazy dog");
 
 //CHANGED CODE:
+//Start version:
+function findLongestWordLength(str) {
+  console.log(str.length);
+  let longestWordRegex = /\w+/g;
+  console.log(str.match(longestWordRegex));
+  let longestWord = str.match(longestWordRegex);
+  console.log(longestWord);
+  return str.length;
+}
 
-
+findLongestWordLength("The quick brown fox jumped over the lazy dog");
 
 //OUTPUT:
 
