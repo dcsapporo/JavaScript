@@ -271,12 +271,18 @@ factorialize(5);
 
 //CHANGED CODE:
 //Start version:
-function findLongestWordLength(str) {
+4function findLongestWordLength(str) {
   console.log(str.length);
   let longestWordRegex = /\w+/g;
-  console.log(str.match(longestWordRegex));
+  //console.log(str.match(longestWordRegex));
   let longestWord = str.match(longestWordRegex);
   console.log(longestWord);
+  for (let i = 0; i < str.length; i++) {
+    
+    if (longestWord[i].length >= 1 && longestWord[i].length <= 24) {
+        console.log(longestWord[i].length);
+    }
+  }
   return str.length;
 }
 
