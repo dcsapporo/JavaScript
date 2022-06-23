@@ -109,6 +109,7 @@ function reverseString(str) {
 reverseString("hello");
 
 //Solution version:
+
 function reverseString(str) {
   let reverseStr = "";
   for (let i = str.length - 1; i >= 0; i--) {
@@ -132,6 +133,30 @@ function reverseString(str) {
 
 reverseString("hello");
 
+//Final solution with explanation:
+
+function reverseString(str) {
+  let revRegex = /[\w+\s?]/g;// This section of using regular expressions is not needed except that it is used to create strArr arry.
+  let strArr = str.match(revRegex);// This array or variable can be simply created using the same technique applied to strArrC, 
+      which is not truely an array but a string.
+  //let strArrB = strArr.slice(); This is from an earlier attempt of trying to parse out the letters from the 
+      array by making a copy to compare results and attempts.
+  let strArrC = ('');// This form of reversing text uses the for loop that counts backwards, starting at the end of the string or array.
+  let strRev = str.split('');// This variable is used for the built-in JS operations for reversing text; no need to use a for loop.
+  strRev.reverse();// After parsing out the string into the variable strRev the built-in reverse function can be applied.
+  for (let i = strArr.length - 1; i >= 0; i--){
+    //strArrB += strArr[i];
+    
+    strArrC += str[i];   
+  }
+  //console.log(strArrB);
+  console.log(strArrC);
+  console.log(strRev.join(''));// Used to return the array back into text.
+  return strArrC;
+}
+
+reverseString("hello");
+
 //OUTPUT:
 //Version 1:
 [ 'h', 'e', 'l', 'l', 'o' ]
@@ -148,11 +173,26 @@ hello
 [ 'l', 'h', 'e', 'l' ]
 [ 'l', 'e' ]
 
-//
+//Solutions:  olleh
+
+//Factorialize a Number
+//Return the factorial of the provided integer.
+
+//If the integer is represented with the letter 'n', a factorial is the product of all positive integers less than or equal to 'n'.
+
+//Factorials are often represented with the shorthand notation 'n!'
+
+//For example: '5! = 1 * 2 * 3 * 4 * 5 = 120'
+
+//Only integers greater than or equal to zero will be supplied to the function.
 
 //UNCHANGED CODE:
 
+//    function factorialize(num) {
+//      return num;
+//    }
 
+//    factorialize(5);
 
 //CHANGED CODE:
 
