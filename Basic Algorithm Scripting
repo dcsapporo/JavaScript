@@ -136,7 +136,7 @@ reverseString("hello");
 //Final solution with explanation:
 
 function reverseString(str) {
-  let revRegex = /[\w+\s?]/g;// This section of using regular expressions is not needed except that it is used to create strArr arry.
+  let revRegex = /[\w+\s?]/g;// This section of code using regular expressions is not needed except that it is used to create strArr array.
   let strArr = str.match(revRegex);// This array or variable can be simply created using the same technique applied to strArrC, 
       which is not truely an array but a string.
   //let strArrB = strArr.slice(); This is from an earlier attempt of trying to parse out the letters from the 
@@ -271,22 +271,26 @@ factorialize(5);
 
 //CHANGED CODE:
 //Start version:
-4function findLongestWordLength(str) {
+function findLongestWordLength(str) {
   console.log(str.length);
   let longestWordRegex = /\w+/g;
   //console.log(str.match(longestWordRegex));
   let longestWord = str.match(longestWordRegex);
   console.log(longestWord);
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < longestWord.length; i++) {
     
-    if (longestWord[i].length >= 1 && longestWord[i].length <= 24) {
+    if (longestWord[i].length >= 1 && longestWord[i].length <= 3) {
+        console.log(longestWord[i].length);
+    }else if (longestWord[i].length === 4) {
         console.log(longestWord[i].length);
     }
   }
-  return str.length;
+  //return str.length;
 }
 
 findLongestWordLength("The quick brown fox jumped over the lazy dog");
+
+
 
 //OUTPUT:
 
