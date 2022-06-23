@@ -108,6 +108,30 @@ function reverseString(str) {
 
 reverseString("hello");
 
+//Solution version:
+function reverseString(str) {
+  let reverseStr = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    reverseStr += str[i];
+  }
+  console.log(reverseStr)
+  return str;
+}
+
+reverseString("hello");
+
+function reverseString(str) {
+  let reverseStr = str.split("");
+  reverseStr.reverse();
+  /*for (let i = str.length - 1; i >= 0; i--) {
+    reverseStr += str[i];
+  }*/
+  console.log(reverseStr.join(""));
+  return str;
+}
+
+reverseString("hello");
+
 //OUTPUT:
 //Version 1:
 [ 'h', 'e', 'l', 'l', 'o' ]
