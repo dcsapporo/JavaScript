@@ -195,8 +195,23 @@ hello
 //    factorialize(5);
 
 //CHANGED CODE:
+//Version 1 experimenting:
+function factorialize(num) {
+  let numRegex = /\d+/g;
+  let testNum = num.toString();
+  let result = testNum.match(numRegex);
+  console.log(result);
+  if (num >= 0) {
+    for (let i = 0; i <= num; i++){
+      let newNum = i;
+      let facPro = newNum * (i * (i-1));
+      console.log(facPro); 
+    }
+  }
+  return num;
+}
 
-
+factorialize(5);
 
 //OUTPUT:
 
