@@ -536,6 +536,7 @@ function confirmEnding(str, target) {
   let endRegex = /n$/;
   let result = str.match(endRegex);
   console.log(result);
+  console.log(str[6].substr())
 
   return str;
 }
@@ -543,6 +544,7 @@ function confirmEnding(str, target) {
 confirmEnding("Bastian", "n");
 
 //OUTPUT:
-
+[ 'n', index: 6, input: 'Bastian', groups: undefined ]
+n
 
 
