@@ -277,8 +277,8 @@ function findLongestWordLength(str) {
   //console.log(str.match(longestWordRegex));
   let longestWord = str.match(longestWordRegex);
   console.log(longestWord);
-  console.log(longestWord.sort());
-  let longWordArr = [];
+  //Below is an attempt at configuring parameters throughwhich to compare array data lengths
+  /*let longWordArr = [];
   let shortestCount = 0;
   let shorterCount = 0;
   let shortCount = 0;
@@ -287,13 +287,18 @@ function findLongestWordLength(str) {
   let biggestCount = 0;
   let longCount = 0;
   let longerCount = 0;
-  let longestCount = 0;
+  let longestCount = 0;*/
+  let compareArr = [];
   for (let i = 0; i < longestWord.length; i++) {
-    
-    if (longestWord[i].length === 1 && shortestCount === 0) {
+    if (longestWord[i].length > 0) {
+      compareArr.push(longestWord[i].length);
+    }
+    //Below is the first attempts at comparing each word's length within a given string
+    /*if (longestWord[i].length === 1 && shortestCount === 0) {
         let wordA = 'shortest';
         shortestCount +=1;
         longWordArr.push(wordA);
+        compareArr.push(longestWord[i].length);
         console.log(longestWord[i].length);
         console.log(wordA);
     }else if (longestWord[i].length === 2 && shorterCount === 0) {
@@ -301,6 +306,7 @@ function findLongestWordLength(str) {
         let wordB = 'shorter';
         shorterCount +=1;
         longWordArr.push(wordB);
+        compareArr.push(longestWord[i].length);
         console.log(longestWord[i].length);
         console.log(wordB);
     }else if (longestWord[i].length === 3 && shortCount === 0) {
@@ -308,6 +314,7 @@ function findLongestWordLength(str) {
         let wordC = 'short';
         shortCount +=1;
         longWordArr.push(wordC);
+        compareArr.push(longestWord[i].length);
         console.log(longestWord[i].length);
         console.log(wordC);
     }else if (longestWord[i].length === 4 && bigCount === 0) {
@@ -315,6 +322,7 @@ function findLongestWordLength(str) {
         let wordD = 'big';
         bigCount +=1;
         longWordArr.push(wordD);
+        compareArr.push(longestWord[i].length);
         console.log(longestWord[i].length);
         console.log(wordD);
     }else if (longestWord[i].length === 5 && biggerCount === 0) {
@@ -322,6 +330,7 @@ function findLongestWordLength(str) {
         let wordE = 'bigger';
         biggerCount +=1;
         longWordArr.push(wordE);
+        compareArr.push(longestWord[i].length);
         console.log(longestWord[i].length);
         console.log(wordE);
     }else if (longestWord[i].length === 6 && biggestCount === 0) {
@@ -329,30 +338,40 @@ function findLongestWordLength(str) {
         let wordF = 'biggest';
         biggestCount +=1;
         longWordArr.push(wordF);
+        compareArr.push(longestWord[i].length);
         console.log(longestWord[i].length);
         console.log(wordF);
     }else if (longestWord[i].length >= 7 && longestWord[i] <=10) {
         longWordArr.pop();
         let wordG = 'long';
         longWordArr.push(wordG);
+        compareArr.push(longestWord[i].length);
         console.log(longestWord[i].length);
         console.log(wordG);
     }else if (longestWord[i].length >= 11 && longestWord[i] <=19) {
         longWordArr.pop();
         let wordH = 'longer';
         longWordArr.push(wordH);
+        compareArr.push(longestWord[i].length);
         console.log(longestWord[i].length);
         console.log(wordH);
     }else if (longestWord[i].length >= 20 && longestWord[i] <=45) {
         longWordArr.pop();
         let wordI = 'longest';
         longWordArr.push(wordI);
+        compareArr.push(longestWord[i].length);
         console.log(longestWord[i].length);
         console.log(wordI);
-    }
+    }*/
     
   }
-  console.log(longWordArr);
+  console.log(compareArr.sort(function(a,b){return b-a})); //Here is the method to find the largest word within a given string
+  let longestCompWord = compareArr.sort(function(a,b){return b-a});
+  console.log(longestCompWord[0]);
+  if (longestCompWord[0] > 0){
+    return longestCompWord[0];
+  }
+  //console.log(longWordArr);
   //return str.length;
 }
 
@@ -361,5 +380,169 @@ findLongestWordLength("The quick brown fox jumped over the lazy dog");
 
 
 //OUTPUT:
+44
+[ 'The',
+  'quick',
+  'brown',
+  'fox',
+  'jumped',
+  'over',
+  'the',
+  'lazy',
+  'dog' ]
+[ 6, 5, 5, 4, 4, 3, 3, 3, 3 ]
+6
+
+//Return Largest Numbers in Arrays
+//Return an array consisting of the largest number from each provided sub-array. 
+//For simplicity, the provided array will contain exactly 4 sub-arrays.
+
+//Remember, you can iterate through an array with a simple for loop, and access each member with array syntax 'arr[i]'.
+
+
+//UNCHANGED CODE:
+
+//function largestOfFour(arr) {
+//  return arr;
+//}
+
+//largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+//CHANGED CODE:
+
+function largestOfFour(arr) {
+  //console.log(arr.length);
+  /*let firstSubArr = arr.slice(0,1);
+  firstSubArr.unshift(firstSubArr.toString());
+  firstSubArr.pop();
+  console.log(firstSubArr);
+
+  let secondSubArr = arr.slice(1,2);
+  secondSubArr.unshift(secondSubArr.toString());
+  secondSubArr.pop();
+  console.log(secondSubArr);
+
+  let thirdSubArrOld = arr.slice(2,3);
+  thirdSubArr.unshift(thirdSubArr.toString());
+  thirdSubArr.pop();
+  console.log(thirdSubArr);*/
+
+  let largestFromEachSub = [];
+  let largestFromForth = [];
+  let largestFromThird = [];
+  let largestFromSecond = [];
+  let largestFromFirst = [];
+  //let largestResult = [];
+
+  let forthSubArr = arr.pop();
+  console.log(forthSubArr);
+  for (let g = 0; g < forthSubArr.length; g++) {
+      largestFromForth = forthSubArr.sort(function(a,b){return b-a});      
+  }
+  console.log(largestFromForth);
+  /*if (largestFromEachSub[0] >= 0) {
+          console.log(largestResult.push(largestFromEachSub.shift()));
+          //return largestResult;  
+        }*/
+  
+  
+
+  let thirdSubArr = arr.pop();
+  console.log(thirdSubArr);
+  for (let h = 0; h < thirdSubArr.length; h++) {
+      largestFromThird = thirdSubArr.sort(function(a,b){return b-a});      
+  }
+  console.log(largestFromThird);
+
+  let secondSubArr = arr.pop();
+  console.log(secondSubArr);
+  for (let i = 0; i < secondSubArr.length; i++) {
+      largestFromSecond = secondSubArr.sort(function(a,b){return b-a});      
+  }
+  console.log(largestFromSecond);
+
+  let firstSubArr = arr.pop();
+  console.log(firstSubArr);
+  for (let j = 0; j < firstSubArr.length; j++) {
+      largestFromFirst = firstSubArr.sort(function(a,b){return b-a});      
+  }
+  console.log(largestFromFirst);
+  console.log(largestFromFirst.indexOf(largestFromFirst[0]));
+  largestFromEachSub.push(largestFromFirst[0]);
+  console.log(largestFromEachSub);
+  largestFromEachSub.push(largestFromSecond[0]);
+  console.log(largestFromEachSub);
+  largestFromEachSub.push(largestFromThird[0]);
+  console.log(largestFromEachSub);
+  largestFromEachSub.push(largestFromForth[0]);
+  console.log(largestFromEachSub);
+  return largestFromEachSub;
+
+  /*for (let k = 0; k < arr.length; k++){
+    if (largestFromFirst.indexOf(largestFromFirst[k]) === 0) {
+      
+    }
+  }
+  
+    for (let j = 0; j < arr[i].length; j++){
+      if (arr[0] === arr[i]){
+        for (let k = 0; k < firstSubArr.length; k++) {
+              console.log(firstSubArr);
+            }
+        //console.log(firstSubArr[i][j]);
+      }
+      //console.log(arr[i][j]);
+    }
+  */
+  return arr;
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+//OUTPUT:
+[ 1000, 1001, 857, 1 ]
+[ 1001, 1000, 857, 1 ]
+[ 32, 35, 37, 39 ]
+[ 39, 37, 35, 32 ]
+[ 13, 27, 18, 26 ]
+[ 27, 26, 18, 13 ]
+[ 4, 5, 1, 3 ]
+[ 5, 4, 3, 1 ]
+0
+[ 5 ]
+[ 5, 27 ]
+[ 5, 27, 39 ]
+[ 5, 27, 39, 1001 ]
+
+
+//Confirm the Ending
+//Check if a string (first argument, 'str') ends with the given target string (second argument, 'target').
+
+//This challenge 'can' be solved with the '.endsWith()' method, which was introduced in ES2015. 
+//But for the purpose of this challenge, we would like you to use one of the JavaScript substring methods instead.
+
+
+//UNCHANGED CODE:
+
+//    function confirmEnding(str, target) {
+//      return str;
+//    }
+
+//    confirmEnding("Bastian", "n");
+
+//CHANGED CODE:
+
+function confirmEnding(str, target) {
+  let endRegex = /n$/;
+  let result = str.match(endRegex);
+  console.log(result);
+
+  return str;
+}
+
+confirmEnding("Bastian", "n");
+
+//OUTPUT:
+
 
 
