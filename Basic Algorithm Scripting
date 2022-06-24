@@ -277,14 +277,82 @@ function findLongestWordLength(str) {
   //console.log(str.match(longestWordRegex));
   let longestWord = str.match(longestWordRegex);
   console.log(longestWord);
+  console.log(longestWord.sort());
+  let longWordArr = [];
+  let shortestCount = 0;
+  let shorterCount = 0;
+  let shortCount = 0;
+  let bigCount = 0;
+  let biggerCount = 0;
+  let biggestCount = 0;
+  let longCount = 0;
+  let longerCount = 0;
+  let longestCount = 0;
   for (let i = 0; i < longestWord.length; i++) {
     
-    if (longestWord[i].length >= 1 && longestWord[i].length <= 3) {
+    if (longestWord[i].length === 1 && shortestCount === 0) {
+        let wordA = 'shortest';
+        shortestCount +=1;
+        longWordArr.push(wordA);
         console.log(longestWord[i].length);
-    }else if (longestWord[i].length === 4) {
+        console.log(wordA);
+    }else if (longestWord[i].length === 2 && shorterCount === 0) {
+        longWordArr.pop();
+        let wordB = 'shorter';
+        shorterCount +=1;
+        longWordArr.push(wordB);
         console.log(longestWord[i].length);
+        console.log(wordB);
+    }else if (longestWord[i].length === 3 && shortCount === 0) {
+        longWordArr.pop();
+        let wordC = 'short';
+        shortCount +=1;
+        longWordArr.push(wordC);
+        console.log(longestWord[i].length);
+        console.log(wordC);
+    }else if (longestWord[i].length === 4 && bigCount === 0) {
+        longWordArr.pop();
+        let wordD = 'big';
+        bigCount +=1;
+        longWordArr.push(wordD);
+        console.log(longestWord[i].length);
+        console.log(wordD);
+    }else if (longestWord[i].length === 5 && biggerCount === 0) {
+        longWordArr.pop();
+        let wordE = 'bigger';
+        biggerCount +=1;
+        longWordArr.push(wordE);
+        console.log(longestWord[i].length);
+        console.log(wordE);
+    }else if (longestWord[i].length === 6 && biggestCount === 0) {
+        longWordArr.pop();
+        let wordF = 'biggest';
+        biggestCount +=1;
+        longWordArr.push(wordF);
+        console.log(longestWord[i].length);
+        console.log(wordF);
+    }else if (longestWord[i].length >= 7 && longestWord[i] <=10) {
+        longWordArr.pop();
+        let wordG = 'long';
+        longWordArr.push(wordG);
+        console.log(longestWord[i].length);
+        console.log(wordG);
+    }else if (longestWord[i].length >= 11 && longestWord[i] <=19) {
+        longWordArr.pop();
+        let wordH = 'longer';
+        longWordArr.push(wordH);
+        console.log(longestWord[i].length);
+        console.log(wordH);
+    }else if (longestWord[i].length >= 20 && longestWord[i] <=45) {
+        longWordArr.pop();
+        let wordI = 'longest';
+        longWordArr.push(wordI);
+        console.log(longestWord[i].length);
+        console.log(wordI);
     }
+    
   }
+  console.log(longWordArr);
   //return str.length;
 }
 
