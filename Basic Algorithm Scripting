@@ -533,11 +533,24 @@ largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 85
 //CHANGED CODE:
 
 function confirmEnding(str, target) {
+  console.log(str.length);
   let endRegex = /n$/;
   let result = str.match(endRegex);
   console.log(result);
-  console.log(str[6].substr())
-
+  console.log(str[6].substr(target));
+  let strRegex = /\w+\s?|n$/g;
+  let strArr = str.match(strRegex);
+  console.log(strArr);
+  let strArrB = ('');
+  let strArrC = ('');
+  for (let i = str.length - 1; i >= 0; i--) {
+    strArrB += str[i];
+    /*for(let j = strArrB.length - 1; j >= 0; j--) {
+        console.log(strArrC += str[j]);    
+      }*/
+      
+      console.log(strArrB.length) 
+  } console.log(strArrB);
   return str;
 }
 
