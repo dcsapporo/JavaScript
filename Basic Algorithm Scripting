@@ -585,24 +585,46 @@ confirmEnding("Open sesame", "same");
 
 //SOLUTION CODE:
 function confirmEnding(str, target) {
-  console.log(str.length);
-  console.log(target.length);
-  console.log(str.lastIndexOf(target));
+  //console.log(str.lastIndexOf(target));
   let lastStrIndex = (str);
-  console.log(lastStrIndex)
-  console.log(str.lastIndexOf(target));
+  //console.log(lastStrIndex);
+  //console.log(str.match(/\w$/));
+  //console.log(target.match(/\w$/))
+  //console.log(str.lastIndexOf(target));
   let textCompare = str.search(target);
-  console.log(textCompare);
-  if (str.search(target) > 0) {
-    console.log('true');
-    return true;
+  //console.log(textCompare);
+  let compLastCharA = str.match(/\w$/).shift();
+  //console.log(compLastCharA);
+  //console.log(str[str.length - 2]);
+  let compSecLastChar = str[str.length - 2];
+  //console.log(compSecLastChar);
+  //console.log(target[target.length - 2])
+  let compLastCharb = target.match(/\w$/).shift();
+  //console.log(compLastCharb);
+  if (str.search(target) > 0 ) {
+    for (let i = 0; i < target.length ; i++) {
+      
+        if (compLastCharA === compLastCharb) 
+       {
+         if (target[target.length - 2] !== undefined && target[target.length - 2] === compSecLastChar) {
+        console.log('true');
+        return true;
+        }
+          if (target[target.length - 2] === undefined)
+          {
+        console.log('true');
+        return true;
+        }
+      }  
+
+    }
   }
   console.log(false);
   return false;
 
 }
 
-confirmEnding("Bastian", "n");
+confirmEnding("Walking on water and developing software from a specification are easy if both are frozen", "specification");
 
 //OUTPUT:
 [ 'n', index: 6, input: 'Bastian', groups: undefined ]
@@ -625,9 +647,404 @@ e
 11
 emases nepO
 
-//SOLUTION OUTPUT: 
-6
+//SOLUTION OUTPUT: false
+
+
+//Repeat a String Repeat a String
+//Repeat a given string 'str' (first argument) for 'num' times (second argument). 
+//Return an empty string if 'num' is not a positive number. 
+//For the purpose of this challenge, do "not" use the built-in '.repeat()' method.
+
+
+//UNCHANGED CODE:
+
+//    function repeatStringNumTimes(str, num) {
+//      return str;
+//    }
+
+//    repeatStringNumTimes("abc", 3);
+
+//CHANGED CODE:
+
+function repeatStringNumTimes(str, num) {
+  if (num < 0) {
+    console.log("")
+    return "";
+  }
+  let repeatStr = "";
+  for (let i = 1; i <= num; i++) {
+    console.log(str);
+    repeatStr += str;
+    console.log(repeatStr);
+    
+  }
+  return repeatStr;
+}
+
+repeatStringNumTimes("abc", 3);
+
+//OUTPUT:
+abc
+abc
+abc
+abcabc
+abc
+abcabcabc
+
+
+//Truncate a String
+//Truncate a string (first argument) if it is longer than the given maximum string length (second argument). 
+//Return the truncated string with a '...' ending.
+
+
+//UNCHANGED CODE:
+
+//    function truncateString(str, num) {
+//      return str;
+//    }
+
+//    truncateString("A-tisket a-tasket A green and yellow basket", 8);
+
+//CHANGED CODE:
+//Experimentation:
+function truncateString(str, num) {
+  //let newStr = "..."
+  //console.log(newStr);
+  //let strArr = [str];
+  //console.log(strArr);
+  let beginningStr = str;
+  if (num < str.length || num < str.length + 2) {
+    let theBeginning = beginningStr.replace(str.substr(num), "...");
+    console.log(theBeginning);
+    console.log(str.slice(num));
+    return theBeginning;
+  } 
+  return str;
+}
+
+truncateString("Peter Piper picked a peck of pickled peppers", 11);
+
+//SOLUTION:
+function truncateString(str, num) {
+  //let newStr = "..."
+  //console.log(newStr);
+  //let strArr = [str];
+  //console.log(strArr);
+  let beginningStr = str;
+  if (num !== str.length && num < str.length + 2) {
+    let theBeginning = beginningStr.replace(str.substr(num), "...");
+    console.log(theBeginning);
+    console.log(str.slice(num));
+    return theBeginning;
+  } 
+  return str;
+}
+
+truncateString("Peter Piper picked a peck of pickled peppers", 11);
+
+
+//OUTPUT:   Peter Piper...
+
+//Finders Keepers
+//Create a function that looks through an array 'arr' and returns the first element in it that passes a 'truth test'. 
+//This means that given an element 'x', the 'truth test' is passed if 'func(x)' is 'true'. 
+//If no element passes the test, return 'undefined'.
+
+
+//UNCHANGED CODE:
+
+//    function findElement(arr, func) {
+//      let num = 0;
+//      return num;
+//    }
+
+//    findElement([1, 2, 3, 4], num => num % 2 === 0);
+
+//CHANGED CODE:
+
+function findElement(arr, func) {
+  console.log((arr.valueOf()).length)
+  let newNum = 0;
+  let num = 0;
+  for (let i = 0; i < (arr.valueOf()).length; i++) {
+      console.log(arr.shift())
+      newNum = arr.shift();
+      console.log(newNum);
+      console.log(func(newNum));
+      if (func(newNum) === true) {
+      num = newNum;
+      } 
+      if (func(newNum) !== true) {
+          num = undefined;
+      }
+      
+  } 
+  console.log(num);
+  return num;
+  
+}
+
+findElement([1, 2, 3, 4], num => num % 2 === 0);
+
+//OUTPUT:
+4
+1
+2
 true
+3
+4
+true
+4
+
+//Boo who
+//Check if a value is classified as a boolean primitive. 
+//Return 'true' or 'false'.
+
+//Boolean primitives are 'true' and 'false'.
+
+
+//UNCHANGED CODE:
+
+//    function booWho(bool) {
+//      return bool;
+//    }
+
+//    booWho(null);
+
+//CHANGED CODE:
+
+function booWho(bool) {
+  //console.log(bool.valueOf())
+  
+  if (bool === null) {
+    console.log('false')
+    return false;
+  } else if (bool.valueOf() === true || bool.valueOf() === false) {
+    console.log('true');
+    return true;
+  } 
+  console.log('false')
+  return false;
+}
+
+booWho(null);
+
+//OUTPUT: false
+
+//Title Case a Sentence
+//Return the provided string with the first letter of each word capitalized. 
+//Make sure the rest of the word is in lower case.
+
+//For the purpose of this exercise, you should also capitalize connecting words like 'the' and 'of'.
+
+
+//UNCHANGED CODE:
+
+//    function titleCase(str) {
+//      return str;
+//    }
+
+//    titleCase("I'm a little tea pot");
+
+//CHANGE CODE:
+//Experimentation:
+function titleCase(str) {
+  console.log(str.toUpperCase());
+  console.log(str.toLowerCase());
+  let newTitleStr = str.split(" ");
+  console.log(newTitleStr);
+
+  const updatedTitle = [];
+  for (let st in newTitleStr) {
+    updatedTitle[st] = newTitleStr[st][0].toUpperCase() + newTitleStr[st].slice(1).toLowerCase();
+  } 
+  console.log(updatedTitle.join(" "));
+  //return updatedTitle.join(" ");
+
+  
+  /*let newStr = '';
+
+  let firstLetter = str.match(/^\w/).shift();
+  console.log(firstLetter);
+
+  let strImArr = str.match(/\w+\W\w/);
+  if (strImArr == "I\'m") { 
+  newStr = strImArr.shift() + ' ';
+  console.log(newStr.length);
+  }
+
+  let letterCountMatch = 0;
+  let nullCount = 0;
+
+  for (let i = 0; i < str.length; i++) {
+
+    if (str[i].match(/^[a-z]/) !== null) {
+      firstLetter = str[i].match(/[a-z]/).shift();
+      console.log(firstLetter);
+      letterCountMatch += 1;
+     } 
+     if (str[i].match(/^[a-z]/) === null || strImArr === "I\'m") {
+        nullCount += 1;
+        console.log(newStr + str[i].toUpperCase()); 
+     }
+    
+    }
+  console.log(str.length); 
+  console.log(nullCount);
+  console.log(letterCountMatch);*/
+  return updatedTitle.join(" ");
+}
+
+titleCase("I'm a little tea pot");
+
+//SOLUTION:
+
+function titleCase(str) {
+  //console.log(str.toUpperCase());
+  //console.log(str.toLowerCase());
+  let newTitleStr = str.split(" ");
+  console.log(newTitleStr);
+
+  const updatedTitle = [];
+  for (let st in newTitleStr) {
+    updatedTitle[st] = newTitleStr[st][0].toUpperCase() + newTitleStr[st].slice(1).toLowerCase();
+  } 
+
+  console.log(updatedTitle.join(" "));
+  return updatedTitle.join(" ");
+}
+
+titleCase("I'm a little tea pot");
+
+//OUTPUT:
+//experimental:
+I'M A LITTLE TEA POT
+i'm a little tea pot
+[ ' ',
+  index: 3,
+  input: 'I\'m a little tea pot',
+  groups: undefined ]
+ 
+I
+3
+3
+3
+3
+-4
+4
+//SOLUTION:
+[ 'I\'m', 'a', 'little', 'tea', 'pot' ]
+I'm A Little Tea Pot
+
+
+//Slice and Splice
+//You are given two arrays and an index.
+
+//Copy each element of the first array into the second array, in order.
+
+//Begin inserting elements at index 'n' of the second array.
+
+//Return the resulting array. 
+//The input arrays should remain the same after the function runs.
+
+
+//UNCHANGED CODE:
+
+//    function frankenSplice(arr1, arr2, n) {
+//      return arr2;
+//    }
+
+//    frankenSplice([1, 2, 3], [4, 5, 6], 1);
+
+//CHANGE CODE:
+
+function frankenSplice(arr1, arr2, n) {
+  let newArr = arr2.slice();
+  //let newArr2 = arr1.slice();
+  //let newArr3 = newArr2.reverse();
+  for (let i = 0; i < arr1.length; i++) {
+     newArr.splice(n, 0, arr1[i]);
+     n++; 
+  }
+  //let newArr4 = newArr.pop();
+  //console.log(newArr)
+  return newArr;
+}
+
+frankenSplice([1, 2, 3], [4, 5, 6], 1);
+
+//OUTPUT:
+[ 4, 1, 2, 3, 5 ]
+
+//Falsy Bouncer
+//Remove all falsy values from an array.
+
+//Falsy values in JavaScript are 'false', 'null', '0', "", 'undefined', and 'NaN'.
+
+//Hint: Try converting each value to a Boolean.
+
+
+//UNCHANGED CODE:
+
+//    function bouncer(arr) {
+//      return arr;
+//    }
+
+//    bouncer([7, "ate", "", false, 9]);
+
+//CHANGE CODE:
+
+function bouncer(arr) {
+  //console.log(arr.sort());
+  //let sortedArr = arr.sort();
+  //console.log(sortedArr);
+  //let arrStr = arr.toString();
+  //console.log(arrStr);
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+      if (arr[i] !== '' && arr[i] !== 0 && Boolean(arr[i]) !== false && arr[i] !== false && arr[i] !== undefined && arr[i] !== null) {
+        
+        console.log(newArr.push(arr[i]));
+      } 
+      newArr = newArr;
+  }
+  console.log(newArr)
+  return newArr;
+}
+
+bouncer([7, "ate", "", false, 9]);
+
+//OUTPUT:
+
+1
+2
+3
+[ 7, 'ate', 9 ]
+
+
+//Where do I Belong
+//Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. 
+//The returned value should be a number.
+
+//For example, 'getIndexToIns([1,2,3,4], 1.5)' should return '1' because it is greater than '1' (index 0), but less than '2' (index 1).
+
+//Likewise, 'getIndexToIns([20,3,5], 19)' should return '2' because once the 
+//    array has been sorted it will look like '[3,5,20]' and '19' is less than '20' (index 2) and greater than '5' (index 1).
+
+
+//UNCHANGED CODE:
+
+//    function getIndexToIns(arr, num) {
+//      return num;
+//    }
+
+//    getIndexToIns([40, 60], 50);
+
+//CHANGE CODE:
+
+
+
+//OUTPUT:
 
 //
 
@@ -636,22 +1053,7 @@ true
 
 
 
-//CHANGED CODE:
-
-
-
-//OUTPUT:
-
-
-
-//
-
-
-//UNCHANGED CODE:
-
-
-
-//CHANGED CODE:
+//CHANGE CODE:
 
 
 
@@ -664,10 +1066,9 @@ true
 
 
 
-//CHANGED CODE:
+//CHANGE CODE:
 
 
 
 //OUTPUT:
-
 
