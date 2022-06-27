@@ -1115,20 +1115,114 @@ getIndexToIns([40, 60], 50);
 
 //CHANGE CODE:
 
+function mutation(arr) {
+  //console.log(arr);
+  //console.log(arr.slice(1).toString());
+  //let secondStr = arr.slice(1).toString();
+  //console.log(arr.slice(0,1).toString());
+  //let firstStr = arr.slice(0,1).toString();
+  //console.log(secondStr.match(/[hello]+/i));
+  let secondEl = arr[1].toLowerCase();
+  console.log(secondEl);
+  let firstEl = arr[0].toLowerCase();
+  console.log(firstEl);
 
+  for (let i =0; i < secondEl.length; i++) {
+    let letters2 = secondEl[i];
+    if (firstEl.indexOf(letters2) === -1) {
+      console.log(false);
+      return false;
+    } 
+    
+  }
+  console.log(true);
+  return true;
+  //return arr;
+}
+
+console.log(mutation(["Mary", "Army"]));
 
 //OUTPUT:
 
-//
+//Chunky Monkey
+//Write a function that splits an array (first argument) 
+//    into groups the length of 'size' (second argument) and returns them as a two-dimensional array.
 
 
 //UNCHANGED CODE:
 
+//    function chunkArrayInGroups(arr, size) {
+//      return arr;
+//    }
 
+//    chunkArrayInGroups(["a", "b", "c", "d"], 2);
 
 //CHANGE CODE:
+//Experimental code:
+function chunkArrayInGroups(arr, size) {
+  let newArrA = arr.slice();
+  console.log(newArrA);
+  let newArrB = [];
+  let newArrC = [];
+  let newArrD = [];
+  let newArrE = [];
+  let newArrF = [];
+  let newArr = [];
 
+  for (let i = 0; i < arr.length; i++) {
+    if (i < size) {
+      newArrB.push(newArrA.shift());
+      console.log(newArrB);
+      
+    } 
+    if (i === size) {
+        newArr.push(newArrB);
+      } 
+      if (i >= size && i < size * 2){
+      
+      newArrC.push(newArrA.shift());
+      console.log(newArrC);
+      
+    }  
+    if (i === size * 2) {
+        newArr.push(newArrC);
+      } else if (i >= size * 2 && i < size * 3) {
+      newArrD.push(newArrA.shift());
+      console.log(newArrD);
+      
+    } else if (i >= size * 3 && i < size * 4) {
+      newArrE.push(newArrA.shift());
+      console.log(newArrE);
+      
+    } else if (i >= size * 4) {
+      newArrF.push(newArrA.shift());
+      console.log(newArrF);
+      
+    }
+  }
+  
+  console.log(newArr);
+  return arr;
+}
 
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
+
+//SOLUTION:
+function chunkArrayInGroups(arr, size) {
+  let newArrA = arr.slice();
+  console.log(newArrA);
+  let newArr = [];
+
+  for (let i = 0; i < arr.length; i += size) {
+    newArr.push(newArrA.slice(i, i + size));
+  }
+  
+  console.log(newArr);
+  return newArr;
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
 
 //OUTPUT:
-
+[ 'a', 'b', 'c', 'd' ]
+[ [ 'a', 'b' ], [ 'c', 'd' ] ]
