@@ -1084,11 +1084,35 @@ undefined
 //    console.log(JSON.stringify(ratings));
 
 //CHANGED CODE:
+//First attempt:
+// Only change code below this line
 
+const ratings = [];
+/*for (let i = 0; i < watchList.length; i++) {
+  ratings.push({title: watchList[i]["Title"], rating: watchList[i]["imdbRating"]});
+}*/
+ 
+ let title = '';
+ let ratingImdb = '';
+ ratings.push({title: (title = watchList.map(watchList => watchList.Title)), rating: (ratingImdb = watchList.map(watchList => watchList.imdbRating))})
+ console.log(ratings);
+// Only change code above this line
 
+console.log(JSON.stringify(ratings));
 
 //OUTPUT:
-
+// running tests
+ratings should equal [{"title": "Inception", "rating": "8.8"}, {"title": "Interstellar", "rating": "8.6"}, {"title": "The Dark Knight", "rating": "9.0"},{"title": "Batman Begins", "rating": "8.3"}, {"title": "Avatar", "rating": "7.9"}].
+// tests completed
+// console output
+[ { title: 
+     [ 'Inception',
+       'Interstellar',
+       'The Dark Knight',
+       'Batman Begins',
+       'Avatar' ],
+    rating: [ '8.8', '8.6', '9.0', '8.3', '7.9' ] } ]
+[{"title":["Inception","Interstellar","The Dark Knight","Batman Begins","Avatar"],"rating":["8.8","8.6","9.0","8.3","7.9"]}]
 
 //
 
