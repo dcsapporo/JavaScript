@@ -648,7 +648,8 @@ console.log(incrementer(fixedValue));
 //CHANGED CODE:
 //FIRST VERSION:
 // The global variable
-const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", 
+"Disquisitiones Arithmeticae"];
 
 // Change code below this line
 function add(bookName, list) {
@@ -679,7 +680,8 @@ console.log(bookList);
 
 //SECOND VERSION:
 // The global variable
-const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", 
+"Disquisitiones Arithmeticae"];
 
 // Change code below this line
 function add(list, bookName) {
@@ -717,7 +719,8 @@ console.log(bookList);
 
 //Third attempt:
 // The global variable
-const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", 
+"Disquisitiones Arithmeticae"];
 
 // Change code below this line
 function add(list, bookName) {
@@ -755,7 +758,8 @@ console.log(bookList);
 
 //Forth attempt:
 // The global variable
-const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", 
+"Disquisitiones Arithmeticae"];
 
 // Change code below this line
 function add(list, bookName) {
@@ -791,7 +795,8 @@ console.log(remove(add([bookList], "A Brief History of Time"), "A Brief History 
 
 //Possible Solution:
 // The global variable
-const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", 
+"Disquisitiones Arithmeticae"];
 
 // Change code below this line
 function add(list, bookName) {
@@ -829,7 +834,8 @@ console.log(remove (newCopyList, "A Brief History of Time"));
 
 //SOLUTION CODE:
 // The global variable
-const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+const bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", 
+"Disquisitiones Arithmeticae"];
 
 // Change code below this line
 function add(list, bookName) {
@@ -1392,16 +1398,84 @@ const filteredList = watchList.filter (rateFilter => {
 //console.log(newMovieList);
 console.log(filteredList);
 
+//SOLUTION:
+// Only change code below this line
+const newMovieList = watchList.map(movie => {
+  const movieData = {};
+  movieData.title = movie.Title;
+  movieData.rating = movie.imdbRating;
+  return movieData;
+});
+
+const filteredList = newMovieList.filter(rateFilter => {
+  let ratingImdb = rateFilter.rating >= 8.0;
+  return ratingImdb;
+  });
+  
+
+// Only change code above this line
+console.log(newMovieList);
+console.log(filteredList);
+
+//Variation solution:
+const filtereList = watchList.map(function(individualMovie) {
+  let refinedMovieData = {};
+  refinedMovieData.title = individualMovie.Title;
+  refinedMovieData.rating = individualMovie.imdbRating;
+  return refinedMovieData;
+}).filter(function(individualMovie) {
+  let ratingInteger = parseFloat(individualMovie.rating);
+  if (ratingInteger >= 8.0) {
+    return individualMovie;
+  }
+});
+
+//ES6 version
+const filtereList = watchList.map(individualMovie => {
+  let refinedMovieData = {};
+  refinedMovieData.title = individualMovie.Title;
+  refinedMovieData.rating = individualMovie.imdbRating;
+  return refinedMovieData;
+}).filter(individualMovie => {
+  let ratingInteger = parseFloat(individualMovie.rating);
+  if (ratingInteger >= 8.0) return individualMovie;
+});
 
 //OUTPUT:
+[ { title: 'Inception', rating: '8.8' },
+  { title: 'Interstellar', rating: '8.6' },
+  { title: 'The Dark Knight', rating: '9.0' },
+  { title: 'Batman Begins', rating: '8.3' },
+  { title: 'Avatar', rating: '7.9' } ]
+[ { title: 'Inception', rating: '8.8' },
+  { title: 'Interstellar', rating: '8.6' },
+  { title: 'The Dark Knight', rating: '9.0' },
+  { title: 'Batman Begins', rating: '8.3' } ]
 
 
-//
+//Implement the filter Method on a Prototype
+//You might learn a lot about the 'filter' method if you implement your own version of it. 
+//It is recommended you use a 'for' loop or 'Array.prototype.forEach()'.
+
+//Write your own 'Array.prototype.myFilter()', which should behave exactly like 'Array.prototype.filter()'. 
+//You should not use the built-in 'filter' method. The 'Array' instance can be accessed in the 'myFilter' method using 'this'.
 
 
 //UNCHANGED CODE:
 
+//    // The global variable
+//    const s = [23, 65, 98, 5];
 
+//    Array.prototype.myFilter = function(callback) {
+//      // Only change code below this line
+//      const newArray = [];
+//      // Only change code above this line
+//      return newArray;
+//    };
+
+//    const new_s = s.myFilter(function(item) {
+//      return item % 2 === 1;
+//    });
 
 //CHANGED CODE:
 
