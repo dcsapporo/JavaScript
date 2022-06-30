@@ -1888,14 +1888,14 @@ nonMutatingPush(first, second);
 function getRating(watchList) {
   // Only change code below this line
   let averageRating;
-  const filteredList = watchList.map(individualMovie => {
-  let refinedMovieData = {};
-  refinedMovieData.director = individualMovie.Director;
-  refinedMovieData.rating = individualMovie.imdbRating;
-  return refinedMovieData;
-}).filter(individualMovie => {
-  let ratingInteger = parseFloat(individualMovie.rating);
-  if (ratingInteger >= 8.0) return individualMovie;
+  const filteredList = watchList.map(eachMovie => {
+  let mapMovieData = {};
+  mapMovieData.director = eachMovie.Director;
+  mapMovieData.rating = eachMovie.imdbRating;
+  return mapMovieData;
+}).filter(eachMovie => {
+  let ratingInteger = parseFloat(eachMovie.rating);
+  if (ratingInteger >= 8.0) return eachMovie;
 });
 
   // Only change code above this line
@@ -1904,25 +1904,222 @@ function getRating(watchList) {
 //console.log(filteredList);
 console.log(getRating(watchList));
 
+//2nd experiment
+function getRating(watchList) {
+  // Only change code below this line
+  let averageRating = watchList.map(eachMovie => {
+  let mapMovieData = {};
+  mapMovieData.director = eachMovie.Director;
+  mapMovieData.rating = eachMovie.imdbRating;
+  return mapMovieData;
+}).filter(eachMovie => {
+  let ratingInt = parseFloat(eachMovie.rating);
+  if (ratingInt >= 8.0) return eachMovie;
+}).reduce((averageMovieRating, eachMovie) => 
+  {let ratingInt = parseFloat(eachMovie.rating);
+  (averageMovieRating + ratingInt) / (eachMovie + eachMovie)}, 0);
+  console.log(averageRating);
+  // Only change code above this line
+  return averageRating;
+}
+//console.log(filteredList);
+console.log(getRating(watchList));
+
+//CODE to work with:
+let filtereList = watchList.map(eachMovie => {
+  let mapMovieData = {}; 
+  mapMovieData.director = eachMovie.Director;
+  mapMovieData.rating = eachMovie.imdbRating;
+  return mapMovieData;
+}).filter(eachMovie => {
+  let ratingInt = parseFloat(eachMovie.rating);
+  if (ratingInt >= 8.0) return eachMovie;
+});
+
+  console.log(filtereList);
+
+//More Expertimentation:
+function getRating(watchList) {
+  // Only change code below this line
+   
+  let filtereList = watchList.map(eachMovie => {
+  let mapMovieData = {}; 
+  mapMovieData.director = eachMovie.Director;
+  mapMovieData.rating = eachMovie.imdbRating;
+  return mapMovieData;
+}).filter(eachMovie => {
+  let ratingInt = parseFloat(eachMovie.rating);
+  if (ratingInt >= 8.0) return eachMovie;
+});
+  console.log(filtereList);
+
+  let averageRating = filtereList.reduce((averageMovieRating, eachMovie) => {
+    console.log(eachMovie.rating)
+    let ratingInt = parseFloat(eachMovie.rating);
+    console.log(ratingInt)
+    averageMovieRating + ratingInt
+  }, 0);
+
+//SOLUTION:
+function getRating(watchList) {
+  // Only change code below this line
+   
+  let filteredList = watchList.map(eachMovie => {
+  let mapMovieData = {}; 
+  mapMovieData.director = eachMovie.Director;
+  mapMovieData.rating = eachMovie.imdbRating;
+  return mapMovieData;
+}).filter(eachMovie => {
+  let ratingInt = parseFloat(eachMovie.rating);
+  if (ratingInt >= 8.0) return eachMovie;
+});
+  //console.log(filteredList);
+  
+  let movieRatingTotal = filteredList.reduce((sum, eachMovie) => sum + parseFloat(eachMovie.rating), 0);
+  //console.log(movieRatingTotal);
+  let movieTotal = filteredList.reduce((totalMovies, eachMovie) => totalMovies + 1, 0);
+  //console.log(movieTotal)
+  let averageRating = filteredList.reduce((averageMovieRating, eachMovie) => {
+    let ratingInt = parseFloat(eachMovie.rating);
+    averageMovieRating = movieRatingTotal / movieTotal;
+    //console.log(movieRatingTotal / movieTotal);
+    //console.log(averageMovieRating)
+    return averageMovieRating;
+  }, 0);
+  /*.reduce((average, eachMovie) => {
+    let ratingInt = parseFloat(eachMovie.imdbRating);
+    if (eachMovie.Director !== "James Cameron") {console.log(ratingInt)};
+    return ratingInt;
+  })*/
+  //console.log(averageRating);
+  // Only change code above this line
+  return averageRating;
+}
+//console.log(filteredList);
+console.log(getRating(watchList));
 
 //OUTPUT:
 [ { director: 'Christopher Nolan', rating: '8.8' },
   { director: 'Christopher Nolan', rating: '8.6' },
   { director: 'Christopher Nolan', rating: '9.0' },
   { director: 'Christopher Nolan', rating: '8.3' } ]
+  
+[ { director: 'Christopher Nolan', rating: '8.8' },
+  { director: 'Christopher Nolan', rating: '8.6' },
+  { director: 'Christopher Nolan', rating: '9.0' },
+  { director: 'Christopher Nolan', rating: '8.3' } ]
+8.8
+8.8
+8.6
+8.6
+9.0
+9
+8.3
+8.3
+undefined
 
-//
+//SOLUTION OUTPUT:    8.675
+
+
+//Use Higher-Order Functions map, filter, or reduce to Solve a Complex Problem
+//Now that you have worked through a few challenges using higher-order functions like 'map()', 'filter()', and 'reduce()', 
+//    you now get to apply them to solve a more complex challenge.
+
+//Complete the code for the 'squareList' function using any combination of 'map()', 'filter()', and 'reduce()'. 
+//The function should return a new array containing the squares of "only" the 
+//    positive integers (decimal numbers are not integers) when an array of real numbers is passed to it. 
+//An example of an array of real numbers is '[-3, 4.8, 5, 3, -3.2]'.
+
+//Note: Your function should not use any kind of 'for' or 'while' loops or the 'forEach()' function.
 
 
 //UNCHANGED CODE:
 
+//    const squareList = arr => {
+//      // Only change code below this line
+//      return arr;
+//      // Only change code above this line
+//    };
 
+//    const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+//    console.log(squaredIntegers);
 
 //CHANGED CODE:
 
+const squareList = arr => {
+  // Only change code below this line
+  let positive = arr.filter(eachNumber =>{
+    if (eachNumber >= 0) return eachNumber;  
+  });
+  console.log(positive);
+  
+  let integers = positive.filter(eachNumber => {
+    
+    let eachNumString = eachNumber.toString();
+    let integerString = eachNumString.match(/[^\W]/g);
+    console.log(Number(integerString));
+    if (Number(integerString) !== NaN) return Number(integerString);
+  }); 
+  console.log(integers)
+  return arr;
+  // Only change code above this line
+};
 
+const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+console.log(squaredIntegers);
+////////////////////////////////////////
+
+const squareList = arr => {
+  // Only change code below this line
+  let positive = arr.filter(eachNumber =>{
+    if (eachNumber >= 0) return eachNumber;  
+  });
+  console.log(positive);
+  
+  let integers = positive.filter(eachNumber => {
+    
+    let eachNumString = eachNumber.toString();
+    let integerString = eachNumString.match(/[^\W]/g);
+    console.log(Number(integerString));
+    if (Number(integerString) !== NaN) return Number(integerString);
+  }); 
+  console.log(integers);
+
+  let squaredInt = integers.filter(eachNumber => {
+    console.log(eachNumber);
+    let squareRoot = [];
+    squareRoot.push(eachNumber * eachNumber);
+    console.log(squareRoot);
+    return squareRoot;
+  }, 0); 
+  console.log(squaredInt);
+
+  return arr;
+  // Only change code above this line
+};
+
+const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+console.log(squaredIntegers);
 
 //OUTPUT:
+[ 4.8, 5, 3 ]
+NaN
+5
+3
+[ 5, 3 ]
+[ -3, 4.8, 5, 3, -3.2 ]
+/////////////////////////////////
+[ 4.8, 5, 3 ]
+NaN
+5
+3
+[ 5, 3 ]
+5
+[ 25 ]
+3
+[ 9 ]
+[ 5, 3 ]
+[ -3, 4.8, 5, 3, -3.2 ]
 
 //
 
