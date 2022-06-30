@@ -2101,6 +2101,80 @@ const squareList = arr => {
 const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
 console.log(squaredIntegers);
 
+///////////////////////////////////1st SOLUTION CODE:
+const squareList = arr => {
+  // Only change code below this line
+  let positive = arr.filter(eachNumber =>{
+    if (eachNumber >= 0) return eachNumber;  
+  });
+  //console.log(positive);
+  
+  let integers = positive.filter(eachNumber => {
+    
+    let eachNumString = eachNumber.toString();
+    let integerString = eachNumString.match(/[^\W]/g);
+    //console.log(Number(integerString));
+    if (Number(integerString) !== NaN) return Number(integerString);
+  }); 
+  //console.log(integers);
+
+  let squaredInt = integers.map(eachNumber => {
+    //console.log(eachNumber);
+    let squareRoot = {};
+    squareRoot = (eachNumber * eachNumber);
+    //console.log(squareRoot);
+    return squareRoot;
+  }, 0); 
+  //console.log(squaredInt);
+  return squaredInt;
+  // Only change code above this line
+};
+
+const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+console.log(squaredIntegers);
+
+//////////////////////////////////////2nd SOLUTION CODE:
+const squareList = arr => {
+  // Only change code below this line
+  let positive = arr.filter(eachNumber =>{
+    if (eachNumber >= 0) return eachNumber;  
+  });
+  console.log(positive);
+  
+  let integerOnes = positive.filter(eachNumber => {
+    
+    let eachNumString = eachNumber.toString();
+    let integerString = eachNumString.match(/[^\W]/g);
+    console.log(integerString)
+    console.log(Number(integerString));
+    if (Number(integerString) !== NaN) return Number(integerString);
+  }); 
+  console.log(integerOnes);
+  let integerTens = positive.filter(eachNumber => {
+    
+    let eachNumString = eachNumber.toString();
+    let integerString = eachNumString.match(/[0-9][^\W]/g);
+    console.log(integerString)
+    console.log(Number(integerString));
+    if (Number(integerString) !== null) return Number(integerString);
+  }); 
+  console.log(integerTens);
+
+  let squaredInt = integerOnes.map(eachNumber => {
+    //console.log(eachNumber);
+    let squareRoot = {};
+    squareRoot = (eachNumber * eachNumber);
+    //console.log(squareRoot);
+    return squareRoot;
+  }, 0); 
+  //console.log(squaredInt);
+  return squaredInt;
+  // Only change code above this line [-3, 4.8, 5, 3, -3.2]
+};
+
+const squaredIntegers = squareList([4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2]);
+console.log(squaredIntegers);
+
 //OUTPUT:
 [ 4.8, 5, 3 ]
 NaN
@@ -2120,6 +2194,36 @@ NaN
 [ 9 ]
 [ 5, 3 ]
 [ -3, 4.8, 5, 3, -3.2 ]
+
+////////////////////////1st SOLUTION OUTPUT:    [ 25, 9 ]
+
+/////////////////////////////2nd 
+4
+[ '5', '6' ]
+NaN
+[ '3', '1', '4' ]
+NaN
+[ '4', '2' ]
+NaN
+[ '6' ]
+6
+[ '8', '3', '4' ]
+NaN
+[ 4, 6 ]
+null
+0
+null
+0
+[ '14' ]
+14
+[ '42' ]
+42
+null
+0
+[ '34' ]
+34
+[ 3.14, 42, 8.34 ]
+[ 16, 36 ]
 
 //
 
