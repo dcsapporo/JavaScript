@@ -2392,24 +2392,177 @@ splitify("Hello World,I-am code");
 
 //CHANGED CODE:
 
+function sentensify(str) {
+  // Only change code below this line
+  const sentiffyArr = str.split(/\W/);
+  console.log(sentiffyArr);
+  const newSentiffyStr = sentiffyArr.join(" ");
+  console.log(newSentiffyStr);
+  return newSentiffyStr;
+  // Only change code above this line
+}
 
+sentensify("May-the-force-be-with-you");
 
 //OUTPUT:
+[ 'May', 'the', 'force', 'be', 'with', 'you' ]
+May the force be with you
 
+//Apply Functional Programming to Convert Strings to URL Slugs
+//The last several challenges covered a number of useful array and string methods that follow functional programming principles. 
+//We've also learned about 'reduce', which is a powerful method used to reduce problems to simpler forms. 
+//From computing averages to sorting, any array operation can be achieved by applying it. 
+//Recall that 'map' and 'filter' are special cases of 'reduce'.
 
-//
+//Let's combine what we've learned to solve a practical problem.
+
+//Many content management sites (CMS) have the titles of a post added to part of the URL for simple bookmarking purposes. 
+//For example, if you write a Medium post titled 'Stop Using Reduce', 
+//    it's likely the URL would have some form of the title string in it (.../stop-using-reduce). 
+//You may have already noticed this on the freeCodeCamp site.
+
+//Fill in the 'urlSlug' function so it converts a string 'title' and returns the hyphenated version for the URL. 
+//You can use any of the methods covered in this section, and don't use 'replace'. 
+//Here are the requirements:
+
+//The input is a string with spaces and title-cased words
+
+//The output is a string with the spaces between words replaced by a hyphen (-)
+
+//The output should be all lower-cased letters
+
+//The output should not have any spaces
 
 
 //UNCHANGED CODE:
 
+//    // Only change code below this line
+//    function urlSlug(title) {
 
+
+//    }
+//    // Only change code above this line
+//    urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone");
 
 //CHANGED CODE:
+///////////////////////////////////////1st Experimental Code:
+// Only change code below this line
+function urlSlug(title) {
+  let lowerCaseTitleStr1 = title.toLowerCase();
+  console.log(lowerCaseTitleStr1);
+  let lowerCaseTitleArr1 = [];
+  lowerCaseTitleArr1.push(lowerCaseTitleStr1);
+  console.log(lowerCaseTitleArr1);
 
 
+}
+// Only change code above this line
+urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone");
+///////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\2nd Experimental code:
+// Only change code below this line
+function urlSlug(title) {
+  let lowerCaseTitleStr1 = title.toLowerCase();
+  console.log(lowerCaseTitleStr1);
+  let lowerCaseTitleArr1 = lowerCaseTitleStr1.match(/\w+/g);
+  console.log(lowerCaseTitleArr1);
 
+
+}
+// Only change code above this line
+urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone");
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////3rd Experimental code:
+// Only change code below this line
+function urlSlug(title) {
+  let lowerCaseTitleStr1 = title.toLowerCase();
+  console.log(lowerCaseTitleStr1);
+  let lowerCaseTitleArr1 = lowerCaseTitleStr1.match(/\w+/g);
+  console.log(lowerCaseTitleArr1);
+  console.log(lowerCaseTitleArr1.length);
+  let lowerCaseTitleArr2 = [];
+  for (let i = 0; i < lowerCaseTitleArr1.length; i++) {
+    lowerCaseTitleArr2.push(lowerCaseTitleArr1[i] + "-");
+  }console.log(lowerCaseTitleArr2);
+return lowerCaseTitleArr2;
+}
+// Only change code above this line
+urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone");
+//////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\4th Experimental code:
+// Only change code below this line
+function urlSlug(title) {
+  let lowerCaseTitleStr1 = title.toLowerCase();
+  //console.log(lowerCaseTitleStr1);
+  let lowerCaseTitleArr1 = lowerCaseTitleStr1.match(/\w+/g);
+  //console.log(lowerCaseTitleArr1);
+  //console.log(lowerCaseTitleArr1.length);
+  let lowerCaseTitleArr2 = [];
+  for (let i = 0; i < lowerCaseTitleArr1.length; i++) {
+    lowerCaseTitleArr2.push(lowerCaseTitleArr1[i] + "-");
+  };
+  //console.log(lowerCaseTitleArr2);
+
+  let hyphenWords = [];
+  for (let j = 0; j < lowerCaseTitleArr2.length - 2; j++) {
+      hyphenWords.push(lowerCaseTitleArr2[j]);    
+    };  
+  console.log(hyphenWords.toString());
+  let unhyphenWords = lowerCaseTitleArr1.slice();
+  console.log(unhyphenWords.toString());
+   
+  let preConcatArr = hyphenWords.slice();
+  preConcatArr.push(unhyphenWords.pop());
+  console.log(preConcatArr.toString())
+  //let finalTitle = preConcatArr.join().toString();
+  //console.log(finalTitle);  
+  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //OUTPUT:
-
+///////////////1st output
+a mind needs books like a sword needs a whetstone
+[ 'a mind needs books like a sword needs a whetstone' ]
+///////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\2nd output:
+a mind needs books like a sword needs a whetstone
+[ 'a',
+  'mind',
+  'needs',
+  'books',
+  'like',
+  'a',
+  'sword',
+  'needs',
+  'a',
+  'whetstone' ]
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  
+/////////////////////////3rd output: 
+a mind needs books like a sword needs a whetstone
+[ 'a',
+  'mind',
+  'needs',
+  'books',
+  'like',
+  'a',
+  'sword',
+  'needs',
+  'a',
+  'whetstone' ]
+10
+[ 'a-',
+  'mind-',
+  'needs-',
+  'books-',
+  'like-',
+  'a-',
+  'sword-',
+  'needs-',
+  'a-',
+  'whetstone-' ]
+/////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\4th output:
+a-,mind-,needs-,books-,like-,a-,sword-,needs-
+a,mind,needs,books,like,a,sword,needs,a,whetstone
+a-,mind-,needs-,books-,like-,a-,sword-,needs-,whetstone
 
 //
 
