@@ -2517,6 +2517,40 @@ function urlSlug(title) {
   //let finalTitle = preConcatArr.join().toString();
   //console.log(finalTitle);  
   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+  ////////////////////////////SOLUTION CODE:
+  // Only change code below this line
+function urlSlug(title) {
+  let lowerCaseTitleStr1 = title.toLowerCase();
+  //console.log(lowerCaseTitleStr1);
+  let lowerCaseTitleArr1 = lowerCaseTitleStr1.match(/\w+/g);
+  //console.log(lowerCaseTitleArr1);
+  //console.log(lowerCaseTitleArr1.length);
+  let lowerCaseTitleArr2 = [];
+  for (let i = 0; i < lowerCaseTitleArr1.length; i++) {
+    lowerCaseTitleArr2.push(lowerCaseTitleArr1[i] + "-");
+  };
+  //console.log(lowerCaseTitleArr2);
+
+  let hyphenWords = [];
+  for (let j = 0; j < lowerCaseTitleArr2.length - 1; j++) {
+      hyphenWords.push(lowerCaseTitleArr2[j]);    
+    };  
+  console.log(hyphenWords.toString());
+  let unhyphenWords = lowerCaseTitleArr1.slice();
+  console.log(unhyphenWords.toString());
+   
+  let preConcatArr = hyphenWords.slice();
+  preConcatArr.push(unhyphenWords.pop());
+  console.log(preConcatArr.toString())
+  let finalTitle = preConcatArr.join('');
+  console.log(finalTitle);  
+  return finalTitle;
+
+}
+// Only change code above this line
+urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone");
+//////////////////////////////////////////////////////////////////
+
 //OUTPUT:
 ///////////////1st output
 a mind needs books like a sword needs a whetstone
@@ -2563,13 +2597,42 @@ a mind needs books like a sword needs a whetstone
 a-,mind-,needs-,books-,like-,a-,sword-,needs-
 a,mind,needs,books,like,a,sword,needs,a,whetstone
 a-,mind-,needs-,books-,like-,a-,sword-,needs-,whetstone
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////SOLUTION OUTPUT:
+a-,mind-,needs-,books-,like-,a-,sword-,needs-,a-
+a,mind,needs,books,like,a,sword,needs,a,whetstone
+a-,mind-,needs-,books-,like-,a-,sword-,needs-,a-,whetstone
+a-mind-needs-books-like-a-sword-needs-a-whetstone
+///////////////////////////////////////////////////////
 
-//
+
+//Use the every Method to Check that Every Element in an Array Meets a Criteria
+//The 'every' method works with arrays to check if every element passes a particular test. 
+//It returns a Boolean value - 'true' if all values meet the criteria, 'false' if not.
+
+//For example, the following code would check if every element in the 'numbers' array is less than 10:
+
+//    const numbers = [1, 5, 8, 0, 10, 11];
+
+//    numbers.every(function(currentValue) {
+//      return currentValue < 10;
+//    });
+//The 'every' method would return 'false' here.
+
+//Use the 'every' method inside the 'checkPositive' function to check if every element in 'arr' is positive. 
+//The function should return a Boolean value.
 
 
 //UNCHANGED CODE:
 
+//    function checkPositive(arr) {
+//      // Only change code below this line
 
+
+//      // Only change code above this line
+//    }
+
+//    checkPositive([1, 2, 3, -4, 5]);
 
 //CHANGED CODE:
 
