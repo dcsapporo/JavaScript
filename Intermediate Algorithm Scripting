@@ -42,6 +42,113 @@ function sumAll(arr) {
 
 sumAll([1, 4]);
 ////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\2nd Experiment:
+function sumAll(arr) {
+  console.log(arr);
+  const arrClone = [...arr];
+  
+  const lastItem = arrClone.pop();
+ 
+  const invertArr = [];
+  arr.forEach(elementValue => {
+    
+    if (elementValue > lastItem) {
+      invertArr.push(lastItem);
+      invertArr.push(arrClone.shift());
+      return invertArr;
+    }
+  });
+  console.log(invertArr);
+  let difference = [];
+  arr.filter(elementValue => {
+    let largerValue = [];
+    let lowerValue = [];
+    
+    if (elementValue < lastItem) {
+      //console.log(elementValue);
+      lowerValue.push(elementValue);
+      difference = lastItem - lowerValue;
+      return difference;
+    } else if (elementValue > lastItem) {
+      //console.log(elementValue);
+      largerValue.push(elementValue);
+      difference = largerValue - lastItem;
+      return difference;
+    }
+  }, 0);
+  console.log(difference)
+  const newArr = [];
+  
+  return 1;
+}
+
+sumAll([1, 4]);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////3rd Experiment
+function sumAll(arr) {
+  console.log(arr);
+  const arrClone = [...arr];
+
+  const firstItem = arrClone.slice(0,1);
+  console.log(firstItem);
+  const lastItem = arrClone.slice(1);
+  //console.log(lastItem);
+  const invertArr = [];
+  arr.forEach(elementValue => {
+    
+    if (elementValue > lastItem) {
+      invertArr.push(lastItem);
+      invertArr.push(arrClone.shift());
+      return invertArr;
+    }
+  });
+  console.log(invertArr);
+
+  let difference = [];
+  arr.filter(elementValue => {
+    let largerValue = [];
+    let lowerValue = [];
+    
+    if (elementValue < lastItem) {
+      //console.log(elementValue);
+      lowerValue.push(elementValue);
+      difference = lastItem - lowerValue;
+      return difference;
+    } else if (elementValue > lastItem) {
+      //console.log(elementValue);
+      largerValue.push(elementValue);
+      difference = largerValue - lastItem;
+      return difference;
+    }
+  }, 0);
+  console.log(difference)
+  let allNums = [];
+  arr.map(elementValue => {
+    if (difference > firstItem) {
+      let firstItemArr = firstItem.slice();
+      //console.log(lastItem.valueOf());
+      for (let i = firstItemArr.valueOf(); i < lastItem.valueOf(); i++) {
+        //console.log(i);
+        allNums.push(i);
+      };
+    } else if (difference <= firstItem) {
+        let firstItemArr = firstItem.slice();
+        let lastItemArr = lastItem.slice();
+        //console.log(lastItem.valueOf());
+        for (let i = lastItemArr.valueOf(); i < firstItemArr.valueOf(); i++) {
+        //console.log(i);
+        allNums.push(i);
+      };
+    }
+  });
+  console.log(allNums)
+  const newArr = [];
+  
+  return 1;
+}
+
+sumAll([1, 4]);
+////////////////////////////////////////////
 
 //OUTPUT:
 ////////////////1st output
@@ -56,6 +163,22 @@ sumAll([1, 4]);
 [ 5 ]
 [ -5 ]
 [ -5 ]
+/////////////////
+\\\\\\\\\\2nd output
+[ 1, 4 ]
+[]
+3
+\\\\\\\\\\\\\[10, 5] input
+[ 10, 5 ]
+[ 5, 10 ]
+5
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////3rd output
+[ 1, 4 ]
+[ 1 ]
+[]
+3
+[ [ 1 ], 2, 3, [ 1 ], 2, 3 ]
 
 //
 
