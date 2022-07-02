@@ -2760,8 +2760,27 @@ console.log(checkPositive([1, 2, 3, -4, 5]));
 
 //CHANGED CODE:
 
+function add(x) {
+  // Only change code below this line
+  console.log(x);
+  return function(y) {
+    console.log(y);
+    return function(z) {
+      console.log(z);
+      let result = x + y + z;
+      console.log(result);
+      return x + y + z;
+    }
+  }
 
+  // Only change code above this line
+}
+
+add(10)(20)(30);
 
 //OUTPUT:
-
+10
+20
+30
+60
 
