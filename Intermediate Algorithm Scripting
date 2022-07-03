@@ -149,6 +149,170 @@ function sumAll(arr) {
 
 sumAll([1, 4]);
 ////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\4th Variation:
+function sumAll(arr) {
+  console.log(arr);
+//Making a copy of the array to avoid mutations
+  const arrClone = [...arr];
+//Checking the order of elements and sorting them in a new array
+  const arrangedArrClone = arrClone.sort(function(a,b){return a - b});
+  console.log(arrangedArrClone);
+//Extracting the first and last elements 
+  const firstItem = arrangedArrClone.slice(0,1);
+  console.log(firstItem);
+  const lastItem = arrangedArrClone.slice(1);
+  console.log(lastItem);
+//Finding the difference between the two elements
+  let difference = [];
+  arrangedArrClone.filter(elementValue => {
+    let largerValue = [];
+    let lowerValue = [];
+    if (elementValue < lastItem) {
+      //console.log(elementValue);
+      lowerValue.push(elementValue);
+      difference = lastItem - lowerValue;
+      return difference;
+    } else if (elementValue > lastItem) {
+      //console.log(elementValue);//This check is leftover and should have no effect on the code should it be removed, 
+      //since the arrangedArrClone is present
+      largerValue.push(elementValue);
+      difference = largerValue - lastItem;
+      return difference;
+    }
+  }, 0);
+  console.log(difference)
+//Finding the missing values between the given elements
+  let missingNumsArr = [];
+  
+  console.log(missingNumsArr);
+  const newArr = [];  
+  return 1;
+}
+
+sumAll([10, 5]);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////5th Variation
+function sumAll(arr) {
+  console.log(arr);
+//Making a copy of the array to avoid mutations
+  const arrClone = [...arr];
+//Checking the order of elements and sorting them in a new array
+  const arrangedArrClone = arrClone.sort(function(a,b){return a - b});
+  console.log(arrangedArrClone);
+//Extracting the first and last elements 
+  const firstItem = arrangedArrClone.slice(0,1);
+  console.log(firstItem);
+  const lastItem = arrangedArrClone.slice(1);
+  console.log(lastItem);
+//Setting variable to store missing data
+  let missingNumsArr = [];
+//Finding the difference between the two elements
+  let difference = [];
+  arrangedArrClone.filter(elementValue => {
+    let largerValue = [];
+    let lowerValue = [];
+    if (elementValue < lastItem) {
+      //console.log(elementValue);
+      lowerValue.push(elementValue);
+      difference = lastItem - lowerValue;
+      return difference;
+    } else if (elementValue > lastItem) {
+      //console.log(elementValue);//This check is leftover and should have no effect on the code should it be removed, 
+      //since the arrangedArrClone is present
+      largerValue.push(elementValue);
+      difference = largerValue - lastItem;
+      return difference;
+    }
+  }, 0);
+  console.log(difference);
+//Adding missing data value of last item to be added 
+  if (difference != firstItem){
+  missingNumsArr.push(difference);
+  };
+  //console.log(missingNumsArr);
+//Finding the missing values between the given elements
+  
+  arrangedArrClone.map(elementValue => {
+    if (elementValue < difference) {
+      return missingNumsArr.unshift(difference - elementValue);  
+    } if (elementValue === difference) {
+      console.log(missingNumsArr.push(difference + 1));   
+    }; 
+  });
+  
+  console.log(missingNumsArr);
+  const newArr = [];  
+  return 1;
+}
+
+sumAll([1, 4]);
+///////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\6th Variation:
+function sumAll(arr) {
+  console.log(arr);
+//Making a copy of the array to avoid mutations
+  const arrClone = [...arr];
+//Checking the order of elements and sorting them in a new array
+  const arrangedArrClone = arrClone.sort(function(a,b){return a - b});
+  console.log(arrangedArrClone);
+//Extracting the first and last elements 
+  const firstItem = arrangedArrClone.slice(0,1);
+  console.log(firstItem);
+  const lastItem = arrangedArrClone.slice(1);
+  console.log(lastItem);
+//Setting variable to store missing data
+  let missingNumsArr = [];
+//Finding the difference between the two elements
+  let difference = [];
+  arrangedArrClone.filter(elementValue => {
+    let largerValue = [];
+    let lowerValue = [];
+    if (elementValue < lastItem) {
+      //console.log(elementValue);
+      lowerValue.push(elementValue);
+      difference = lastItem - lowerValue;
+      return difference;
+    } else if (elementValue > lastItem) {
+      //console.log(elementValue);//This check is leftover and should have no effect on the code should it be removed, since the arrangedArrClone is present
+      largerValue.push(elementValue);
+      difference = largerValue - lastItem;
+      return difference;
+    }
+  }, 0);
+  console.log(difference);
+//Adding missing data value of last item to be added 
+  if (difference != firstItem){
+  missingNumsArr.push(difference);
+  };
+  //console.log(missingNumsArr);
+//Finding the missing values between the given elements
+  
+  arrangedArrClone.map(elementValue => {
+    if (elementValue < difference) {
+      return missingNumsArr.unshift(difference - elementValue);  
+    } if (elementValue === difference) {
+      console.log(missingNumsArr.push(difference + 1));   
+    }; 
+  });
+  
+  console.log(missingNumsArr);
+  let newArr = [];
+  if (firstItem === 1) {
+    newArr = lastItem * (lastItem + firstItem) / 2 ;
+    return newArr;  
+  };
+  if (firstItem > 1) {
+    newArr = (lastItem * (lastItem + 1) / 2) - (firstItem * (firstItem - 1) / 2)
+  };
+  console.log(newArr);
+   
+  return 1;
+}
+
+sumAll([10, 5]);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
 
 //OUTPUT:
 ////////////////1st output
@@ -179,6 +343,41 @@ sumAll([1, 4]);
 []
 3
 [ [ 1 ], 2, 3, [ 1 ], 2, 3 ]
+///////////////////////////////
+\\\\\\\\\\\\\\\\\4th output
+[ 10, 5 ]
+[ 5, 10 ]
+[ 5 ]
+[ 10 ]
+5
+[]
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////5th output
+[ 1, 4 ]
+[ 1, 4 ]
+[ 1 ]
+[ 4 ]
+3
+[ 2, 3 ]
+////////////////input [10, 5]
+[ 10, 5 ]
+[ 5, 10 ]
+[ 5 ]
+[ 10 ]
+5
+1
+[ 6 ]
+///////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\6th output:
+[ 10, 5 ]
+[ 5, 10 ]
+[ 5 ]
+[ 10 ]
+5
+1
+[ 6 ]
+495
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //
 
