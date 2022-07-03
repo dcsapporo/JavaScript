@@ -432,11 +432,55 @@ sumAll([1, 4]);
 //    diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\1st Attempt
+function diffArray(arr1, arr2) {
+  const newArr = [];
+  console.log(arr1);
+  console.log(arr2);
+//Cloning of arrays
+  let cloneArr1 = [...arr1];
+  console.log(cloneArr1);
+  let cloneArr2 = [...arr2];
+  console.log(cloneArr2);
+//Creating a length array for both
+  let lengthArr = [];
+  const arr1Length = arr1.length;
+  console.log(arr1Length);
+  lengthArr.push(arr1Length);
+  const arr2Length = arr2.length;
+  console.log(arr2Length);
+  lengthArr.push(arr2Length);
+  console.log(lengthArr);
+//Creating the filter to find which is the longer array
+  let longestArr = [];
+    if (arr1Length > arr2Length || arr1Length === arr2Length) {
+      longestArr = cloneArr1.slice();
+      console.log(longestArr)
+    } else if (arr1Length < arr2Length) {
+      longestArr = cloneArr2.slice();
+      console.log(longestArr)
+    };
+  //console.log(longestArr)
+
+  return newArr;
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 
 //OUTPUT:
-
+\\\\\\\\\\\\\\\\\\\\\\\\\1st output:
+[ 1, 2, 3, 5 ]
+[ 1, 2, 3, 4, 5 ]
+[ 1, 2, 3, 5 ]
+[ 1, 2, 3, 4, 5 ]
+4
+5
+[ 4, 5 ]
+[ 1, 2, 3, 4, 5 ]
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //
 
