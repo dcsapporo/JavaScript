@@ -467,6 +467,132 @@ function diffArray(arr1, arr2) {
 
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////Attempt 2
+function diffArray(arr1, arr2) {
+  const newArr = [];
+  console.log(arr1);
+  console.log(arr2);
+//Cloning of arrays
+  let cloneArr1 = [...arr1];
+  console.log(cloneArr1);
+  let cloneArr2 = [...arr2];
+  console.log(cloneArr2);
+//Creating a length array for both
+  let lengthArr = [];
+  const arr1Length = arr1.length;
+  console.log(arr1Length);
+  lengthArr.push(arr1Length);
+  const arr2Length = arr2.length;
+  console.log(arr2Length);
+  lengthArr.push(arr2Length);
+  console.log(lengthArr);
+//Creating the filter to find which is the longer array
+  let longestArr = [];
+  let shortestArr = [];
+  let equalLengthArr1 = [];
+  let equalLengthArr2 = [];
+    if (arr1Length > arr2Length) {
+      longestArr = cloneArr1.slice();
+      console.log(longestArr);
+      shortestArr = cloneArr2.slice();
+      console.log(shortestArr);
+    } else if (arr1Length < arr2Length) {
+      longestArr = cloneArr2.slice();
+      console.log(longestArr);
+      shortestArr = cloneArr1.slice();
+      console.log(shortestArr);
+    } else if (arr1Length === arr2Length) {
+      equalLengthArr1 = cloneArr1.slice();
+      console.log(equalLengthArr1);
+      equalLengthArr2 = cloneArr2.slice();
+      console.log(equalLengthArr2);
+    };
+  //console.log(longestArr);
+
+  return newArr;
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+//////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\Attempt 3
+function diffArray(arr1, arr2) {
+  const newArr = [];
+  //console.log(arr1);
+  //console.log(arr2);
+//Cloning of arrays
+  let cloneArr1 = [...arr1];
+  //console.log(cloneArr1);
+  let cloneArr2 = [...arr2];
+  //console.log(cloneArr2);
+//Creating a length array for both
+  let lengthArr = [];
+  const arr1Length = arr1.length;
+  //console.log(arr1Length);
+  lengthArr.push(arr1Length);
+  const arr2Length = arr2.length;
+  //console.log(arr2Length);
+  lengthArr.push(arr2Length);
+  //console.log(lengthArr);
+//Creating the filter to find which is the longer array
+  let longestArr = [];
+  let shortestArr = [];
+  let equalLengthArr1 = [];
+  let equalLengthArr2 = [];
+    if (arr1Length > arr2Length) {
+      longestArr = cloneArr1.slice();
+      //console.log(longestArr);
+      shortestArr = cloneArr2.slice();
+      //console.log(shortestArr);
+    } else if (arr1Length < arr2Length) {
+      longestArr = cloneArr2.slice();
+      //console.log(longestArr);
+      shortestArr = cloneArr1.slice();
+      //console.log(shortestArr);
+    } else if (arr1Length === arr2Length) {
+      equalLengthArr1 = cloneArr1.slice();
+      //console.log(equalLengthArr1);
+      equalLengthArr2 = cloneArr2.slice();
+      //console.log(equalLengthArr2);
+    };
+  console.log(longestArr);
+//Setting symmetrical difference arrays
+  let preSymDifArr1 = [];
+  let preSymDifArr2 = [];
+  if (cloneArr1 === longestArr) {
+    preSymDifArr1 = longestArr.slice();
+    console.log(preSymDifArr1);
+    preSymDifArr2 = shortestArr.slice();
+    console.log(preSymDifArr2);
+  } else if (cloneArr2 === longestArr) {
+    preSymDifArr1 = longestArr.slice();
+    console.log(preSymDifArr1);
+    preSymDifArr2 = shortestArr.slice();
+    console.log(preSymDifArr2);
+  } else if (arr1Length === arr2Length) {
+    preSymDifArr1 = longestArr.slice();
+    console.log(preSymDifArr1);
+    preSymDifArr2 = shortestArr.slice();
+    console.log(preSymDifArr2);
+  };
+//Filter out difference
+  let symDif = longestArr.filter(elementValue => {
+    let shortDif = shortestArr.filter(shortItem => {
+      if (elementValue === shortItem) {
+        console.log(shortItem);
+        console.log(elementValue);
+        newArr.push(elementValue);
+        
+      };  
+      return shortDif;
+    }); 
+    return symDif;
+  });console.log(newArr);
+
+  return newArr;
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 
@@ -481,6 +607,31 @@ diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 [ 4, 5 ]
 [ 1, 2, 3, 4, 5 ]
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////2nd output:
+[ 1, 2, 3, 5 ]
+[ 1, 2, 3, 4, 5 ]
+[ 1, 2, 3, 5 ]
+[ 1, 2, 3, 4, 5 ]
+4
+5
+[ 4, 5 ]
+[ 1, 2, 3, 4, 5 ]
+[ 1, 2, 3, 5 ]
+///////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\3rd output:
+[ 1, 2, 3, 4, 5 ]
+1
+1
+2
+2
+3
+3
+5
+5
+[ 1, 2, 3, 5 ]
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
 
 //
 
