@@ -1023,6 +1023,13 @@ function destroyer(arr) {
 
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 //////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\Variation code: replace for loop
+bsearchArr.forEach(positionToEliminate => {
+   if (targets.indexOf(positionToEliminate) === -1){
+        remainingElements.push(positionToEliminate);
+    };
+});
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
 [ [ 1, 2, 3, 1, 2, 3 ], 2, 3 ]
@@ -1055,11 +1062,37 @@ destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 //    whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\1st SOLUTION CODE
+function whatIsInAName(collection, source) {
+  const resultArr = [];
+  // Only change code below this line
+  let searchArr = collection.slice();
+  let target = Object.values(arguments).splice(1);
 
+  collection.forEach(searchArr => {
+    //console.log(searchArr, Object.keys(source));
+    for (let key in source) {
+      if (searchArr[key] === source[key]) {
+        console.log(searchArr);
+        resultArr.push(searchArr);
+      };
+    };
+  });
 
+  // Only change code above this line
+  return resultArr;
+}
+
+let result = whatIsInAName([{ "apple": 1, "bat": 2 }, { "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "bat": 2 });
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
-
+[ { apple: 1, bat: 2 },
+  { apple: 1, bat: 2 },
+  { bat: 2 },
+  { apple: 1, bat: 2, cookie: 2 },
+  { apple: 1, bat: 2, cookie: 2 } ]
 
 //
 
