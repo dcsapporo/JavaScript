@@ -774,7 +774,119 @@ function diffArray(arr1, arr2) {
 
 diffArray([1, "calf", 3, "piglet"], [1, "calf", 3, 4]);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////3rd SOLUTION:
+function diffArray(arr1, arr2) {
+  const newArr = [];
+  //console.log(arr1);
+  //console.log(arr2);
+//Cloning of arrays
+  let cloneArr1 = [...arr1];
+  //console.log(cloneArr1);
+  let cloneArr2 = [...arr2];
+  //console.log(cloneArr2);
+//Creating a length array for both
+  let lengthArr = [];
+  const arr1Length = arr1.length;
+  //console.log(arr1Length);
+  lengthArr.push(arr1Length);
+  const arr2Length = arr2.length;
+  //console.log(arr2Length);
+  lengthArr.push(arr2Length);
+  //console.log(lengthArr);
+//Creating the filter to find which is the longer array
+  let longestArr = [];
+  let shortestArr = [];
+  let equalLengthArrA = [];
+  let equalLengthArrB = [];
+    if (arr1Length > arr2Length) {
+      longestArr = cloneArr1.slice();
+      //console.log(longestArr);
+      shortestArr = cloneArr2.slice();
+      //console.log(shortestArr);
+    } else if (arr1Length < arr2Length) {
+      longestArr = cloneArr2.slice();
+      //console.log(longestArr);
+      shortestArr = cloneArr1.slice();
+      //console.log(shortestArr);
+    } else if (arr1Length === arr2Length) {
+      equalLengthArrA = cloneArr1.slice();
+      //console.log(equalLengthArr1);
+      equalLengthArrB = cloneArr2.slice();
+      //console.log(equalLengthArr2);
+    };
+  //console.log(longestArr);
+  //console.log(equalLengthArrA);
+  //console.log(equalLengthArrB);
+  let includeResultA = [];
+  let includeResultB = [];
+  console.log(includeResultA = equalLengthArrA.includes(equalLengthArrB));
+  console.log(includeResultB = equalLengthArrB.includes(includeResultA));
+//Setting symmetrical difference arrays
+  let preSymDifArrA = [];
+  let preSymDifArrB = [];
+  if (cloneArr1 === longestArr) {
+    preSymDifArrA = longestArr.slice();
+    //console.log(preSymDifArrA);
+    preSymDifArrB = shortestArr.slice();
+    //console.log(preSymDifArrB);
+  } else if (cloneArr2 === longestArr) {
+    preSymDifArrA = longestArr.slice();
+    //console.log(preSymDifArrA);
+    preSymDifArrB = shortestArr.slice();
+    //console.log(preSymDifArrB);
+  } else if (arr1Length === arr2Length) {
+    preSymDifArrA = [...equalLengthArrA];
+    console.log(preSymDifArrA);
+    preSymDifArrB = equalLengthArrB.slice();
+    console.log(preSymDifArrB);
+  };
+//Filter out difference
+  let symDifLong = longestArr.filter(elementValue => {
+    
+      if (shortestArr.includes(elementValue) === false ) {
+        //console.log(shortestArr);
+        //console.log(elementValue);
+        newArr.push(elementValue);
+        symDifLong = newArr;
+        return symDifLong;
+    };    
+  });
+  let symDifShort = shortestArr.filter(elementValue => {
+      if (longestArr.includes(elementValue) === false && newArr.length !== 1 || newArr === []) {
+        //console.log(longestArr);
+        //console.log(elementValue);
+        newArr.push(elementValue);
+        symDifShort = newArr;
+        return symDifShort;
+      };
+  });
+  let symDifEqualA = equalLengthArrA.filter(elementValue => {
+    if (preSymDifArrB.includes(elementValue) === false) {
+      console.log(equalLengthArrB);
+      console.log(elementValue);
+      newArr.push(elementValue);
+      symDifEqualA = newArr;
+      return symDifEqualA;
+    };
+  });
+  let symDifEqualB = equalLengthArrB.filter(elementValue => {
+    if (preSymDifArrA.includes(elementValue) === false) {
+      console.log(equalLengthArrB);
+      console.log(elementValue);
+      newArr.push(elementValue);
+      symDifEqualB = newArr;
+      return symDifEqualB;
+    };
+  });
+  //console.log(symDifLong);
+  //console.log(symDifShort);
+  console.log(newArr);
 
+  return newArr;
+}
+
+diffArray([1, "calf", 3, "piglet"], [1, "calf", 3, 4]);
+/////////////////////////////////////////////////////////////
 
 //OUTPUT:
 \\\\\\\\\\\\\\\\\\\\\\\\\1st output:
@@ -836,6 +948,187 @@ piglet
 []
 [ 1, 'calf', 3, 'piglet' ]
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////3rd SOLUTION OUTPUT:
+false
+false
+[ 1, 'calf', 3, 'piglet' ]
+[ 1, 'calf', 3, 4 ]
+[ 1, 'calf', 3, 4 ]
+piglet
+[ 1, 'calf', 3, 4 ]
+4
+[ 'piglet', 4 ]
+//////////////////////////////////////////////////////////
+
+//Seek and Destroy
+//You will be provided with an initial array (the first argument in the 'destroyer' function), followed by one or more arguments. 
+//Remove all elements from the initial array that are of the same value as these arguments.
+
+//Note: You have to use the 'arguments' object.
+
+
+//    //UNCHANGED CODE:
+
+//    function destroyer(arr) {
+//      return arr;
+//    }
+
+//    destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+//CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\1st Experimental code:
+function destroyer(arr) {
+  let remainingElements = [];
+  console.log(Object.values(arguments));
+  let targets = Object.values(arguments).splice(1);
+  console.log(targets);
+  let searchArr = arr.slice();
+  console.log(searchArr);
+
+  for (let i = 0; i < searchArr.length; i ++){
+    console.log(searchArr[i]);
+    if (searchArr[i] === targets[i]){
+      
+    }
+  }
+  let removeElements = searchArr.filter(elementValue => {
+   
+  });
+  return arr;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////////SOLUTION CODE:
+function destroyer(arr) {
+  let remainingElements = [];
+  console.log(Object.values(arguments));
+  let targets = Object.values(arguments).splice(1);
+  console.log(targets);
+  let searchArr = arr.slice();
+  console.log(searchArr);
+
+  for (let i = 0; i < searchArr.length; i ++){
+    let positionToEliminate = searchArr[i];
+    if (targets.indexOf(positionToEliminate) === -1){
+        remainingElements.push(positionToEliminate);
+    };
+  };
+  /*let removeElements = searchArr.filter(elementValue => {
+   
+  });*/
+  console.log(remainingElements);
+  return remainingElements;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+//////////////////////////////////////////////////
+
+//OUTPUT:
+[ [ 1, 2, 3, 1, 2, 3 ], 2, 3 ]
+[ 2, 3 ]
+[ 1, 2, 3, 1, 2, 3 ]
+[ 1, 1 ]
+
+//Wherefore art thou
+//Make a function that looks through an array of objects (first argument) and 
+//    returns an array of all objects that have matching name and value pairs (second argument). 
+//Each name and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
+
+//For example, if the first argument is 
+//    '[{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }]', 
+//    and the second argument is '{ last: "Capulet" }', then you must return the third object from the array (the first argument), 
+//    because it contains the name and its value, that was passed on as the second argument.
+
+
+//UNCHANGED CODE:
+
+//    function whatIsInAName(collection, source) {
+//      const arr = [];
+//      // Only change code below this line
+
+
+//      // Only change code above this line
+//      return arr;
+//    }
+
+//    whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+//CHANGED CODE:
+
+
+
+//OUTPUT:
+
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
+
+
+
+//OUTPUT:
+
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
+
+
+
+//OUTPUT:
+
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
+
+
+
+//OUTPUT:
+
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
+
+
+
+//OUTPUT:
+
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
+
+
+
+//OUTPUT:
 
 
 //
