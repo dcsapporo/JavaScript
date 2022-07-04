@@ -1024,7 +1024,7 @@ function destroyer(arr) {
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 //////////////////////////////////////////////////
 \\\\\\\\\\\\\\\\\\\\Variation code: replace for loop
-bsearchArr.forEach(positionToEliminate => {
+searchArr.forEach(positionToEliminate => {
    if (targets.indexOf(positionToEliminate) === -1){
         remainingElements.push(positionToEliminate);
     };
@@ -1086,6 +1086,68 @@ function whatIsInAName(collection, source) {
 let result = whatIsInAName([{ "apple": 1, "bat": 2 }, { "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "bat": 2 });
 console.log(result);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////////////////////2nd SOLUTION
+function whatIsInAName(collection, source) {
+  const resultArr = [];
+  // Only change code below this line
+  let searchArr = collection.slice();
+  let target = Object.values(arguments).splice(1);
+
+  collection.forEach(searchArr => {
+    let index = 0;
+    //console.log(Object.keys(searchArr), Object.keys(source), target.indexOf(searchArr));
+    for (let key in source) {
+      if (searchArr[key] === source[key]) {
+      index += 1;
+      };
+      console.log(index, searchArr[key], source[key], Object.keys(source).length);
+      if (index === Object.keys(source).length) {
+        //console.log(searchArr);
+        resultArr.push(searchArr);
+      } 
+      /*if (searchArr[key] === source[key]) {
+        //console.log(searchArr);
+        resultArr.push(searchArr);
+      }*/    
+    };  
+  });
+
+  // Only change code above this line
+  return resultArr;
+}
+
+let result = whatIsInAName([{"a": 1, "b": 2, "c": 3}], {"a": 1, "b": 9999, "c": 3});
+console.log(result);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\SOLUTION CODE:
+function whatIsInAName(collection, source) {
+  const resultArr = [];
+  // Only change code below this line
+  let searchArr = collection.slice();
+  //let target = Object.values(arguments).splice(1);
+
+  collection.forEach(searchArr => {
+    let index = 0;
+    //console.log(Object.keys(searchArr), Object.keys(source), target.indexOf(searchArr));
+    for (let key in source) {
+      if (searchArr[key] === source[key]) {
+      index += 1;
+      };
+      console.log(index, searchArr[key], source[key], Object.keys(source).length);
+      if (index === Object.keys(source).length) {
+        //console.log(searchArr);
+        resultArr.push(searchArr);
+      };  
+    };  
+  });
+
+  // Only change code above this line
+  return resultArr;
+}
+
+let result = whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 });
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
 [ { apple: 1, bat: 2 },
@@ -1093,13 +1155,27 @@ console.log(result);
   { bat: 2 },
   { apple: 1, bat: 2, cookie: 2 },
   { apple: 1, bat: 2, cookie: 2 } ]
+//////////////////////////////////////////SOLUTION OUTPUT:
+1 1 1 2
+1 undefined 2 2
+1 1 1 2
+1 undefined 2 2
+1 1 1 2
+2 2 2 2
+[ { apple: 1, bat: 2, cookie: 2 } ]
+//////////////////////////////////////////////////////////
 
-//
+//Spinal Tap Case
+//Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
 
 
 //UNCHANGED CODE:
 
+//    function spinalCase(str) {
+//      return str;
+//    }
 
+//    spinalCase('This Is Spinal Tap');
 
 //CHANGED CODE:
 
