@@ -672,6 +672,108 @@ function diffArray(arr1, arr2) {
 
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 ///////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\2nd SOLUTION;
+function diffArray(arr1, arr2) {
+  const newArr = [];
+  //console.log(arr1);
+  //console.log(arr2);
+//Cloning of arrays
+  let cloneArr1 = [...arr1];
+  //console.log(cloneArr1);
+  let cloneArr2 = [...arr2];
+  //console.log(cloneArr2);
+//Creating a length array for both
+  let lengthArr = [];
+  const arr1Length = arr1.length;
+  //console.log(arr1Length);
+  lengthArr.push(arr1Length);
+  const arr2Length = arr2.length;
+  //console.log(arr2Length);
+  lengthArr.push(arr2Length);
+  //console.log(lengthArr);
+//Creating the filter to find which is the longer array
+  let longestArr = [];
+  let shortestArr = [];
+  let equalLengthArrA = [];
+  let equalLengthArrB = [];
+    if (arr1Length > arr2Length) {
+      longestArr = cloneArr1.slice();
+      //console.log(longestArr);
+      shortestArr = cloneArr2.slice();
+      //console.log(shortestArr);
+    } else if (arr1Length < arr2Length) {
+      longestArr = cloneArr2.slice();
+      //console.log(longestArr);
+      shortestArr = cloneArr1.slice();
+      //console.log(shortestArr);
+    } else if (arr1Length === arr2Length) {
+      equalLengthArrA = cloneArr1.slice();
+      //console.log(equalLengthArr1);
+      equalLengthArrB = cloneArr2.slice();
+      //console.log(equalLengthArr2);
+    };
+  console.log(longestArr);
+  console.log(equalLengthArrA);
+  console.log(equalLengthArrB);
+  let includeResult = [];
+  console.log(includeResult = equalLengthArrA.includes(equalLengthArrB))
+//Setting symmetrical difference arrays
+  let preSymDifArr1 = [];
+  let preSymDifArr2 = [];
+  if (cloneArr1 === longestArr) {
+    preSymDifArr1 = longestArr.slice();
+    console.log(preSymDifArr1);
+    preSymDifArr2 = shortestArr.slice();
+    console.log(preSymDifArr2);
+  } else if (cloneArr2 === longestArr) {
+    preSymDifArr1 = longestArr.slice();
+    console.log(preSymDifArr1);
+    preSymDifArr2 = shortestArr.slice();
+    console.log(preSymDifArr2);
+  } else if (arr1Length === arr2Length) {
+    preSymDifArr1 = longestArr.slice();
+    console.log(preSymDifArr1);
+    preSymDifArr2 = shortestArr.slice();
+    console.log(preSymDifArr2);
+  };
+//Filter out difference
+  let symDifLong = longestArr.filter(elementValue => {
+    
+      if (shortestArr.includes(elementValue) === false ) {
+        //console.log(shortestArr);
+        //console.log(elementValue);
+        newArr.push(elementValue);
+        symDifLong = newArr;
+        return symDifLong;
+    };    
+  });
+  let symDifShort = shortestArr.filter(elementValue => {
+      if (longestArr.includes(elementValue) === false && newArr.length !== 1 || newArr === []) {
+        console.log(longestArr);
+        console.log(elementValue);
+        newArr.push(elementValue);
+        symDifShort = newArr;
+        return symDifShort;
+      };
+  });
+  let symDifEqualA = equalLengthArrA.filter(elementValue => {
+    if (includeResult === false) {
+      console.log(equalLengthArrB);
+      console.log(elementValue);
+      newArr.push(elementValue);
+      symDifEqualA = newArr;
+      return symDifEqualA;
+    };
+  });
+  console.log(symDifLong);
+  console.log(symDifShort);
+  console.log(newArr);
+
+  return newArr;
+}
+
+diffArray([1, "calf", 3, "piglet"], [1, "calf", 3, 4]);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 //OUTPUT:
@@ -715,6 +817,25 @@ diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 [ 4 ]
 [ 4 ]
 ///////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\2nd SOLUTION OUTPUT:
+[]
+[ 1, 'calf', 3, 'piglet' ]
+[ 1, 'calf', 3, 4 ]
+false
+[]
+[]
+[ 1, 'calf', 3, 4 ]
+1
+[ 1, 'calf', 3, 4 ]
+calf
+[ 1, 'calf', 3, 4 ]
+3
+[ 1, 'calf', 3, 4 ]
+piglet
+[]
+[]
+[ 1, 'calf', 3, 'piglet' ]
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 //
