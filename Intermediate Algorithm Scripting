@@ -1368,7 +1368,49 @@ function translatePigLatin(str) {
 
 translatePigLatin("consonant");
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////4th Analysis start of Solution
+function translatePigLatin(str) {
+  let pigLatinTarget = str.slice();
+  console.log(pigLatinTarget);
+  console.log(str.match(/(^[aeiou])/));
+  console.log(str.match(/(^[^aeiou])/));
+  let singleConsonant = {};
+  console.log(str.match(/(^[\w])([\w])([aeiou])/));
+  let clusterMatch = {};
+  console.log(str.match(/(^[\w])([\w])([^aeiou])/));
+  let noVowel = {};
+  console.log(str.match(/(^[\w])([\w]+)([aeiou])/));
+  let multiConsonant = {};
+  console.log(str.replace(/(^[^aeiou])/, ""));
+  
+  let firstLetter = {};
+  
 
+  
+      if (pigLatinTarget.match(/(^[aeiou])/) !== null && pigLatinTarget.match(/(^[\w])([\w])([aeiou])/) === null) {
+        console.log(pigLatinTarget);
+        console.log(pigLatinTarget.concat("way"));
+        return pigLatinTarget.concat("way");
+      } else if (pigLatinTarget.match(/(^[^aeiou])/) !== null && pigLatinTarget.match(/(^[\w])([\w])([aeiou])/) === null){
+        console.log(pigLatinTarget);
+        console.log(firstLetter = str.slice(0,1));
+        console.log(firstLetter.concat("ay"));
+        console.log(pigLatinTarget.slice(1));
+        return pigLatinTarget.slice(1).concat(firstLetter.concat("ay"));
+      } else if (pigLatinTarget.match(/(^[\w{2}])([aeiou])/) !== null && pigLatinTarget.match(/(^[\w])([\w])([^aeiou])/) === null) {
+        console.log(pigLatinTarget);
+      } else if (pigLatinTarget(/(^[\w{1, 4}])([aeiou])/) !== null && pigLatinTarget.match(/(^[\w])([\w]{1})([aeiou])/) === null) {
+        console.log(pigLatinTarget);
+      }
+ 
+
+  //"consonant" 
+  return str;
+}
+
+let result = translatePigLatin("consonant");
+console.log(result);
+/////////////////////////////////////////////////////////////////////////
 
 //OUTPUT:
 
