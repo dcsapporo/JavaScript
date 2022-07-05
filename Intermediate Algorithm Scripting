@@ -1237,6 +1237,47 @@ function spinalCase(str) {
 let result = spinalCase("The_Andy_Griffith_Show");
 console.log(result);
 //////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\SOLUTION CODE:
+function spinalCase(str) {
+  let strClone = str.slice();
+  //console.log(strClone);
+  //console.log(strClone.length);
+  let preSpinalCaseCamelStr = {};
+  let preSpinalCaseUnderscoreStr = {};
+  let spinalCaseStr = {};
+
+  let hypenHandler = strClone.replace(/([a-z])([\W])/g, "$1 ");
+  //console.log(hypenHandler);
+
+
+  let camelCaseHandler = strClone.replace(/([a-z])([A-Z])/g, "$1 $2");
+  //console.log(camelCaseHandler.length);
+  
+ 
+   if (strClone.length !== camelCaseHandler.length) {
+      let lowerCaseHandler = camelCaseHandler.toLowerCase();
+      preSpinalCaseCamelStr = lowerCaseHandler.slice().replace(/([a-z])([\s])/g, "$1-");
+      //console.log(lowerCaseHandler);
+      //console.log(preSpinalCaseCamelStr);
+      spinalCaseStr = preSpinalCaseCamelStr.slice();
+      return spinalCaseStr;
+   } else if (strClone.length === camelCaseHandler.length){
+      let underscoreCaseHandler = strClone.replace(/([a-z])(["_"])/g, "$1 ");
+      //console.log(underscoreCaseHandler);
+      let lowerCaseHandler = underscoreCaseHandler.toLowerCase();
+      preSpinalCaseUnderscoreStr = lowerCaseHandler.slice().replace(/([a-z])([\s])/g, "$1-");
+      //console.log(lowerCaseHandler);
+      //console.log(preSpinalCaseUnderscoreStr);
+      spinalCaseStr = preSpinalCaseUnderscoreStr.slice();
+      return spinalCaseStr;
+   };
+  
+  return spinalCaseStr;
+}
+
+let result = spinalCase("This Is Spinal Tap");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  
 //OUTPUT:
 \\\\\\\\\\\\\\\\\\\\\ONE
@@ -1252,16 +1293,81 @@ The Andy Griffith Show
 the andy griffith show
 The_Andy_Griffith_Show
 ////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\SOLUTION OUTPUT:
+this-is-spinal-tap
+FOR "thisIsSpinalTap" this-is-spinal-tap
+FOR "The_Andy_Griffith_Show" the-andy-griffith-show
+FOR "Teletubbies say Eh-oh"  teletubbies-say-eh-oh
+FOR "AllThe-small Things"  all-the-small-things
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-//
+//Pig Latin
+//Pig Latin is a way of altering English Words. 
+//The rules are as follows:
+
+//- If a word begins with a consonant, take the first consonant or consonant cluster, move it to the end of the word, and add 'ay' to it.
+
+//- If a word begins with a vowel, just add 'way' at the end.
+
+//Translate the provided string to Pig Latin. 
+//Input strings are guaranteed to be English words in all lowercase.
 
 
 //UNCHANGED CODE:
 
+//  function translatePigLatin(str) {
+//    return str;
+//  }
 
+//  translatePigLatin("consonant");
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\1st Analysis with regular expressions
+function translatePigLatin(str) {
+  console.log(str.match(/(^[aeiou])/));
+  console.log(str.match(/(^[^aeiou])/));
+  console.log(str.match(/(^[\w])([\w])([aeiou])/));
+  console.log(str.match(/(^[\w])([\w])([^aeiou])/));
+  console.log(str.match(/(^[\w])([\w]+)([aeiou])/));
+  //"consonant"
+  return str;
+}
 
+translatePigLatin("schwartz");
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////////2nd Analysis
+function translatePigLatin(str) {
+  console.log(str.match(/(^[aeiou])/));
+  console.log(str.match(/(^[^aeiou])/));
+  console.log(str.match(/(^[\w])([\w])([aeiou])/));
+  console.log(str.match(/(^[\w])([\w])([^aeiou])/));
+  console.log(str.match(/(^[\w])([\w]+)([aeiou])/));
+  console.log(str.replace(/(^[^aeiou])/, ""));
+  console.log(str.concat("way"));
+  //"consonant"
+  return str;
+}
+
+translatePigLatin("eight");
+///////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\3rd Analysis
+function translatePigLatin(str) {
+  console.log(str.match(/(^[aeiou])/));
+  console.log(str.match(/(^[^aeiou])/));
+  console.log(str.match(/(^[\w])([\w])([aeiou])/));
+  console.log(str.match(/(^[\w])([\w])([^aeiou])/));
+  console.log(str.match(/(^[\w])([\w]+)([aeiou])/));
+  console.log(str.replace(/(^[^aeiou])/, ""));
+  console.log(str.concat("way"));
+  let firstLetter = {};
+  console.log(firstLetter = str.slice(0,1));
+  console.log(firstLetter.concat("ay"));
+  //"consonant" 
+  return str;
+}
+
+translatePigLatin("consonant");
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 //OUTPUT:
