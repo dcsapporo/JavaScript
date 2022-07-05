@@ -1178,11 +1178,80 @@ console.log(result);
 //    spinalCase('This Is Spinal Tap');
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\1st Part of SOLUTION CODE:
+function spinalCase(str) {
+  let strClone = str.slice();
+  console.log(strClone);
 
+  let camelCaseHandler = strClone.replace(/([a-z])([A-Z])/g, "$1 $2");
+   //return camelCaseHandler;
+  let underscoreCaseHandler = strClone.replace(/([a-z])(["_"])/g, "$1 ");
+   return underscoreCaseHandler;
+  let hypenHandler = strClone.replace(/([a-z])([\W])/g, "$1 ");
+   //return hypenHandler;
+  
+  
+  return str;
+}
 
+let result = spinalCase("The_Andy_Griffith_Show");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////////////////2nd Part of SOLUTION CODE:
+function spinalCase(str) {
+  let strClone = str.slice();
+  console.log(strClone);
+  console.log(strClone.length);
+  let preSpinalCaseCamelStr = {};
+  let preSpinalCaseUnderscoreStr = {};
 
+  let camelCaseHandler = strClone.replace(/([a-z])([A-Z])/g, "$1 $2");
+  console.log(camelCaseHandler.length);
+  let hypenHandler = strClone.replace(/([a-z])([\W])/g, "$1 ");
+  console.log(hypenHandler);
+   if (strClone.length !== camelCaseHandler.length) {
+      let lowerCaseHandler = camelCaseHandler.toLowerCase();
+      preSpinalCaseCamelStr = lowerCaseHandler.slice();
+      console.log(lowerCaseHandler);
+      console.log(preSpinalCaseCamelStr);
+   } else if (strClone.length === camelCaseHandler.length){
+      let underscoreCaseHandler = strClone.replace(/([a-z])(["_"])/g, "$1 ");
+      console.log(underscoreCaseHandler);
+      let lowerCaseHandler = underscoreCaseHandler.toLowerCase();
+      preSpinalCaseUnderscoreStr = underscoreCaseHandler.slice();
+      console.log(lowerCaseHandler);
+   }
+  
+
+   //return hypenHandler;
+  /*if (strClone.length === camelCaseHandler.length) {
+    let lowerCaseHandler = strClone.toLowerCase();
+    console.log(lowerCaseHandler);
+  };*/
+    
+   
+  
+  return str;
+}
+
+let result = spinalCase("The_Andy_Griffith_Show");
+console.log(result);
+//////////////////////////////////////////////////////////////////
+ 
 //OUTPUT:
-
+\\\\\\\\\\\\\\\\\\\\\ONE
+The_Andy_Griffith_Show
+The Andy Griffith Show
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////TWO
+The_Andy_Griffith_Show
+22
+22
+The_Andy_Griffith_Show
+The Andy Griffith Show
+the andy griffith show
+The_Andy_Griffith_Show
+////////////////////////////////
 
 //
 
