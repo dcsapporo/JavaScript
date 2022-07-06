@@ -1513,9 +1513,77 @@ function myReplace(str, before, after) {
 
 myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//////////////////////////////////////1st SOLUTION CODE:
+function myReplace(str, before, after) {
+  //console.log(arguments);
+  //console.log(Object.values(arguments)[0]);
+  //console.log(Object.values(arguments).slice(1));
+  let wordsToSwap = Object.values(arguments).slice(1);
+  let strToChange = Object.values(arguments)[0];
+  let arrToChangeIndividualWords = strToChange.split(" ");
+  //console.log(strToChangeIndividualWords);, Object.keys(wordsToSwap), Object.keys(strToChangeIndividualWords[i])
+  let strToChangeIndividualWords = {};
+  let newSentence = {};
+
+  for (let i = 0; i < arrToChangeIndividualWords.length; i++) {
+    if (wordsToSwap[0] === arrToChangeIndividualWords[i]) {
+      console.log(arrToChangeIndividualWords[i], wordsToSwap);
+      strToChangeIndividualWords = arrToChangeIndividualWords.splice([i], 1, wordsToSwap[1]).slice().toString();
+      console.log(strToChangeIndividualWords)
+      newSentence = arrToChangeIndividualWords.slice();
+      console.log(newSentence.toString().replace(/([\W])/g, " "));
+    }
+  }
+  return str;
+}
+
+let result = myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
+console.log(result);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\2nd SOLUTION CODE:
+function myReplace(str, before, after) {
+  //console.log(arguments);
+  //console.log(Object.values(arguments)[0]);
+  //console.log(Object.values(arguments).slice(1));
+  let wordsToSwap = Object.values(arguments).slice(1);
+  let strToChange = Object.values(arguments)[0];
+  let arrToChangeIndividualWords = strToChange.split(" ");
+  //console.log(strToChangeIndividualWords);, Object.keys(wordsToSwap), Object.keys(strToChangeIndividualWords[i]) .toString()
+  let strToChangeIndividualWords = {};
+  let newSentence = {};
+  let firstLetter = {};
+  //console.log(Object.values(wordsToSwap[0])[0].match(/^([A-Z])/));
+  //console.log(Object.values(wordsToSwap[1])[0].match(/^([A-Z])/));
+  if (Object.values(wordsToSwap[0])[0].match(/^([A-Z])/) !== null && Object.values(wordsToSwap[1])[0].match(/^([A-Z])/) === null) {
+     firstLetter = wordsToSwap[1].toUpperCase().split("")[0];
+      console.log(firstLetter);
+      console.log(wordsToSwap[1].replace(/^([\w])/, firstLetter));
+  }
+  
+
+  for (let i = 0; i < arrToChangeIndividualWords.length; i++) {
+    if (wordsToSwap[0] === arrToChangeIndividualWords[i]) {
+      console.log(arrToChangeIndividualWords[i], wordsToSwap);
+      strToChangeIndividualWords = arrToChangeIndividualWords.splice([i], 1, wordsToSwap[1]).slice().toString();
+      console.log(strToChangeIndividualWords)
+      newSentence = arrToChangeIndividualWords.slice();
+      console.log(newSentence.toString().replace(/([\W])/g, " "));
+    }
+  }
+  return newSentence.toString().replace(/([\W])/g, " ");
+}
+//"A quick brown fox jumped over the lazy dog", "jumped", "leaped"  .replace(/^([\w])/, firstLetter))
+let result = myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
-
+\\\\\\\\\\\\\\\\\\\1st Solution:
+jumped [ 'jumped', 'leaped' ]
+jumped
+A quick brown fox leaped over the lazy dog
+A quick brown fox jumped over the lazy dog
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //
 
