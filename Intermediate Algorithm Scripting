@@ -1495,8 +1495,24 @@ rhythmay
 //    myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\1st Analysis using 'Object' and 'arguments' to evaluate data
+function myReplace(str, before, after) {
+  //console.log(arguments);
+  //console.log(Object.values(arguments)[0]);
+  //console.log(Object.values(arguments).slice(1));
+  let wordsToSwap = Object.values(arguments).slice(1);
+  let strToChange = Object.values(arguments)[0];
+  let strToChangeIndividualWords = strToChange.split(" ");
+  //console.log(strToChangeIndividualWords);
 
+  for (let i = 0; i < strToChangeIndividualWords.length; i++) {
+    console.log(strToChangeIndividualWords[i]);
+  }
+  return str;
+}
 
+myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
 
