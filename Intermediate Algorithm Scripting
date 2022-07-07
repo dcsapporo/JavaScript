@@ -1885,10 +1885,129 @@ ATCGA
 //    fearNotLetter("abce");
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\1st Analysis
+function fearNotLetter(str) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+  //console.log(Object.keys(alphabet));
+  let letterRange = str.slice().split("");
+  console.log(letterRange);
+  let missingLetter = [];
+  for (let i = 0; i < alphabet.length; i++) {
+    /*if (letterRange[i] !== alphabet[i]) {
+      console.log(alphabet[i])
+    }*/
+    if (letterRange[i] === alphabet[i]) {
+      console.log(alphabet[i]);
+      console.log(alphabet[i += 1]);
+      missingLetter.push(alphabet[i += 2]);
+      console.log(missingLetter.toString());
+    }
+  }
+  return str;
+}
 
+fearNotLetter("abce");
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////2nd Analysis
+function fearNotLetter(str) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+  //console.log(Object.keys(alphabet));
+  let letterRange = str.slice().split("");
+  
+  console.log(letterRange);
+  let missingLetter = [];
+  
+  for (let i = 0; i < alphabet.length; i++) {
+    /*if (letterRange[i] !== alphabet[i]) {
+      console.log(alphabet[i])
+    }*/
+    //console.log(Object.values((letterRange.indexOf(i) !== -1)))
+    if (letterRange[i] === alphabet[i]) {
+      //console.log(alphabet[i]);
+      //console.log(alphabet[i += 1]);
+      missingLetter.push(alphabet[i += 1]);
+      console.log(missingLetter.pop().toString());
+    }
+  }
+  return str;
+}
 
+fearNotLetter("abcdefghjklmno");
+////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\3rd SOLUTION CODE 1:
+function fearNotLetter(str) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+  //console.log(Object.keys(alphabet)); .match(/^([d])/)
+  let letterRange = str.slice().split("");
+  let missingLetter = [];
+  
+  for (let i = 0; i < alphabet.length; i++) {
+    if (alphabet[i] === letterRange[i]) {
+      missingLetter = alphabet[i + 1];
+      
+    }
+  }console.log(missingLetter);
+  return str;
+}
+
+let result = fearNotLetter("abcdefghijklmnopqrstuvwxyz");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////4th SOLUTION CODE:
+function fearNotLetter(str) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+  //console.log(Object.keys(alphabet)); .match(/^([d])/)
+  let letterRange = str.slice().split("");
+  let missingLetter = false;
+  
+  console.log(Boolean(missingLetter))
+
+  for (let i = 0; i < alphabet.length; i++) {
+    if (alphabet[i] === letterRange[i]) {
+      missingLetter = alphabet[i + 1]; 
+      //return missingLetter;   
+    }
+  } 
+  if (Boolean(missingLetter) === false) {
+    for (let j = 0; j < alphabet.length; j++) {
+      let individualLetter = alphabet[j];
+      if (letterRange.indexOf(individualLetter) !== -1 && letterRange[j] !== undefined) {
+        //console.log(alphabet[j + 1]);
+        missingLetter = alphabet[j + 1];
+        //return missingLetter;
+      }
+    }
+    }
+  
+  console.log(Boolean(missingLetter));
+  
+  return missingLetter;
+}
+
+let result = fearNotLetter("abcdefghijklmnopqrstuvwxyz");
+console.log(result);
+///////////////////////////////////////////////////////////////////////////////
 
 //OUTPUT:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\3rd SOLUTION CODE 1 OUTPUT
+undefined
+OR
+i
+OR
+d
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////4th SOLUTION CODE 2 OUTPUT
+false
+false
+undefined
+OR
+e
+OR
+i
+OR
+d
+//////////////////////////////////////////////////////////////////
+
 
 
 //
