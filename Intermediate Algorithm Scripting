@@ -2191,6 +2191,87 @@ function uniteUnique(arr) {
 let result = uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 console.log(result);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////SOLUTION TWO ANALYSIS
+function uniteUnique(arr) {
+  console.log(arguments[0].length);
+  let longestArray = {};
+  let shortestArray = {};
+  let mediumArray = {};
+  let uniqueArray = [];
+
+  if (arguments.length === arguments[0].length) {
+
+  for (let i = 0; i < arguments.length; i++) {
+    if (i <= arguments[0].length) {
+      uniqueArray.push(arguments[0][i]);
+    };
+    if (arguments[i].length > arguments.length) {
+      longestArray = arguments[i];
+      console.log(longestArray);
+    } else if (arguments[i].length < arguments.length) {
+      shortestArray = arguments[i];
+      console.log(shortestArray);
+    } else if (arguments[i].length === arguments.length) {
+      mediumArray = arguments[i];
+      console.log(mediumArray);
+      }
+  };
+  let highValue = {};
+  let valueOutsideScope = {};
+  //console.log(typeof arguments[0][1])
+  for (let j = 0; j < longestArray.length; j++) {
+    
+    let individualValue = longestArray[j];
+    
+    if (individualValue > arguments[0][j]) {
+      
+      highValue = individualValue;
+      console.log(highValue);
+
+    } else if (typeof individualValue !== typeof arguments[0][j]) {
+      
+      valueOutsideScope = individualValue;
+      console.log(valueOutsideScope);
+
+    }    
+  };
+  uniqueArray.push(highValue, valueOutsideScope);
+  console.log(uniqueArray);
+  return uniqueArray;
+} else if (arguments.length < arguments[0].length) {
+    //console.log(arguments);
+    let firstArray = arguments[0];
+    //console.log(firstArray);
+    let secondArray = arguments[1];
+    //console.log(secondArray);
+
+    for (let individualValue in firstArray) {
+      if (firstArray.length === secondArray.length) {
+        if (firstArray[0] !== secondArray.reverse()) {
+        console.log(secondArray)
+        }
+      }
+    }
+
+    /*for (let k = 0; k < firstArray.length; k++) {
+        if (firstArray[k] !== secondArray[k]) {
+          console.log(secondArray[k]);
+        }
+      }
+    firstArray.forEach(individualValue => {
+        if (secondArray === undefined) {
+          console.log(secondArray);
+        }
+    });*/
+} else if (arguments.length > arguments[0].length) {
+  //console.log(arguments);
+}
+}; 
+  
+
+let result = uniteUnique([1, 2, 3], [5, 2, 1]);
+console.log(result);
+//////////////////////////////////////////////////////////////////
 
 //OUTPUT:
 \\\\\\\\\\\\\\\\\\\\\\\\\\\2nd analysis output
