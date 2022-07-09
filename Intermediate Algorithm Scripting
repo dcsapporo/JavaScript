@@ -2608,6 +2608,159 @@ Hamburgers &lt; Pizza &lt; Tacos
 //    sumFibs(4);
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\1st Analysis
+function sumFibs(num) {
+  let fibRange = [];
+  for (let i = 1; i < num; i++) {
+    if (i === 1){
+      console.log(i);
+      fibRange.unshift(i);
+      fibRange.push(i);
+      console.log(fibRange);
+    } else if (i === (fibRange[0] + fibRange[1])) {
+      console.log(i);
+      fibRange.unshift(i);
+      fibRange.pop(i);
+      console.log(fibRange);
+    }; 
+  };
+
+
+  return num;
+}
+
+let result = sumFibs(10);
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////2nd Analysis 
+function sumFibs(num) {
+  let fibRange = [];
+  let oddSumRange = [];
+  
+  for (let i = 1; i < num; i++) {
+    console.log(i % 2)
+    if (i === 1){
+      console.log(i);
+      fibRange.unshift(i);
+      fibRange.push(i);
+      console.log(fibRange);
+      if (i % 2 === 1) {
+        oddSumRange.unshift(i);
+        oddSumRange.push(i);
+        console.log(oddSumRange);
+      };
+    } else if (i === (fibRange[0] + fibRange[1])) {
+      console.log(i);
+      fibRange.unshift(i);
+      fibRange.pop(i);
+      console.log(fibRange);
+      if (i % 2 === 1) {
+        oddSumRange.push(i);
+        console.log(oddSumRange);
+      };
+    }; 
+  }; 
+  console.log(oddSumRange);
+
+
+  return num;
+}
+
+let result = sumFibs(10);
+console.log(result);
+////////////////////////////////////////////////////////
+
+//OUTPUT:
+\\\\\\\\\\\\\\\\\\\\\\\\\1st Analysis output
+1
+[ 1, 1 ]
+2
+[ 2, 1 ]
+3
+[ 3, 2 ]
+5
+[ 5, 3 ]
+8
+[ 8, 5 ]
+10
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////////2nd Analysis output
+1
+1
+[ 1, 1 ]
+[ 1, 1 ]
+0
+2
+[ 2, 1 ]
+1
+3
+[ 3, 2 ]
+[ 1, 1, 3 ]
+0
+1
+5
+[ 5, 3 ]
+[ 1, 1, 3, 5 ]
+0
+1
+0
+8
+[ 8, 5 ]
+1
+[ 1, 1, 3, 5 ]
+10
+/////////////////////////////////////////////
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
+
+
+
+//OUTPUT:
+
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
+
+
+
+//OUTPUT:
+
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
+
+
+
+//OUTPUT:
+
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
 
 
 
