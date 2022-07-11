@@ -3125,6 +3125,101 @@ console.log(result);
 
 //CHANGED CODE:
 
+function smallestCommons(arr) {
+  let argumentClone = arguments[0];
+  let argumentCloneSorted = argumentClone.sort();
+  let counter = argumentCloneSorted[0];
+  let numbersToFactor = [];
+  let primeFactors = [];
+  let factoredNumbers = [];
+  let numbersToMultiply = [];
+  
+
+  while (counter <= argumentCloneSorted[1]) {
+    numbersToFactor.push(counter);
+    if (primeDeterminer(counter) && counter !== 1) {
+      primeFactors.push(counter);
+    };
+    
+    counter += 1
+  };
+
+  for (let i = 0; i < primeFactors.length; i++) {
+    let delayCounter = 1;
+
+    while (delayCounter <= argumentCloneSorted[1]) {
+      
+      if (Number.isInteger((numbersToFactor[delayCounter - 1] / primeFactors[i])) === true) {
+        console.log((numbersToFactor[delayCounter - 1] / primeFactors[i]), numbersToFactor[delayCounter - 1], primeFactors[i]);
+        factoredNumbers.push(numbersToFactor[delayCounter - 1] / primeFactors[i]);
+        if (factoredNumbers > 1) {
+          numbersToMultiply.push(numbersToFactor[delayCounter - 1]);
+        };
+      };
+      delayCounter += 1;
+    }; 
+  };
+  console.log(factoredNumbers);
+
+  return arr;
+};
+
+function primeDeterminer(singleNumber) {
+  let modulator = 2;
+  while (modulator < singleNumber) {
+    if (singleNumber % modulator === 0) {
+      return false;  
+    };
+    modulator += 1;
+  };
+  //console.log(singleNumber);
+  return true;
+};
+
+
+let result = smallestCommons([1, 5]);
+console.log(result);
+
+//OUTPUT:
+
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
+
+
+
+//OUTPUT:
+
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
+
+
+
+//OUTPUT:
+
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
+
 
 
 //OUTPUT:
