@@ -3124,7 +3124,7 @@ console.log(result);
 //    smallestCommons([1,5]);
 
 //CHANGED CODE:
-
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\First analysis and experimentation
 function smallestCommons(arr) {
   let argumentClone = arguments[0];
   let argumentCloneSorted = argumentClone.sort();
@@ -3179,37 +3179,144 @@ function primeDeterminer(singleNumber) {
 
 let result = smallestCommons([1, 5]);
 console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////THE SOLUTION CODE:
+function smallestCommons(arr) {
+  let minValue = Math.min(...arr);
+  let maxValue = Math.max(...arr);
+  let counter = 1;
+  let upperBound = 1;
+  for (let i = minValue; i <= maxValue; i++) {
+    upperBound *= i;
+  };
+  let range = rangeDeterminer(minValue, maxValue);
+  
+  let firstCommonMultiple = [];
+  
+
+  while(counter <= upperBound) {
+    let multiples = ((minValue * counter) * maxValue);
+    //console.log(multiples, range, minValue, counter);
+    let divisorCount = 0;
+    for (let j = 0; j < range.length; j++) {
+      //console.log(range, multiples);
+
+      if (multiples % range[j] === 0) {
+        divisorCount += 1;
+        //console.log("Divisor Count =", divisorCount, "Range length =",range.length);
+        if (divisorCount === range.length.valueOf()) {
+          firstCommonMultiple = (multiples);
+          return firstCommonMultiple;
+        }
+      };
+    };
+    counter +=1;
+  };
+  console.log(firstCommonMultiple)
+  
+  return firstCommonMultiple;
+};
+
+function rangeDeterminer(minV, maxV) {
+  let targetRange = [];
+  for (let i = minV; i <= maxV; i++) {
+    targetRange.push(i);
+  }
+  return targetRange;
+};
+
+
+let result = smallestCommons([2, 10]);
+console.log(result);
+///////////////////////////////////////////////////////////
+
+//OUTPUT: 6056820
+
+
+//Drop it
+//Given the array 'arr', iterate through and remove each element starting from the first element (the 0 index) 
+//    until the function 'func' returns 'true' when the iterated element is passed through it.
+
+//Then return the rest of the array once the condition is satisfied, otherwise, 'arr' should be returned as an empty array.
+
+//UNCHANGED CODE:
+
+//    function dropElements(arr, func) {
+//      return arr;
+//    }
+
+//    dropElements([1, 2, 3], function(n) {return n < 3; });
+
+//CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\First attempt
+function dropElements(arr, func) {
+  let conditionSatisfied = [];
+  for (let i =0; i < arr.length; i++) {
+    if (func(arr[i]) === true) {
+      conditionSatisfied.push(arr[i]);
+      console.log(func(arr[i]));
+    };
+  }; 
+  console.log(conditionSatisfied);
+  return conditionSatisfied;
+}
+
+let result = dropElements([1, 2, 3], function(n) {return n < 3; });
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////THE SOLUTION CODE:
+function dropElements(arr, func) {
+  let conditionSatisfied = [];
+  let arrClone = arr.slice();
+  let counter = 0;
+  
+  while (func(arr[counter]) === false) {
+    arrClone.shift();
+    counter += 1;
+  };
+  //console.log(arrClone);
+  conditionSatisfied = arrClone;
+
+  //console.log(conditionSatisfied);
+  return conditionSatisfied;
+}
+
+let result = dropElements([1, 2, 3, 7, 4], function(n) {return n > 3;});
+console.log(result);
+//////////////////////////////////////////////////////////////////////////////////
 
 //OUTPUT:
 
 
-//
+//Steamroller
+//Flatten a nested array. 
+//You must account for varying levels of nesting.
 
 
 //UNCHANGED CODE:
 
+//    function steamrollArray(arr) {
+//      return arr;
+//    }
 
-
-//CHANGED CODE:
-
-
-
-//OUTPUT:
-
-
-//
-
-
-//UNCHANGED CODE:
-
-
+//    steamrollArray([1, [2], [3, [[4]]]]);
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Analysis one
+function steamrollArray(arr) {
+  console.log(Object.values(arr[2][1][0]))
+  return arr;
+}
 
-
+let result = steamrollArray([1, [2], [3, [[4]]]]);
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
-
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Analysis one output
+[ 4 ]
+[ 1, [ 2 ], [ 3, [ [Object] ] ] ]
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //
 
