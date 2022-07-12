@@ -3656,6 +3656,243 @@ function binaryAgent(str) {
 let result = binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
 console.log(result);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//////////////////////////////////////////Sixth Analysis
+function binaryAgent(str) {
+  console.log(String.fromCharCode(65, 114, 101));
+  let strClone = str.slice();//.replace(/([\D])/g, "$1")
+  let individualBinaryLetters = strClone.split(" ");
+  let indBiLettersArray = [];
+  let bitValues = "64 32 16 8 4 2 1".split(" ");
+  let onBits = "1 1 1 1 1 1 1".split(" ");
+  console.log(onBits);
+  let preCharCodeArray = [];
+  let charCodeArray = [];
+  console.log(typeof parseInt(individualBinaryLetters[0]));
+
+  for (let i = 0; i < individualBinaryLetters.length; i++) {
+    indBiLettersArray.push(parseInt(individualBinaryLetters[i]));  
+  };
+  //console.log((indBiLettersArray[0].toString().split('')));
+
+  for (let j = 0; j < indBiLettersArray.length; j++) {
+    let individualBits = (indBiLettersArray[j].toString().split(''));
+    console.log((indBiLettersArray[j].toString().split('')));
+    //let binaryString = (indBiLettersArray[j].toString().split(''));
+    
+    let counter = 0;
+    if ((indBiLettersArray[j].toString().split('')).length === 7) {
+      while(counter < 7) {
+        console.log(onBits.indexOf(individualBits[counter]));
+        if (counter === 0 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(64);
+        } else if (counter === 1 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(32);
+        } else if (counter === 2 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(16);
+        } else if (counter === 3 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(8);
+        } else if (counter === 4 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(4);
+        } else if (counter === 5 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(2);
+        } else if (counter === 6 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(1);
+        };
+        console.log(preCharCodeArray);  
+        counter +=1;
+      }
+    }
+    /*if (binaryString.length === 7) {
+      charCodeArray.push(64);
+    };*/
+  };
+  console.log(charCodeArray);
+
+  return str;
+}
+
+let result = binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+console.log(result);
+/////////////////////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Seventh Analysis
+function binaryAgent(str) {
+  console.log(String.fromCharCode(65, 114, 101));
+  let strClone = str.slice();//.replace(/([\D])/g, "$1")
+  let individualBinaryLetters = strClone.split(" ");
+  let indBiLettersArray = [];
+  let bitValues = "64 32 16 8 4 2 1".split(" ");
+  let onBits = "1 1 1 1 1 1 1".split(" ");
+  //console.log(onBits);
+  let preCharCodeArray = [];
+  let charCodeArray = [];
+  //console.log(typeof parseInt(individualBinaryLetters[0]));
+
+  for (let i = 0; i < individualBinaryLetters.length; i++) {
+    indBiLettersArray.push(parseInt(individualBinaryLetters[i]));  
+  };
+  //console.log((indBiLettersArray[0].toString().split('')));
+
+  for (let j = 0; j < indBiLettersArray.length; j++) {
+    let individualBits = (indBiLettersArray[j].toString().split(''));
+    console.log(individualBits);
+    //let binaryString = (indBiLettersArray[j].toString().split(''));
+    if (individualBits.length === 6) {
+      individualBits.unshift('0');
+      console.log(individualBits);
+    };
+    
+    let counter = 0;
+    if (individualBits.length === 7) {
+      while(counter < 7) {
+        console.log(onBits.indexOf(individualBits[counter]));
+        if (counter === 0 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(64);
+        } else if (counter === 1 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(32);
+        } else if (counter === 2 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(16);
+        } else if (counter === 3 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(8);
+        } else if (counter === 4 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(4);
+        } else if (counter === 5 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(2);
+        } else if (counter === 6 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(1);
+        };
+        console.log(preCharCodeArray);  
+        counter +=1;
+      }
+    }
+    /*if (binaryString.length === 7) {
+      charCodeArray.push(64);
+    };*/
+  };
+  console.log(charCodeArray);
+
+  return str;
+}
+
+let result = binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//////////////////////////////////////BRUTE SOLUTION
+function binaryAgent(str) {
+  console.log(String.fromCharCode(65, 114, 101));
+  let strClone = str.slice();//.replace(/([\D])/g, "$1")
+  let individualBinaryLetters = strClone.split(" ");
+  let indBiLettersArray = [];
+  let bitValues = "64 32 16 8 4 2 1".split(" ");
+  let onBits = "1 1 1 1 1 1 1".split(" ");
+  //console.log(onBits);
+  let preCharCodeArray = [];
+  let preCharCodeToLettersArray = [];
+  let charCodeToLettersArray = [];
+  let charCodeString = "";
+  //console.log(typeof parseInt(individualBinaryLetters[0]));
+
+  for (let i = 0; i < individualBinaryLetters.length; i++) {
+    indBiLettersArray.push(parseInt(individualBinaryLetters[i]));  
+  };
+  //console.log((indBiLettersArray[0].toString().split('')));
+
+  for (let j = 0; j < indBiLettersArray.length; j++) {
+    let individualBits = (indBiLettersArray[j].toString().split(''));
+    //console.log(individualBits);
+    //let binaryString = (indBiLettersArray[j].toString().split(''));
+    if (individualBits.length === 6) {
+      individualBits.unshift('0');
+      //console.log(individualBits);
+    };
+    
+    let counter = 0;
+    if (individualBits.length === 7) {
+      while(counter < 7) {
+        //console.log(onBits.indexOf(individualBits[counter]));
+        if (counter === 0 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(64);
+        } else if (counter === 1 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(32);
+        } else if (counter === 2 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(16);
+        } else if (counter === 3 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(8);
+        } else if (counter === 4 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(4);
+        } else if (counter === 5 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(2);
+        } else if (counter === 6 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(1);
+        };
+        
+          
+        counter +=1;
+      };
+      //console.log(preCharCodeArray);
+      let charCodeCounter = 0;
+          while (charCodeCounter < preCharCodeArray.length) {
+            if (preCharCodeArray.length === 1) {
+              //console.log(preCharCodeToLettersArray.push(preCharCodeArray[0]));
+              preCharCodeToLettersArray.push(preCharCodeArray[0]);
+              preCharCodeArray.pop();
+            } else if (preCharCodeArray.length === 2) {
+              //console.log(preCharCodeArray[0] + preCharCodeArray[1]);
+              preCharCodeToLettersArray.push(preCharCodeArray[0] + preCharCodeArray[1]);
+              preCharCodeArray.shift();
+              preCharCodeArray.pop();
+            } else if (preCharCodeArray.length === 3) {
+              //console.log(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2]);
+              preCharCodeToLettersArray.push(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2]);
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.pop();
+            } else if (preCharCodeArray.length === 4) {
+              //console.log(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2] + preCharCodeArray[3]);
+              preCharCodeToLettersArray.push(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2] + preCharCodeArray[3]);
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.pop();
+            } else if (preCharCodeArray.length === 5) {
+              //console.log(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2] + preCharCodeArray[3] + preCharCodeArray[4]);
+              preCharCodeToLettersArray.push(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2] + preCharCodeArray[3] + preCharCodeArray[4]);
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.pop();
+            } else if (preCharCodeArray.length === 6) {
+              //console.log(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2] + preCharCodeArray[3] + preCharCodeArray[4] + preCharCodeArray[5]);
+              preCharCodeToLettersArray.push(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2] + preCharCodeArray[3] + preCharCodeArray[4] + preCharCodeArray[5]);
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.pop();
+            } 
+            charCodeCounter += 1;
+          };
+        
+    };
+    
+    /*if (binaryString.length === 7) {
+      charCodeArray.push(64);
+    };*/
+  };
+  for (let k = 0; k < preCharCodeToLettersArray.length; k++) {
+  charCodeToLettersArray.push((parseInt(preCharCodeToLettersArray[k])));
+  console.log(charCodeString = (String.fromCharCode(charCodeToLettersArray[k])));
+  };
+  console.log((typeof (parseInt(charCodeToLettersArray))), charCodeString);
+
+  return str;
+}
+
+let result = binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+console.log(result);
+////////////////////////////////////////////////////////////////////////////////
+
 
 //OUTPUT:
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\first analysis output
@@ -3768,6 +4005,177 @@ number
 []
 01000001 01110010 01100101 01101110
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////////////Sixth Analysis Output
+Are
+[ '1', '0', '0', '0', '0', '0', '1' ]
+0
+[ 64 ]
+-1
+[ 64 ]
+-1
+[ 64 ]
+-1
+[ 64 ]
+-1
+[ 64 ]
+-1
+[ 64 ]
+0
+[ 64, 1 ]
+[ '1', '1', '1', '0', '0', '1', '0' ]
+0
+[ 64, 1, 64 ]
+0
+[ 64, 1, 64, 32 ]
+0
+[ 64, 1, 64, 32, 16 ]
+-1
+[ 64, 1, 64, 32, 16 ]
+-1
+[ 64, 1, 64, 32, 16 ]
+0
+[ 64, 1, 64, 32, 16, 2 ]
+-1
+[ 64, 1, 64, 32, 16, 2 ]
+[ '1', '1', '0', '0', '1', '0', '1' ]
+0
+[ 64, 1, 64, 32, 16, 2, 64 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32 ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32 ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4 ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1 ]
+[ '1', '1', '0', '1', '1', '1', '0' ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32 ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4, 2 ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4, 2 ]
+[ '1', '0', '0', '1', '1', '1' ]
+/////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Seventh Analysis Output
+Are
+[ '1', '0', '0', '0', '0', '0', '1' ]
+0
+[ 64 ]
+-1
+[ 64 ]
+-1
+[ 64 ]
+-1
+[ 64 ]
+-1
+[ 64 ]
+-1
+[ 64 ]
+0
+[ 64, 1 ]
+[ '1', '1', '1', '0', '0', '1', '0' ]
+0
+[ 64, 1, 64 ]
+0
+[ 64, 1, 64, 32 ]
+0
+[ 64, 1, 64, 32, 16 ]
+-1
+[ 64, 1, 64, 32, 16 ]
+-1
+[ 64, 1, 64, 32, 16 ]
+0
+[ 64, 1, 64, 32, 16, 2 ]
+-1
+[ 64, 1, 64, 32, 16, 2 ]
+[ '1', '1', '0', '0', '1', '0', '1' ]
+0
+[ 64, 1, 64, 32, 16, 2, 64 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32 ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32 ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4 ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1 ]
+[ '1', '1', '0', '1', '1', '1', '0' ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32 ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4, 2 ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4, 2 ]
+[ '1', '0', '0', '1', '1', '1' ]
+[ '0', '1', '0', '0', '1', '1', '1' ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4, 2 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4, 2, 32 ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4, 2, 32 ]
+-1
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4, 2, 32 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4, 2, 32, 4 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4, 2, 32, 4, 2 ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4, 2, 32, 4, 2, 1 ]
+[ '1', '1', '1', '0', '1', '0', '0' ]
+0
+[ 64, 1, 64, 32, 16, 2, 64, 32, 4, 1, 64, 32, 8, 4, 2, 32, 4, 2, 1, 64 ]
+0
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////BRUTE SOLUTION OUTPUT:
+Are
+A
+r
+e
+n
+'
+t
+ 
+b
+o
+n
+f
+i
+r
+e
+s
+ 
+f
+u
+n
+!
+?
+///////////////////////////////////////////////
 
 //
 
