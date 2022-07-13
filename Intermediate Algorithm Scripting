@@ -4335,18 +4335,52 @@ function truthCheck(collection, pre) {
 let result = truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "name");
 console.log(result);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////////THE SOLUTION CODE:
+function truthCheck(collection, pre) {
+  let preClone = pre.slice();
+  console.log(Object.values(preClone).join(''))
+  console.log(collection[1][pre])
+  for (let i = 0; i < collection.length; i++) {
+        if (Boolean(collection[i][pre]) === false) {
+          return false;
+        };
+  };return true;
+  
+}
+
+let result = truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "isBot");
+console.log(result);
+////////////////////////////////////////////////////////
 
 //OUTPUT:
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\first analysis output
 not very useful results
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//////////////////////////////////////SOLUTION OUTPUT:
+false
+///////////////////////////////////////////////////////////
 
-//
+//Arguments Optional
+//Create a function that sums two arguments together. 
+//If only one argument is provided, then return a function that expects one argument and returns the sum.
+
+//For example, 'addTogether(2, 3)' should return '5', and 'addTogether(2)' should return a function.
+
+//Calling this returned function with a single argument will then return the sum:
+
+//    var sumTwoAnd = addTogether(2);
+//'sumTwoAnd(3)' returns '5'.
+
+//If either argument isn't a valid number, return undefined.
 
 
 //UNCHANGED CODE:
 
+//    function addTogether() {
+//      return false;
+//    }
 
+//    addTogether(2,3);
 
 //CHANGED CODE:
 
