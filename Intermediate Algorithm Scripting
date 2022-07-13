@@ -3892,6 +3892,124 @@ function binaryAgent(str) {
 let result = binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
 console.log(result);
 ////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\FINAL BRUTE SOLUTION CODE:
+function binaryAgent(str) {
+  //console.log(String.fromCharCode(65, 114, 101));
+  let strClone = str.slice();//.replace(/([\D])/g, "$1")
+  let individualBinaryLetters = strClone.split(" ");
+  let indBiLettersArray = [];
+  let bitValues = "64 32 16 8 4 2 1".split(" ");
+  let onBits = "1 1 1 1 1 1 1".split(" ");
+  //console.log(onBits);
+  let preCharCodeArray = [];
+  let preCharCodeToLettersArray = [];
+  let charCodeToLettersArray = [];
+  let charCodeString = [];
+  let postCharCodeStr = {};
+  //console.log(typeof parseInt(individualBinaryLetters[0]));
+
+  for (let i = 0; i < individualBinaryLetters.length; i++) {
+    indBiLettersArray.push(parseInt(individualBinaryLetters[i]));  
+  };
+  //console.log((indBiLettersArray[0].toString().split('')));
+
+  for (let j = 0; j < indBiLettersArray.length; j++) {
+    let individualBits = (indBiLettersArray[j].toString().split(''));
+    //console.log(individualBits);
+    //let binaryString = (indBiLettersArray[j].toString().split(''));
+    if (individualBits.length === 6) {
+      individualBits.unshift('0');
+      //console.log(individualBits);
+    };
+    
+    let counter = 0;
+    if (individualBits.length === 7) {
+      while(counter < 7) {
+        //console.log(onBits.indexOf(individualBits[counter]));
+        if (counter === 0 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(64);
+        } else if (counter === 1 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(32);
+        } else if (counter === 2 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(16);
+        } else if (counter === 3 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(8);
+        } else if (counter === 4 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(4);
+        } else if (counter === 5 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(2);
+        } else if (counter === 6 && onBits.indexOf(individualBits[counter]) === 0) {
+            preCharCodeArray.push(1);
+        };
+        
+          
+        counter +=1;
+      };
+      //console.log(preCharCodeArray);
+      let charCodeCounter = 0;
+          while (charCodeCounter < preCharCodeArray.length) {
+            if (preCharCodeArray.length === 1) {
+              //console.log(preCharCodeToLettersArray.push(preCharCodeArray[0]));
+              preCharCodeToLettersArray.push(preCharCodeArray[0]);
+              preCharCodeArray.pop();
+            } else if (preCharCodeArray.length === 2) {
+              //console.log(preCharCodeArray[0] + preCharCodeArray[1]);
+              preCharCodeToLettersArray.push(preCharCodeArray[0] + preCharCodeArray[1]);
+              preCharCodeArray.shift();
+              preCharCodeArray.pop();
+            } else if (preCharCodeArray.length === 3) {
+              //console.log(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2]);
+              preCharCodeToLettersArray.push(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2]);
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.pop();
+            } else if (preCharCodeArray.length === 4) {
+              //console.log(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2] + preCharCodeArray[3]);
+              preCharCodeToLettersArray.push(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2] + preCharCodeArray[3]);
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.pop();
+            } else if (preCharCodeArray.length === 5) {
+              //console.log(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2] + preCharCodeArray[3] + preCharCodeArray[4]);
+              preCharCodeToLettersArray.push(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2] + preCharCodeArray[3] + preCharCodeArray[4]);
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.pop();
+            } else if (preCharCodeArray.length === 6) {
+              //console.log(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2] + preCharCodeArray[3] + preCharCodeArray[4] + preCharCodeArray[5]);
+              preCharCodeToLettersArray.push(preCharCodeArray[0] + preCharCodeArray[1] + preCharCodeArray[2] + preCharCodeArray[3] + preCharCodeArray[4] + preCharCodeArray[5]);
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.shift();
+              preCharCodeArray.pop();
+            } 
+            charCodeCounter += 1;
+          };
+        
+    };
+    
+    /*if (binaryString.length === 7) {
+      charCodeArray.push(64);
+    };*/
+  };
+  for (let k = 0; k < preCharCodeToLettersArray.length; k++) {
+  charCodeToLettersArray.push((parseInt(preCharCodeToLettersArray[k])));
+  (charCodeString.push(String.fromCharCode(charCodeToLettersArray[k])));
+  postCharCodeStr = charCodeString.join("");
+  };
+  //console.log((typeof (parseInt(charCodeToLettersArray))), postCharCodeStr);
+
+  return postCharCodeStr;
+}
+
+let result = binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 //OUTPUT:
@@ -4176,20 +4294,52 @@ n
 !
 ?
 ///////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\FINAL BRUTE SOLUTION OUTPUT:
+Aren't bonfires fun!?
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-//
+//Everything Be True
+//Check if the predicate (second argument) is "truthy" on all elements of a collection (first argument).
+
+//In other words, you are given an array collection of objects. 
+//The predicate 'pre' will be an object property and you need to return 'true' if its value is 'truthy'. 
+//Otherwise, return 'false'.
+
+//In JavaScript, 'truthy' values are values that translate to 'true' when evaluated in a Boolean context.
+
+//Remember, you can access object properties through either dot notation or '[]' notation.
 
 
 //UNCHANGED CODE:
 
+//    function truthCheck(collection, pre) {
+//      return pre;
+//    }
 
+//    truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "isBot");
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\first analysis
+function truthCheck(collection, pre) {
+  console.log(pre);
+  console.log(Object.values(collection).pre);
+  console.log(Object.keys(collection).length);
+  console.log(Boolean(Object.values(collection).pre) === true);
+  for (let i = 0; i < Object.keys(collection).length; i++) {
+    console.log(Object.values(collection).name);
+    console.log(Boolean(Object.values(collection)[i].pre) === true);
+  }
+  return pre;
+}
 
-
+let result = truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "name");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
-
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\first analysis output
+not very useful results
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //
 
