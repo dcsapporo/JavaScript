@@ -4383,8 +4383,120 @@ false
 //    addTogether(2,3);
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\First Analysis
+function addTogether() {
+  
+  if (arguments.length === 2 && (typeof arguments[0]) === (typeof arguments[1])) {
+    return arguments[0] + arguments[1];
+  } else if (arguments.length === 1 && (typeof arguments[0]) >= 0) {
+    
+    console.log(arguments[0]);
+    
+  };
+  return undefined;
+}
+
+let result = addTogether(2, 3);
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////////Second Analysis with Currying
+function curry(f) {
+  return function(a) {
+    return function(b) {
+      return f(a, b);
+    };
+  };
+};
+function addTogether() {
+  
+  if (arguments.length === 2 && (typeof arguments[0]) === (typeof arguments[1])) {
+    return arguments[0] + arguments[1];
+  } else if (arguments.length === 1 && (typeof arguments[0]) >= 0) {
+    
+    console.log(arguments[0]);
+    
+  };
+  return undefined;
+};
+
+let sumTwoAnd = curry(addTogether);
+console.log(sumTwoAnd);
+
+let result = addTogether(2, 3);
+console.log(result);
+//////////////////////////////////////Problem Needs to be solved using Currying
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Third Analysis
+
+function addTogether(a, b) {
+  return a + b; 
+};
+function curry(f) {
+   return function(a) {
+    //console.log(a)
+    return function(b) {
+      //console.log(b)
+      return f(a, b);
+    };
+  }; 
+};
+let sumTwoAnd = curry(addTogether);
+console.log(sumTwoAnd);
+
+let result = sumTwoAnd(5)(7);
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\sumTwoAnd works 
+////////////////////////////////////////////Forth Analysis
+function sumTwoAnd(a, b) {
+  return a + b; 
+};
+function curry(f) {
+   return function(a) {
+    //console.log(a)
+    return function(b) {
+      //console.log(b)
+      return f(a, b);
+    };
+  }; 
+};
+let addTogether = curry(sumTwoAnd);
+console.log(addTogether);
+
+let result = addTogether(2, 3);
+console.log(result);
+//////////////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Fifth Analysis
+function addTogether() {
+
+  
+        return function(a) {
+          //console.log(a)
+        return function(b) {
+          //console.log(b)
+          return f(a, b);
+          };
+        }; 
+ 
 
 
+  if (arguments.length === 1) {
+    
+    function sumTwoAnd(a, b) {
+      return a + b; 
+    };
+    return curry(sumTwoAnd);
+  } else if (arguments.length === 2 && (typeof arguments[0]) === (typeof arguments[1])) {
+    let a = arguments[0];
+    let b = arguments[1];
+    return a + b;
+  };
+
+};
+//let addTogether = curry(sumTwoAnd);
+console.log(addTogether);
+
+let result = addTogether(5)(7);
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
 
