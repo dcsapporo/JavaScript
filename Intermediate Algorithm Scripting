@@ -4616,11 +4616,47 @@ function argumentHandler(argument) {
 //    bob.getFullName();
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\First Analysis
+const Person = function(firstAndLast) {
+  // Only change code below this line
+  // Complete the method below and implement the others similarly
+  //console.log(arguments);
+  let personName = [...arguments]
+  //console.log(personName[0].split(" "));
+  let seperateNames = personName[0].split(" ");
+  this.getFullName = function(name) {
+    return personName[0];
+  };
+  this.getFirstName = function(name) {
+    return seperateNames[0];
+  };
+  this.getLastName = function(name) {
+    return seperateNames[1];
+  };
+  this.setFirstName = function(input) {
 
+  };
+  this.setLastName = function(input) {
+    
+  };
+  this.setFullName = function(input) {
+    
+  };
+  return firstAndLast;
+};
 
+const bob = new Person('Bob Ross');
+console.log(bob.getFullName());
+console.log(bob.getFirstName());
+console.log(bob.getLastName());
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
-
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\First Analysis Output
+Bob Ross
+Bob
+Ross
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //
 
