@@ -4497,6 +4497,31 @@ console.log(addTogether);
 let result = addTogether(5)(7);
 console.log(result);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////////////Sixth Analaysis Closer
+function addTogether() {
+  console.log(arguments);
+  let argumentClone = [...arguments];
+  //console.log(argumentClone.length);
+  if ((typeof argumentClone[0]) !== (typeof argumentClone[1])) {
+    return undefined;
+  } else if (argumentClone.length === 2) {
+    return argumentClone[0] + argumentClone[1];
+  } else if (argumentClone.length === 1) {
+    function extraValues(num) {
+      return function(numA) {
+        return function(numB) {
+          return num(numA, numB);
+        };
+      };
+    };
+    let addValues = extraValues(addTogether);
+    return addValues;
+  };
+  return false;
+}
+
+addTogether(5)(7);
+//////////////////////////////////////////Passes 5 of 7
 
 //OUTPUT:
 
