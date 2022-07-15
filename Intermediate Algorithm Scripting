@@ -4988,11 +4988,35 @@ Curry
 //    orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\First Analysis
+function orbitalPeriod(arr) {
+  console.log(arr);
+  let arrClone = arr.slice();
+  let targetObj = {};
+  targetObj = arrClone.shift()
+  console.log(targetObj)
+  const GM = 398600.4418;
+  const earthRadius = 6367.4447;
+  const doublePie = 2 * Math.PI;
+  const semiMajorAxis = Math.pow(earthRadius + targetObj.avgAlt, 3);
+  const squareRootAxisOverSGP = Math.sqrt(semiMajorAxis / GM);
+  const orbPeriod = Math.round(doublePie * squareRootAxisOverSGP);
+  console.log(orbPeriod);
+  return arr;
+}
 
+let result = orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 //OUTPUT:
-
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\First Analysis Output
+[ { name: 'sputnik', avgAlt: 35873.5553 } ]
+{ name: 'sputnik', avgAlt: 35873.5553 }
+86400
+[ { name: 'sputnik', avgAlt: 35873.5553 } ]
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //
 
