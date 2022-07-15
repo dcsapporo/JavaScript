@@ -5008,7 +5008,34 @@ function orbitalPeriod(arr) {
 let result = orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
 console.log(result);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////////////////Second Analysis and closer to a solution
+function orbitalPeriod(arr) {
+  console.log(arr);
+  let arrClone = arr.slice();
+  let targetObj = {};
+  targetObj = arrClone.shift()
+  console.log(targetObj)
+  const GM = 398600.4418;
+  const earthRadius = 6367.4447;
+  const doublePie = 2 * Math.PI;
+  const semiMajorAxis = Math.pow(earthRadius + targetObj.avgAlt, 3);
+  const squareRootAxisOverSGP = Math.sqrt(semiMajorAxis / GM);
+  const orbPeriod = Math.round(doublePie * squareRootAxisOverSGP);
+  console.log(orbPeriod);
+  let avgAltToOrbPeriod = [{name: targetObj.name, orbitalPeriod: orbPeriod}];
+  //avgAltToOrbPeriod.name = targetObj.name;
+  //avgAltToOrbPeriod.orbitalPeriod = orbPeriod;
+  //console.log(avgAltToOrbPeriod)
+  //let thirdLawOfKepler = [];
+  //thirdLawOfKepler = avgAltToOrbPeriod;
+  
+  
+  return avgAltToOrbPeriod;
+}
 
+let result = orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
+console.log(result);
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 //OUTPUT:
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\First Analysis Output
@@ -5017,5 +5044,12 @@ console.log(result);
 86400
 [ { name: 'sputnik', avgAlt: 35873.5553 } ]
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//////////////////////////////Second Analysis Output
+[ { name: 'sputnik', avgAlt: 35873.5553 } ]
+{ name: 'sputnik', avgAlt: 35873.5553 }
+86400
+[ { name: 'sputnik', orbitalPeriod: 86400 } ]
+/////////////////////////////////////////////////////////////
+
 
 
