@@ -5018,31 +5018,4 @@ console.log(result);
 [ { name: 'sputnik', avgAlt: 35873.5553 } ]
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-//
-
-
-//UNCHANGED CODE:
-
-
-
-//CHANGED CODE:
-
-
-
-//OUTPUT:
-
-
-//
-
-
-//UNCHANGED CODE:
-
-
-
-//CHANGED CODE:
-
-
-
-//OUTPUT:
-
 
