@@ -4846,6 +4846,83 @@ console.log(bob.setFirstName("Haskell"));
 //console.log(Object.keys(bob)[3])
 console.log(bob.getFullName());
 ///////////////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\THE SOLUTION CODE:
+const Person = function(firstAndLast) {
+  // Only change code below this line
+  // Complete the method below and implement the others similarly
+  //console.log(arguments);
+  let personName = [...arguments]
+  //console.log(personName[0].split(" "));
+  let seperateNames = personName[0].split(" ");
+  //console.log((bob), seperateNames)
+  this.getFullName = function(name) {
+    return seperateNames[0] +" "+ seperateNames[1];
+  };
+  this.getFirstName = function(name) {
+    return seperateNames[0];
+  };
+  this.getLastName = function(name) {
+    return seperateNames[1];
+  };
+  this.setFirstName = function(input) {
+    let newFirstName = input;
+    //console.log(evaluateInput(newFirstName,seperateNames ));
+    if ((typeof newFirstName) === "string") {
+    seperateNames.shift();
+    seperateNames.unshift(newFirstName);
+    };
+    return seperateNames[0] +" "+ seperateNames[1];
+  };
+  this.setLastName = function(input) {
+    let newLastName = input;
+    if ((typeof newLastName) === "string") {
+    seperateNames.pop();
+    seperateNames.push(newLastName);
+    return seperateNames[0] +" "+ seperateNames[1];
+    };
+  };
+  this.setFullName = function(input) {
+    let newFullName = input;
+    console.log(newFullName);
+    if ((typeof newFullName) === "string") {
+      let seperateNewFullNames = newFullName.split(" ");
+      //console.log(seperateNewFullNames[0]);
+      seperateNames.shift();
+      seperateNames.unshift(seperateNewFullNames[0]);
+      seperateNames.pop();
+      seperateNames.push(seperateNewFullNames[1]);
+      return seperateNames[0] +" "+ seperateNames[1];
+    };
+  };
+  return firstAndLast;
+};
+
+function evaluateInput(newName, oldName) {
+  //console.log(newName, arguments)
+  /*if ((typeof newName) === "string" && newName === "newFirstName") {
+    oldName.shift();
+    oldName.unshift(newName);
+    return oldName;
+    } else if ((typeof newName) === "string" && Object.keys(bob) === "setLastName") {
+      oldName.pop();
+      oldName.push(newName);
+      return oldName;
+    } 
+  return undefined;*/
+};
+
+const bob = new Person('Bob Ross');
+//console.log(bob.getFullName());
+//console.log(bob.getFirstName());
+//console.log(bob.getLastName());
+//console.log(bob.setFirstName("Haskell"));
+//console.log(Object.keys(bob)[3])
+console.log(bob.getFullName());
+//console.log(bob.setLastName("Curry"));
+console.log(bob.getFullName());
+console.log(bob.setFullName("Haskell Curry"))
+console.log(bob.getLastName());
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\First Analysis Output
@@ -4873,13 +4950,42 @@ Bob Ross
 Haskell Ross
 Haskell Ross
 //////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\SOLUTION OUTPUT
+Bob Ross
+Bob Ross
+Haskell Curry
+Haskell Curry
+Curry
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-//
+//Map the Debris
+//According to Kepler's Third Law, the orbital period  "T"  of two point masses orbiting each other in a circular or elliptic orbit is:
+
+//                                      T=2πa3μ‾‾‾√
+ 
+//    *   "a" is the orbit's semi-major axis
+//    *   μ="GM"  is the standard gravitational parameter
+//    *   "G"  is the gravitational constant,
+//    *   "M"  is the mass of the more massive body.
+
+//Return a new array that transforms the elements' average altitude into their orbital periods (in seconds).
+
+//The array will contain objects in the format '{name: 'name', avgAlt: avgAlt}'.
+
+//The values should be rounded to the nearest whole number. The body being orbited is Earth.
+
+//The radius of the earth is 6367.4447 kilometers, and the GM value of earth is 398600.4418 km3s-2.
 
 
 //UNCHANGED CODE:
 
+//    function orbitalPeriod(arr) {
+//      const GM = 398600.4418;
+//      const earthRadius = 6367.4447;
+//      return arr;
+//    }
 
+//    orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
 
 //CHANGED CODE:
 
