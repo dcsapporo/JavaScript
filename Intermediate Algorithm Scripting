@@ -4650,6 +4650,202 @@ console.log(bob.getFullName());
 console.log(bob.getFirstName());
 console.log(bob.getLastName());
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////////Second Analysis
+const Person = function(firstAndLast) {
+  // Only change code below this line
+  // Complete the method below and implement the others similarly
+  //console.log(arguments);
+  let personName = [...arguments]
+  //console.log(personName[0].split(" "));
+  let seperateNames = personName[0].split(" ");
+  this.getFullName = function(name) {
+    return personName[0];
+  };
+  this.getFirstName = function(name) {
+    return seperateNames[0];
+  };
+  this.getLastName = function(name) {
+    return seperateNames[1];
+  };
+  this.setFirstName = function(input) {
+    let newFirstName = input;
+    if ((typeof newFirstName) === "string") {
+    seperateNames.shift();
+    seperateNames.unshift(newFirstName);
+    return seperateNames;
+    }
+  };
+  this.setLastName = function(input) {
+    let newLastName = input;
+    if ((typeof newLastName) === "string") {
+    seperateNames.pop();
+    seperateNames.push(newLastName)
+    return seperateNames;
+    }
+  };
+  this.setFullName = function(input) {
+    let newFullName = input;
+    return newFullName;
+  };
+  return firstAndLast;
+};
+
+function evaluateInput(newName, oldName) {
+  if ((typeof newName) === "string") {
+    oldName.shift();
+    oldName.unshift(newName);
+    return oldName;
+    };
+  return undefined;
+};
+
+const bob = new Person('Bob Ross');
+console.log(bob.getFullName());
+console.log(bob.getFirstName());
+console.log(bob.getLastName());
+console.log(bob.setFirstName("Haskell"));
+console.log(bob.getFirstName());
+///////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Third Analysis
+const Person = function(firstAndLast) {
+  // Only change code below this line
+  // Complete the method below and implement the others similarly
+  //console.log(arguments);
+  let personName = [...arguments]
+  //console.log(personName[0].split(" "));
+  let seperateNames = personName[0].split(" ");
+  this.getFullName = function(name) {
+    return personName[0];
+  };
+  this.getFirstName = function(name) {
+    return seperateNames[0];
+  };
+  this.getLastName = function(name) {
+    return seperateNames[1];
+  };
+  this.setFirstName = function(input) {
+    let newFirstName = input;
+    console.log(newFirstName)
+    if ((typeof newFirstName) === "string") {
+    seperateNames.shift();
+    seperateNames.unshift(newFirstName);
+    return seperateNames[0] +" "+ seperateNames[1];
+    };
+  };
+  this.setLastName = function(input) {
+    let newLastName = input;
+    if ((typeof newLastName) === "string") {
+    seperateNames.pop();
+    seperateNames.push(newLastName);
+    return seperateNames[0] +" "+ seperateNames[1];
+    };
+  };
+  this.setFullName = function(input) {
+    let newFullName = input;
+    if ((typeof newFullName) === "string") {
+      let seperateNewFullNames = newFullName[0].split(" ");
+      seperateNames.shift();
+      seperateNames.unshift(seperateNewFullNames[0]);
+      seperateNames.pop();
+      seperateNames.push(seperateNewFullNames[1]);
+      return seperateNames[0] +" "+ seperateNames[1];
+    };
+  };
+  return firstAndLast;
+};
+
+function evaluateInput(newName, oldName) {
+  if ((typeof newName) === "string" && newName === "newFirstName") {
+    oldName.shift();
+    oldName.unshift(newName);
+    return oldName;
+    } else if ((typeof newName) === "string" && Object.keys(bob) === "setLastName") {
+      oldName.pop();
+      oldName.push(newName);
+      return oldName;
+    } 
+  return undefined;
+};
+
+const bob = new Person('Bob Ross');
+console.log(bob.getFullName());
+console.log(bob.getFirstName());
+console.log(bob.getLastName());
+console.log(bob.setFirstName("Haskell"));
+console.log(Object.keys(bob)[3])
+console.log(bob.getFullName());
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//////////////////////////////////Forth Analysis
+const Person = function(firstAndLast) {
+  // Only change code below this line
+  // Complete the method below and implement the others similarly
+  //console.log(arguments);
+  let personName = [...arguments]
+  //console.log(personName[0].split(" "));
+  let seperateNames = personName[0].split(" ");
+  //console.log((bob), seperateNames)
+  this.getFullName = function(name) {
+    return seperateNames[0] +" "+ seperateNames[1];
+  };
+  this.getFirstName = function(name) {
+    return seperateNames[0];
+  };
+  this.getLastName = function(name) {
+    return seperateNames[1];
+  };
+  this.setFirstName = function(input) {
+    let newFirstName = input;
+    //console.log(evaluateInput(newFirstName,seperateNames ));
+    if ((typeof newFirstName) === "string") {
+    seperateNames.shift();
+    seperateNames.unshift(newFirstName);
+    };
+    return seperateNames[0] +" "+ seperateNames[1];
+  };
+  this.setLastName = function(input) {
+    let newLastName = input;
+    if ((typeof newLastName) === "string") {
+    seperateNames.pop();
+    seperateNames.push(newLastName);
+    return seperateNames[0] +" "+ seperateNames[1];
+    };
+  };
+  this.setFullName = function(input) {
+    let newFullName = input;
+    if ((typeof newFullName) === "string") {
+      let seperateNewFullNames = newFullName[0].split(" ");
+      seperateNames.shift();
+      seperateNames.unshift(seperateNewFullNames[0]);
+      seperateNames.pop();
+      seperateNames.push(seperateNewFullNames[1]);
+      return seperateNames[0] +" "+ seperateNames[1];
+    };
+  };
+  return firstAndLast;
+};
+
+function evaluateInput(newName, oldName) {
+  //console.log(newName, arguments)
+  /*if ((typeof newName) === "string" && newName === "newFirstName") {
+    oldName.shift();
+    oldName.unshift(newName);
+    return oldName;
+    } else if ((typeof newName) === "string" && Object.keys(bob) === "setLastName") {
+      oldName.pop();
+      oldName.push(newName);
+      return oldName;
+    } 
+  return undefined;*/
+};
+
+const bob = new Person('Bob Ross');
+//console.log(bob.getFullName());
+//console.log(bob.getFirstName());
+//console.log(bob.getLastName());
+console.log(bob.setFirstName("Haskell"));
+//console.log(Object.keys(bob)[3])
+console.log(bob.getFullName());
+///////////////////////////////////////////////////////////////////////////////////////////
 
 //OUTPUT:
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\First Analysis Output
@@ -4657,6 +4853,26 @@ Bob Ross
 Bob
 Ross
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////Second Analysis Output
+Bob Ross
+Bob
+Ross
+[ 'Haskell', 'Ross' ]
+Haskell
+////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Third Analysis Output
+Bob Ross
+Bob
+Ross
+Haskell
+Haskell Ross
+setFirstName
+Bob Ross
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////////////Forth Analysis Output
+Haskell Ross
+Haskell Ross
+//////////////////////////////////////////////////////////////
 
 //
 
