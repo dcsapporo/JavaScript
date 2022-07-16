@@ -25,11 +25,95 @@
 //    palindrome("eye");
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\First Analysis
+function palindrome(str) {
+  console.log(str);
+  let strClone = str.slice();
+  console.log(strClone.match(/([\w])/g))
+  return true;
+}
 
+let result = palindrome("0_0 (: /-\ :) 0-0");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////Second Analysis
+function palindrome(str) {
+  console.log(str);
+  let strClone = str.slice();
+  //console.log(strClone.match(/([\w])/g));
+  let individualCharacters = strClone.match(/([\w])/g);
+  console.log(individualCharacters);
+  return true;
+}
 
+let result = palindrome("five|\_/|four");
+console.log(result);
+//////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\Third Analysis
+function palindrome(str) {
+  console.log(str);
+  let strClone = str.slice();
+  //console.log(strClone.match(/([\w])/g));
+  let individualCharacters = strClone.match(/([\w])/g);
+  for (let i = 0; i < individualCharacters.length; i++) {
+    if (individualCharacters[i] === "_") {
+      individualCharacters[i] = ""
+        console.log(typeof (individualCharacters[i]));
+        if (Object.keys(individualCharacters[i])){} 
+    };
+    //console.log((individualCharacters[i]).indexOf());
+    
+  }console.log(typeof (Object.values(individualCharacters[0])))
+  ;
+  return true;
+}
+
+let result = palindrome("five|\_/|four");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////////Forth Analysis
+function palindrome(str) {
+  console.log(str);
+  let strClone = str.slice();
+  //console.log(strClone.match(/([\w])/g));
+  let individualCharacters = strClone.match(/([\w])/g);
+  for (let i = 0; i < individualCharacters.length; i++) {
+    if (individualCharacters[i] === "_") {
+      individualCharacters[i] = ""
+        console.log(typeof (individualCharacters[i]));
+        if ((individualCharacters[i]) === individualCharacters[0]){
+          individualCharacters.shift();
+        } else if ((individualCharacters[i]) === individualCharacters[1]) {
+          individualCharacters.splice(i,i);
+        } else if ((individualCharacters[i]) === individualCharacters[4]) {
+          let afterI = individualCharacters.splice(i+1);
+          //afterI.shift();
+          console.log(afterI);
+          individualCharacters.splice(i, i, afterI) 
+        }
+    };
+    //console.log((individualCharacters[i]).indexOf());
+    
+  };
+  console.log((individualCharacters));
+  return true;
+}
+
+let result = palindrome("five|\_/|four");
+console.log(result);
+////////////////////////////////////////////////////////////////////////////////////
 
 //OUTPUT:
-
+\\\\\\\\\\\\\\\\\\\\\\\\\\First Analysis Output
+0_0 (: /- :) 0-0
+[ '0', '_', '0', '0', '0' ]
+true
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////Second Analysis Ouyput
+five|_/|four
+[ 'f', 'i', 'v', 'e', '_', 'f', 'o', 'u', 'r' ]
+true
+//////////////////////////////////////////////////////////////
 
 //
 
