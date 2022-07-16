@@ -102,6 +102,40 @@ function palindrome(str) {
 let result = palindrome("five|\_/|four");
 console.log(result);
 ////////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Fifth Analysis
+function palindrome(str) {
+  console.log(str);
+  let strClone = str.slice();
+  //console.log(strClone.match(/([\w])/g));
+  let individualCharacters = strClone.match(/([\w])/g);
+  for (let i = 0; i < individualCharacters.length; i++) {
+    if (individualCharacters[i] === "_") {
+      individualCharacters[i] = ""
+        console.log(typeof (individualCharacters[i]));
+        if ((individualCharacters[i]) === individualCharacters[0]){
+          individualCharacters.shift();
+        } else if ((individualCharacters[i]) === individualCharacters[1]) {
+          individualCharacters.splice(i,i);
+        } else if ((individualCharacters[i]) === individualCharacters[4]) {
+          let afterI = individualCharacters.splice(i+1);
+          //afterI.shift();
+          console.log(afterI[0]);
+          individualCharacters.pop();
+          for (let j = 0; j < afterI.length; j++) {
+            individualCharacters.push(afterI[j]);
+          };
+        };
+    };
+    //console.log((individualCharacters[i]).indexOf());
+    
+  };
+  console.log((individualCharacters));
+  return true;
+}
+
+let result = palindrome("five|\_/|four");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
 \\\\\\\\\\\\\\\\\\\\\\\\\\First Analysis Output
