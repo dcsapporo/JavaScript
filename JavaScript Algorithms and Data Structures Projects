@@ -644,15 +644,449 @@ function romanTens(numValue, roman, romanOne) {
       counterTen += 10;
     }*/ 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////Sixth Analysis
+function convertToRoman(num) {
+ let numClone = num.toString();
+  let romanNumerals = "I,IV,V,IX,X,XL,L,XC,C,CD,D,CM,M".split(",");
+  let romanNumeralsOnes = [];
+  let romanNumeralsTens = [];
+  let romanNumeralsHundreds = [];
+  let romanNumeralsThousands = [];
+  for (let i = 0; i < romanNumerals.length; i++) {
+    if (i < 4) {
+      romanNumeralsOnes.push(romanNumerals[i]);
+    } else if (i < 8) {
+      romanNumeralsTens.push(romanNumerals[i]);
+    } else if (i < 12) {
+      romanNumeralsHundreds.push(romanNumerals[i]);
+    } else if (i === 12) {
+      romanNumeralsThousands.push(romanNumerals[i]);
+    }; 
+  };
+  let numSplit = [];
+  console.log(numSplit = numClone.split(""));
+  console.log(Number(numSplit[0]))
+  let returnedRomanNumeralOnes = [];
+  let returnedRomanNumeralTens = [];
+  let returnedRomanNumeralHundreds = [];
+  let returnedRomanNumeralThousands = [];
+  if (numSplit.length === 1) {
+        romanOnes(numSplit, romanNumeralsOnes);
+        returnedRomanNumeralOnes = (romanOnes(Number(numSplit[0]), romanNumeralsOnes));
+  } else if (numSplit.length === 2) {
+      if (Number(numSplit[0]) < 10) {
+        romanOnes(Number(numSplit[0]), romanNumeralsTens);
+        returnedRomanNumeralTens = (romanOnes(Number(numSplit[0]), romanNumeralsTens));
+      };
+      if (Number(numSplit[1]) < 10) {
+        romanOnes(numSplit, romanNumeralsOnes);
+        returnedRomanNumeralOnes = (romanOnes(Number(numSplit[1]), romanNumeralsOnes));
+  }
+    
+  }
+  console.log(returnedRomanNumeralTens);
+  console.log(returnedRomanNumeralOnes);
+  console.log(returnedRomanNumeralTens + returnedRomanNumeralOnes);
+ return num;
+}
+
+let result = convertToRoman(99);
+console.log(result);
+
+function romanOnes(numValue, roman) {
+  let preRomanNumeral = [];
+  //let counter = 1;
+  if (numValue < 10) {
+    for (let i = 1; i <= numValue; i++) { 
+    if (i === 1) {
+      preRomanNumeral.push(roman[0]);
+      } else if (i === 2) {
+      preRomanNumeral.push(roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 3) {
+      preRomanNumeral.push(roman[0] + roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 4) {
+      preRomanNumeral.push(roman[1]);
+      preRomanNumeral.shift();
+      } else if (i === 5) {
+      preRomanNumeral.push(roman[2]);
+      preRomanNumeral.shift();
+      } else if (i === 6) {
+      preRomanNumeral.push(roman[2] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 7) {
+      preRomanNumeral.push(roman[2] + roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 8) {
+      preRomanNumeral.push(roman[2] + roman[0] + roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 9) {
+      preRomanNumeral.push(roman[3]);
+      preRomanNumeral.shift();
+      };    
+    };
+  }; 
+  //console.log(preRomanNumeral);
+  return preRomanNumeral;
+};
+//////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Seventh Analysis
+function convertToRoman(num) {
+ let numClone = num.toString();
+  let romanNumerals = "I,IV,V,IX,X,XL,L,XC,C,CD,D,CM,M".split(",");
+  let romanNumeralsOnes = [];
+  let romanNumeralsTens = [];
+  let romanNumeralsHundreds = [];
+  let romanNumeralsThousands = [];
+  for (let i = 0; i < romanNumerals.length; i++) {
+    if (i < 4) {
+      romanNumeralsOnes.push(romanNumerals[i]);
+    } else if (i < 8) {
+      romanNumeralsTens.push(romanNumerals[i]);
+    } else if (i < 12) {
+      romanNumeralsHundreds.push(romanNumerals[i]);
+    } else if (i === 12) {
+      romanNumeralsThousands.push(romanNumerals[i]);
+    }; 
+  };
+  let numSplit = [];
+  console.log(numSplit = numClone.split(""));
+  console.log(Number(numSplit[0]))
+  let returnedRomanNumeralOnes = [];
+  let returnedRomanNumeralTens = [];
+  let returnedRomanNumeralHundreds = [];
+  let returnedRomanNumeralThousands = [];
+  if (numSplit.length === 1) {
+        romanOnes(numSplit, romanNumeralsOnes);
+        returnedRomanNumeralOnes = (romanOnes(Number(numSplit[0]), romanNumeralsOnes));
+        return returnedRomanNumeralOnes.toString();
+  } else if (numSplit.length === 2) {
+      if (Number(numSplit[0]) < 10) {
+        romanOnes(Number(numSplit[0]), romanNumeralsTens);
+        returnedRomanNumeralTens = (romanOnes(Number(numSplit[0]), romanNumeralsTens));
+      };
+      if (Number(numSplit[1]) < 10) {
+        romanOnes(numSplit, romanNumeralsOnes);
+        returnedRomanNumeralOnes = (romanOnes(Number(numSplit[1]), romanNumeralsOnes));
+      };
+      return (returnedRomanNumeralTens + returnedRomanNumeralOnes);
+  };
+  console.log(returnedRomanNumeralTens);
+  console.log(returnedRomanNumeralOnes);
+  console.log(returnedRomanNumeralTens + returnedRomanNumeralOnes);
+ return num;
+}
+
+let result = convertToRoman(91);
+console.log(result);
+
+function romanOnes(numValue, roman) {
+  let preRomanNumeral = [];
+  //let counter = 1;
+  if (numValue < 10) {
+    for (let i = 1; i <= numValue; i++) { 
+    if (i === 1) {
+      preRomanNumeral.push(roman[0]);
+      } else if (i === 2) {
+      preRomanNumeral.push(roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 3) {
+      preRomanNumeral.push(roman[0] + roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 4) {
+      preRomanNumeral.push(roman[1]);
+      preRomanNumeral.shift();
+      } else if (i === 5) {
+      preRomanNumeral.push(roman[2]);
+      preRomanNumeral.shift();
+      } else if (i === 6) {
+      preRomanNumeral.push(roman[2] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 7) {
+      preRomanNumeral.push(roman[2] + roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 8) {
+      preRomanNumeral.push(roman[2] + roman[0] + roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 9) {
+      preRomanNumeral.push(roman[3]);
+      preRomanNumeral.shift();
+      };    
+    };
+  }; 
+  //console.log(preRomanNumeral);
+  return preRomanNumeral;
+};
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////////Eighth Analysis
+function convertToRoman(num) {
+ let numClone = num.toString();
+  let romanNumerals = "I,IV,V,IX,X,XL,L,XC,C,CD,D,CM,M".split(",");
+  let romanNumeralsOnes = [];
+  let romanNumeralsTens = [];
+  let romanNumeralsHundreds = [];
+  let romanNumeralsThousands = [];
+  for (let i = 0; i < romanNumerals.length; i++) {
+    if (i < 4) {
+      romanNumeralsOnes.push(romanNumerals[i]);
+    } else if (i < 8) {
+      romanNumeralsTens.push(romanNumerals[i]);
+    } else if (i < 12) {
+      romanNumeralsHundreds.push(romanNumerals[i]);
+    } else if (i === 12) {
+      romanNumeralsThousands.push(romanNumerals[i]);
+    }; 
+  };
+  let numSplit = [];
+  console.log(numSplit = numClone.split(""));
+  console.log(Number(numSplit[0]))
+  let returnedRomanNumeralOnes = [];
+  let returnedRomanNumeralTens = [];
+  let returnedRomanNumeralHundreds = [];
+  let returnedRomanNumeralThousands = [];
+  if (numSplit.length === 1) {
+        romanOnes(numSplit, romanNumeralsOnes);
+        returnedRomanNumeralOnes = (romanOnes(Number(numSplit[0]), romanNumeralsOnes));
+        return returnedRomanNumeralOnes.toString();
+  } else if (numSplit.length === 2) {
+      if (Number(numSplit[0]) < 10) {
+        romanOnes(Number(numSplit[0]), romanNumeralsTens);
+        returnedRomanNumeralTens = (romanOnes(Number(numSplit[0]), romanNumeralsTens));
+      };
+      if (Number(numSplit[1]) < 10) {
+        romanOnes(numSplit, romanNumeralsOnes);
+        returnedRomanNumeralOnes = (romanOnes(Number(numSplit[1]), romanNumeralsOnes));
+      };
+      return (returnedRomanNumeralTens + returnedRomanNumeralOnes);
+  } else if (numSplit.length === 3) {
+      if (Number(numSplit[0]) < 10) {
+        romanOnes(Number(numSplit[0]), romanNumeralsHundreds);
+        returnedRomanNumeralHundreds = (romanOnes(Number(numSplit[0]), romanNumeralsHundreds));
+      };
+      if (Number(numSplit[1]) < 10) {
+        romanOnes(numSplit, romanNumeralsTens);
+        returnedRomanNumeralTens = (romanOnes(Number(numSplit[1]), romanNumeralsTens));
+      };
+      if (Number(numSplit[2]) < 10) {
+        romanOnes(numSplit, romanNumeralsOnes);
+        returnedRomanNumeralOnes = (romanOnes(Number(numSplit[2]), romanNumeralsOnes));
+      };
+      return (returnedRomanNumeralHundreds + returnedRomanNumeralTens + returnedRomanNumeralOnes);
+  };
+  console.log(returnedRomanNumeralTens);
+  console.log(returnedRomanNumeralOnes);
+  console.log(returnedRomanNumeralTens + returnedRomanNumeralOnes);
+ return num;
+}
+
+let result = convertToRoman(999);
+console.log(result);
+
+function romanOnes(numValue, roman) {
+  let preRomanNumeral = [];
+  //let counter = 1;
+  if (numValue < 10) {
+    for (let i = 1; i <= numValue; i++) { 
+    if (i === 1) {
+      preRomanNumeral.push(roman[0]);
+      } else if (i === 2) {
+      preRomanNumeral.push(roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 3) {
+      preRomanNumeral.push(roman[0] + roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 4) {
+      preRomanNumeral.push(roman[1]);
+      preRomanNumeral.shift();
+      } else if (i === 5) {
+      preRomanNumeral.push(roman[2]);
+      preRomanNumeral.shift();
+      } else if (i === 6) {
+      preRomanNumeral.push(roman[2] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 7) {
+      preRomanNumeral.push(roman[2] + roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 8) {
+      preRomanNumeral.push(roman[2] + roman[0] + roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 9) {
+      preRomanNumeral.push(roman[3]);
+      preRomanNumeral.shift();
+      };    
+    };
+  }; 
+  //console.log(preRomanNumeral);
+  return preRomanNumeral;
+};
+///////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\THE SOLUTION CODE
+function convertToRoman(num) {
+ let numClone = num.toString();
+  let romanNumerals = "I,IV,V,IX,X,XL,L,XC,C,CD,D,CM,M".split(",");
+  let romanNumeralsOnes = [];
+  let romanNumeralsTens = [];
+  let romanNumeralsHundreds = [];
+  let romanNumeralsThousands = [];
+  for (let i = 0; i < romanNumerals.length; i++) {
+    if (i < 4) {
+      romanNumeralsOnes.push(romanNumerals[i]);
+    } else if (i < 8) {
+      romanNumeralsTens.push(romanNumerals[i]);
+    } else if (i < 12) {
+      romanNumeralsHundreds.push(romanNumerals[i]);
+    } else if (i === 12) {
+      romanNumeralsThousands.push(romanNumerals[i]);
+    }; 
+  };
+  let numSplit = [];
+  console.log(numSplit = numClone.split(""));
+  console.log(Number(numSplit[0]))
+  let returnedRomanNumeralOnes = [];
+  let returnedRomanNumeralTens = [];
+  let returnedRomanNumeralHundreds = [];
+  let returnedRomanNumeralThousands = [];
+  if (numSplit.length === 1) {
+        romanOnes(Number(numSplit[0]), romanNumeralsOnes);
+        returnedRomanNumeralOnes = (romanOnes(Number(numSplit[0]), romanNumeralsOnes));
+        return returnedRomanNumeralOnes.toString();
+  } else if (numSplit.length === 2) {
+      if (Number(numSplit[0]) < 10) {
+        romanOnes(Number(numSplit[0]), romanNumeralsTens);
+        returnedRomanNumeralTens = (romanOnes(Number(numSplit[0]), romanNumeralsTens));
+      };
+      if (Number(numSplit[1]) < 10) {
+        romanOnes(Number(numSplit[1]), romanNumeralsOnes);
+        returnedRomanNumeralOnes = (romanOnes(Number(numSplit[1]), romanNumeralsOnes));
+      };
+      return (returnedRomanNumeralTens + returnedRomanNumeralOnes);
+  } else if (numSplit.length === 3) {
+      if (Number(numSplit[0]) < 10) {
+        romanOnes(Number(numSplit[0]), romanNumeralsHundreds);
+        returnedRomanNumeralHundreds = (romanOnes(Number(numSplit[0]), romanNumeralsHundreds));
+      };
+      if (Number(numSplit[1]) < 10) {
+        romanOnes(Number(numSplit[1]), romanNumeralsTens);
+        returnedRomanNumeralTens = (romanOnes(Number(numSplit[1]), romanNumeralsTens));
+      };
+      if (Number(numSplit[2]) < 10) {
+        romanOnes(Number(numSplit[2]), romanNumeralsOnes);
+        returnedRomanNumeralOnes = (romanOnes(Number(numSplit[2]), romanNumeralsOnes));
+      };
+      return (returnedRomanNumeralHundreds + returnedRomanNumeralTens + returnedRomanNumeralOnes);
+  } else if (numSplit.length === 4) {
+      if (Number(numSplit[0]) < 10) {
+        returnedRomanNumeralThousands = romanOnes(Number(numSplit[0]), romanNumeralsThousands)
+      }
+      if (Number(numSplit[1]) < 10) {
+        romanOnes(Number(numSplit[1]), romanNumeralsHundreds);
+        returnedRomanNumeralHundreds = (romanOnes(Number(numSplit[1]), romanNumeralsHundreds));
+      };
+      if (Number(numSplit[2]) < 10) {
+        romanOnes(Number(numSplit[2]), romanNumeralsTens);
+        returnedRomanNumeralTens = (romanOnes(Number(numSplit[2]), romanNumeralsTens));
+      };
+      if (Number(numSplit[3]) < 10) {
+        romanOnes(Number(numSplit[3]), romanNumeralsOnes);
+        returnedRomanNumeralOnes = (romanOnes(Number(numSplit[3]), romanNumeralsOnes));
+      };
+      return (returnedRomanNumeralThousands + returnedRomanNumeralHundreds + returnedRomanNumeralTens + returnedRomanNumeralOnes);
+  };
+  console.log(returnedRomanNumeralTens);
+  console.log(returnedRomanNumeralOnes);
+  console.log(returnedRomanNumeralTens + returnedRomanNumeralOnes);
+ return num;
+}
+
+let result = convertToRoman(3999);
+console.log(result);
+
+function romanOnes(numValue, roman) {
+  let preRomanNumeral = [];
+  //let counter = 1;
+  if (numValue < 10) {
+    for (let i = 1; i <= numValue; i++) { 
+    if (i === 1) {
+      preRomanNumeral.push(roman[0]);
+      } else if (i === 2) {
+      preRomanNumeral.push(roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 3) {
+      preRomanNumeral.push(roman[0] + roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 4) {
+      preRomanNumeral.push(roman[1]);
+      preRomanNumeral.shift();
+      } else if (i === 5) {
+      preRomanNumeral.push(roman[2]);
+      preRomanNumeral.shift();
+      } else if (i === 6) {
+      preRomanNumeral.push(roman[2] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 7) {
+      preRomanNumeral.push(roman[2] + roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 8) {
+      preRomanNumeral.push(roman[2] + roman[0] + roman[0] + roman[0]);
+      preRomanNumeral.shift();
+      } else if (i === 9) {
+      preRomanNumeral.push(roman[3]);
+      preRomanNumeral.shift();
+      };    
+    };
+  }; 
+  //console.log(preRomanNumeral);
+  return preRomanNumeral;
+};
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Sixth Analysis Output
+[ '9', '9' ]
+9
+[ 'XC' ]
+[ 'IX' ]
+XCIX
+99
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//////////////////////////////////Seventh Analysis Output
+[ '9', '1' ]
+9
+XCI
+//////////////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Eighth Analysis Output
+[ '9', '9', '9' ]
+9
+CMXCIX
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////////////SOLUTION OUTPUT
+[ '3', '9', '9', '9' ]
+3
+MMMCMXCIX
+///////////////////////////////////////////////////////
 
-//
+//Caesars Cipher
+//One of the simplest and most widely known ciphers is a "Caesar cipher", also known as a "shift cipher". 
+//In a shift cipher the meanings of the letters are shifted by some set amount.
+
+//A common modern use is the ROT13 cipher, where the values of the letters are shifted by 13 places. 
+//Thus 'A ↔ N', 'B ↔ O' and so on.
+
+//Write a function which takes a ROT13 encoded string as input and returns a decoded string.
+
+//All letters will be uppercase. Do not transform any non-alphabetic character (i.e. spaces, punctuation), but do pass them on.
+
+
 
 
 //UNCHANGED CODE:
 
+//    function rot13(str) {
+//      return str;
+//    }
 
+//    rot13("SERR PBQR PNZC");
 
 //CHANGED CODE:
 
