@@ -1101,9 +1101,38 @@ function rot13(str) {
 let result = rot13("SERR PBQR PNZC");
 console.log(result);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////Second Analysis
+function rot13(str) {
+  let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  let halfAbet1 = alphabet.slice(0, 13);
+  let halfAbet2 = alphabet.slice(13);
+  let strClone = str.split(" ");
+  let individualStrLetters = strClone[0].split("");
+  let individualStrLettersArr = [];
+  //console.log(halfAbet1, halfAbet2, strClone);
+  for (let i = 0; i < strClone.length; i++) {
+    //console.log(strClone[i]);
+    if (i === (i + strClone.length) - strClone.length) {
+      individualStrLetters = strClone[i].split("");
+      individualStrLettersArr.push(individualStrLetters);
+    };
+  };
+  console.log(individualStrLettersArr);
+
+  return str;
+}
+
+let result = rot13("SERR PBQR PNZC");
+console.log(result);
+////////////////////////////////////////////////////////////////////////
 
 //OUTPUT:
-
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Second Analysis
+[ [ 'S', 'E', 'R', 'R' ],
+  [ 'P', 'B', 'Q', 'R' ],
+  [ 'P', 'N', 'Z', 'C' ] ]
+SERR PBQR PNZC
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //
 
