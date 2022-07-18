@@ -1197,6 +1197,63 @@ function rot13(str) {
 let result = rot13("SERR CVMMN!");
 console.log(result);
 //////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Fifth Analysis
+function rot13(str) {
+  let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  let halfAbet1 = alphabet.slice(0, 13);
+  let halfAbet2 = alphabet.slice(13);
+  let strClone = str.split(" ");
+  let individualStrLetters = strClone[0].split("");
+  let individualStrLettersArr = [];
+  for (let i = 0; i < strClone.length; i++) {
+    if (i === (i + strClone.length) - strClone.length) {
+      individualStrLetters = strClone[i].split("");
+      individualStrLettersArr.push(individualStrLetters);
+    };
+  };
+  let pairedHalfAbet = [];
+  for (let k= 0; k < 13; k++) {
+    pairedHalfAbet.push(halfAbet1[k]);
+    pairedHalfAbet.push(halfAbet2[k]);
+  };
+  let pairedArr = [];
+  for (let l = 0; l < 26; l+=2) {
+    pairedArr.push(pairedHalfAbet.slice(l, l + 2));
+  };
+  for (let w = 0; w < individualStrLettersArr.length; w++) {
+    
+    for (let x = 0; x < individualStrLettersArr[w].length; x++) {
+      let matchPosition = individualStrLettersArr[w][x];
+       console.log(individualStrLettersArr[w][x]);
+      for (let y = 0; y < pairedArr.length; y++) {
+
+        for (let z = 0; z < pairedArr[y].length; z++) {
+          if (pairedArr[z].indexOf(matchPosition) === -1) {
+            console.log((pairedArr[y]));
+            }
+        }
+      }
+    }
+  }
+  
+  for (let j = 0; j < 26; j++) {
+    let matchPosition = pairedHalfAbet[j];
+    let matchPosition1 = halfAbet1[j];
+    let matchPosition2 = halfAbet2[j];
+    if (individualStrLettersArr[0].indexOf(matchPosition) === -1 ) {
+      
+        console.log(pairedHalfAbet[j], alphabet[j]);
+        
+    }
+  }
+  console.log(pairedHalfAbet);
+
+  return str;
+}
+
+let result = rot13("SERR CVMMN!");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\Second Analysis
