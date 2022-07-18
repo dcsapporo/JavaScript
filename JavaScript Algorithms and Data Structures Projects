@@ -1089,11 +1089,34 @@ MMMCMXCIX
 //    rot13("SERR PBQR PNZC");
 
 //CHANGED CODE:
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\First Analysis
+function rot13(str) {
+  let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  
+  let strClone = str.split("");
+  console.log(alphabet, strClone);
+  return str;
+}
+
+let result = rot13("SERR PBQR PNZC");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+//OUTPUT:
+
+
+//
+
+
+//UNCHANGED CODE:
+
+
+
+//CHANGED CODE:
 
 
 
 //OUTPUT:
-
 
 //
 
