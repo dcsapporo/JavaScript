@@ -1125,6 +1125,78 @@ function rot13(str) {
 let result = rot13("SERR PBQR PNZC");
 console.log(result);
 ////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Third Analysis
+function rot13(str) {
+  let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  let halfAbet1 = alphabet.slice(0, 13);
+  let halfAbet2 = alphabet.slice(13);
+  let strClone = str.split(" ");
+  let individualStrLetters = strClone[0].split("");
+  let individualStrLettersArr = [];
+  for (let i = 0; i < strClone.length; i++) {
+    if (i === (i + strClone.length) - strClone.length) {
+      individualStrLetters = strClone[i].split("");
+      individualStrLettersArr.push(individualStrLetters);
+    };
+  };
+
+  for (let j = 0; j < 26; j++) {
+    let matchPosition = alphabet[j];
+    let matchPosition1 = halfAbet1[j];
+    let matchPosition2 = halfAbet2[j];
+    if (individualStrLettersArr[0].indexOf(matchPosition) === -1 ) {
+      
+        console.log(halfAbet1[j], halfAbet2[j], alphabet[j]);
+        
+    }
+  }
+  console.log(individualStrLettersArr);
+
+  return str;
+}
+
+let result = rot13("SERR CVMMN!");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////////Fourth Analysis
+function rot13(str) {
+  let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  let halfAbet1 = alphabet.slice(0, 13);
+  let halfAbet2 = alphabet.slice(13);
+  let strClone = str.split(" ");
+  let individualStrLetters = strClone[0].split("");
+  let individualStrLettersArr = [];
+  for (let i = 0; i < strClone.length; i++) {
+    if (i === (i + strClone.length) - strClone.length) {
+      individualStrLetters = strClone[i].split("");
+      individualStrLettersArr.push(individualStrLetters);
+    };
+  };
+  let pairedHalfAbet = [];
+  for (let k= 0; k < 13; k++) {
+    pairedHalfAbet.push(halfAbet1[k]);
+    pairedHalfAbet.push(halfAbet2[k]);
+  };
+  
+  //console.log(pairedHalfAbet);
+  for (let j = 0; j < 26; j++) {
+    let matchPosition = pairedHalfAbet[j];
+    let matchPosition1 = halfAbet1[j];
+    let matchPosition2 = halfAbet2[j];
+    if (individualStrLettersArr[0].indexOf(matchPosition) === -1 ) {
+      
+        console.log(pairedHalfAbet[j], alphabet[j]);
+        
+    }
+  }
+  console.log(pairedHalfAbet);
+
+  return str;
+}
+
+let result = rot13("SERR CVMMN!");
+console.log(result);
+//////////////////////////////////////////////////////////////////////////////////
 
 //OUTPUT:
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\Second Analysis
@@ -1133,6 +1205,85 @@ console.log(result);
   [ 'P', 'N', 'Z', 'C' ] ]
 SERR PBQR PNZC
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////////////////Third Analysis Output
+A N A
+B O B
+C P C
+D Q D
+F S F
+G T G
+H U H
+I V I
+J W J
+K X K
+L Y L
+M Z M
+undefined undefined N
+undefined undefined O
+undefined undefined P
+undefined undefined Q
+undefined undefined T
+undefined undefined U
+undefined undefined V
+undefined undefined W
+undefined undefined X
+undefined undefined Y
+undefined undefined Z
+[ [ 'S', 'E', 'R', 'R' ], [ 'C', 'V', 'M', 'M', 'N', '!' ] ]
+SERR CVMMN!
+/////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Fourth Analysis Output
+A A
+N B
+B C
+O D
+C E
+P F
+D G
+Q H
+F K
+G M
+T N
+H O
+U P
+I Q
+V R
+J S
+W T
+K U
+X V
+L W
+Y X
+M Y
+Z Z
+[ 'A',
+  'N',
+  'B',
+  'O',
+  'C',
+  'P',
+  'D',
+  'Q',
+  'E',
+  'R',
+  'F',
+  'S',
+  'G',
+  'T',
+  'H',
+  'U',
+  'I',
+  'V',
+  'J',
+  'W',
+  'K',
+  'X',
+  'L',
+  'Y',
+  'M',
+  'Z' ]
+SERR CVMMN!
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //
 
