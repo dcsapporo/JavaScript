@@ -1466,6 +1466,19 @@ function telephoneCheck(str) {
 let result = telephoneCheck("(555)555-5555");
 console.log(result);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Passes several requirements
+/////////////////////////////////Second Analysis
+function telephoneCheck(str) {
+  let strClone = str.slice();
+  console.log(strClone.match(/(^[1]*)(^[\W]*)(^[\d]*)([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\d])/g))
+  if (strClone.match(/(^[1]*)(^[\W]*)(^[\d]*)([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\d])/g) !== null) {
+    console.log(strClone);
+    return true;
+  } else return false;
+  
+}
+
+telephoneCheck("(555)555-5555");
+////////////////////////////////////////////////////////////////////Passes several Requirements
 
 //OUTPUT:
 
