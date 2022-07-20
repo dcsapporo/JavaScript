@@ -1479,6 +1479,45 @@ function telephoneCheck(str) {
 
 telephoneCheck("(555)555-5555");
 ////////////////////////////////////////////////////////////////////Passes several Requirements
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Third Analysis
+function telephoneCheck(str) {
+  let strClone = str.slice();
+  console.log(strClone.match(/(^[1]*)(^[\W]*)(^[\d]*)([\W]*)(([\d])([\d])([\d])*)([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\d]$)/g));
+  console.log(strClone.match(/(^[1]*)(^[^0|2|10]+)(^[\W]*)(^[\d]*)([\W]*)(([\d])([\d])([\d])*)([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\d]$)/g));
+  if (strClone.match(/(^[1]*)(^[\W]*)(^[\d]*)([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\d]$)/g) !== null) {
+    console.log(strClone);
+    return true;
+  } else if (strClone.match(/(^[1]*)(^[^0|2|10]+)(^[\W]*)(^[\d]*)([\W]*)(([\d])([\d])([\d])*)([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\d]$)/g) !== null){
+    console.log(strClone);
+    return true;
+  } else return false;
+  
+  
+};
+
+let result = telephoneCheck("1 (555) 555-5555");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//////////////////////////////////////////Forth Analysis
+function telephoneCheck(str) {
+  let strClone = str.slice();
+  //strClone.match(/(^[1]*)(^[\W]*)(^[\d\d\d]*)([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\d]$)/g
+  console.log(strClone.match(/(^[1]*)(^[\W\d\d\d\W]*)(([\d\d\d]*))([\W]*)([\d\d\d])([\W]*)([\d\d\d\d]$)/g));
+  console.log(strClone.match(/(^[1]*)(^[^0|2|10]+)(^[\W]*)(^[\d]*)([\W]*)(([\d])([\d])([\d])*)([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\d]$)/g));
+  if (strClone.match(/(^[1]*)(^[\W\d\d\d\W]*)(([\d\d\d]*))([\W]*)([\d\d\d])([\W]*)([\d\d\d\d]$)/) !== null) {
+    console.log(strClone);
+    return true;
+  } else if (strClone.match(/(^[1]*)(^[^0|2|10]+)(^[\W]*)(^[\d]*)([\W]*)(([\d])([\d])([\d])*)([\W]*)([\d])([\d])([\d])([\W]*)([\d])([\d])([\d])([\d]$)/g) !== null){
+    console.log(strClone);
+    return true;
+  } else return false;
+  
+  
+};
+
+let result = telephoneCheck("1 (555) 555-5555");
+console.log(result);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //OUTPUT:
 
