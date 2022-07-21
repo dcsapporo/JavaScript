@@ -1576,6 +1576,24 @@ function telephoneCheck(str) {
 let result = telephoneCheck("1 555)555-5555");
 console.log(result);
 ///////////////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Seventh Analysis
+function telephoneCheck(str) {
+  let strClone = str.slice();
+  let reducedClone = strClone.replace(/[\s\(\)\-]/g, "");
+  console.log(reducedClone);
+  if (reducedClone.length < 10 || reducedClone.length > 11) {
+    return false
+  } else if (strClone.match(/(^[1]*)(^[\W\d\d\d\W]*)(([\d\d\d]*))([\W]*)([\d\d\d])([\W]*)([\d\d\d\d]$)/) !== null) {
+    console.log(reducedClone)
+  }
+ return false;
+  
+  
+};
+
+let result = telephoneCheck("55 55-55-555-5");
+console.log(result);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //OUTPUT:
 
