@@ -1867,6 +1867,84 @@ let result = checkCashRegister(19.5, 20,
 ["ONE HUNDRED", 100]]);
 console.log(result);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////////////////////////Forth Analysis
+function checkCashRegister(price, cash, cid) {
+  const denominations = [["PENNY", 1], 
+["NICKEL", 5], 
+["DIME", 10], 
+["QUARTER", 25], 
+["ONE", 100], 
+["FIVE", 500], 
+["TEN", 1000], 
+["TWENTY", 2000], 
+["ONE HUNDRED", 10000]];
+  let totalStartCID = ((cid[0][1] * 100) + (cid[1][1] * 100) + 
+  (cid[2][1] * 100) + (cid[3][1] * 100) + 
+  (cid[4][1] * 100) + (cid[5][1] * 100) + 
+  (cid[6][1] * 100) + (cid[7][1] * 100) + (cid[8][1] * 100));
+  //console.log(totalStartCID);
+  let change = (cash * 100) - (price * 100);
+  let balanceCID = totalStartCID - change;
+  //console.log(balanceCID / 100);
+  let currentCOH = {};
+  let registerStatus = [{status: "OPEN", change: []},
+  {status: "INSUFFICIENT_FUNDS", change: []}, {status: "CLOSED", change: []}];
+  let currentStatus = [];
+  const denominationComparetor = [];
+
+  if (change < 100 && change > 0) {
+    let smallChange = cid.slice(0, 4);
+    console.log(change);
+    for (let i = 0; i < smallChange.length; i++) {
+      denominationComparetor.push((denominations[i][1] / 100));
+      
+    };
+    if (change > 41  && change < 50) {
+        console.log(denominationComparetor);
+    } else if (change >= 50 && change < 100) {
+        console.log(denominationComparetor);
+    };
+    console.log(denominationComparetor);
+  } else if (change < 10000 && change >= 100) {
+    let mediumChange = cid.slice(0,8);
+    console.log(mediumChange);
+  } else if (change >= 10000) {
+    let largeChange = cid.slice();
+    console.log(largeChange);
+  } else if (change === 0) {
+    let openStatus = cid.slice(0,9);
+    //console.log(openStatus);
+    for (let m = 0; m < cid.length; m++) {
+      currentStatus.push(openStatus[m]);
+      /*for (let n = 0; n < cid[m].length; n++) {
+        registerStatus[0].change.push(currentStatus[m][n]);
+      };*/
+    };
+    cid.forEach(function(currentStatus){
+      currentCOH[currentStatus[0]] = currentStatus[1]
+    });
+  };
+  
+
+  console.log(currentCOH);
+  //console.log(Object.keys(registerStatus[0].change));
+  console.log(Object.values(currentStatus[0]));
+  
+  return registerStatus;
+}
+
+let result = checkCashRegister(0, 0, 
+[["PENNY", 1.01], 
+["NICKEL", 2.05], 
+["DIME", 3.1], 
+["QUARTER", 4.25], 
+["ONE", 90], 
+["FIVE", 55], 
+["TEN", 20], 
+["TWENTY", 60], 
+["ONE HUNDRED", 100]]);
+console.log(result);
+///////////////////////////////////////////////////////////////////
 
 //OUTPUT:
 
