@@ -2257,29 +2257,21 @@ function checkCashRegister(price, cash, cid) {
                 currentStatus.push(changeStatusArr);
                 change = change - 20;
                 registerStatus.change = currentStatus;
+                
               };
+              console.log(change);
               
-            } else if (denominations[index] === denominations[1] && change > 20) {
-              //console.log((cid[index][1] * 100) - change);
-              if (((cid[index][1] * 100) - change) >= 100 && change <= 40 && (change - 30) < 0) {
-                changeStatusArr.push(denominations[index][0]);
-                changeStatusArr.push(20/ 100);
-                currentStatus.push(changeStatusArr);
-                change = change - 20;
-                registerStatus.change = currentStatus;
-              };
-              
-            }else if (denominations[index] === denominations[0] && change < 20 &&
-              ((cid[index][1] * 100) - change) < (cid[index][1] * 100) && 
-              change >= 1 && (change - 10) < 0) {
+            } 
+            
+        } else if (denominations[index][0] === denominations[0][0] && change <= 50) {
+                let finalChange = (cid[index][1] * 100) - change;
                 changeStatusArr.push(denominations[index][0]);
                 changeStatusArr.push(change/ 100);
                 currentStatus.push(changeStatusArr);
-                console.log(change = change);
+                console.log(finalChange);
                 registerStatus.change = currentStatus;
-              };
-            
-        } 
+        }
+        console.log((denominations[index][0]));
       };
     index -= 1;
   };
@@ -2353,7 +2345,8 @@ OPEN
      [ 'FIVE', 15 ],
      [ 'ONE', 1 ],
      [ 'QUARTER', 0.5 ],
-     [ 'DIME', 0.2 ] ] }
+     [ 'DIME', 0.2 ],
+     [ 'PENNY', 0.04 ] ] }
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
